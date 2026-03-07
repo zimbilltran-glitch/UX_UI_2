@@ -206,7 +206,7 @@ Used by the AI Studio environment to define the applet's metadata.
 ```json
 {
   "name": "Finsang Update New",
-  "description": "A clone of Simply Wall St's Future Growth section for a stock.",
+  "description": "A clone of FinSang's Future Growth section for a stock.",
   "requestFramePermissions": []
 }
 ```
@@ -275,7 +275,7 @@ Used by the AI Studio environment to define the applet's metadata.
 - **TradingView API Integration:** Added comprehensive technical documentation on how to dynamically connect and manage the TradingView widget lifecycle when switching stock symbols.
 
 ### Phase 11: Help Center (Internal Wikipedia)
-- Built the **"HelpCenter"** component to serve as an internal knowledge base, mimicking the UX of Simply Wall St Support.
+- Built the **"HelpCenter"** component to serve as an internal knowledge base, mimicking the UX of FinSang Support.
 - Implemented an interactive **Accordion** system for collapsible FAQs and Guides.
 - Integrated **Tooltips** for quick explanations of financial jargon (e.g., DCF, PEG Ratio, EPS).
 - Created a structured **Knowledge Hierarchy** covering the Core Model (Snowflake), Valuation, Future Growth, Past Performance, Financial Health, and Dividend.

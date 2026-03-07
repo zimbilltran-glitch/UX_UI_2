@@ -23,7 +23,7 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setAct
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">
           SW
         </div>
-        <span className="text-white font-semibold text-lg">Simply Wall St</span>
+        <span className="text-white font-semibold text-lg">FinSang</span>
       </div>
       
       <div className="flex-1 overflow-y-auto py-4">

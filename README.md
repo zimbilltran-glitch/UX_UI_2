@@ -1,7 +1,7 @@
-# Finsang Update New (Simply Wall St Clone)
+# Finsang Update New (FinSang Clone)
 
 ## 1. Project Overview
-This project is a React-based web application that replicates the company analysis dashboard of Simply Wall St. It provides a comprehensive view of a company's financial health, valuation, future growth, and past performance using interactive charts and a clean, dark-themed UI.
+This project is a React-based web application that replicates the company analysis dashboard of FinSang. It provides a comprehensive view of a company's financial health, valuation, future growth, and past performance using interactive charts and a clean, dark-themed UI.
 
 ## 2. Key Features
 - **360° Company Overview:** Snowflake chart analyzing Value, Future, Past, Health, and Dividend.
