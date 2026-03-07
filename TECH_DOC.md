@@ -63,9 +63,11 @@
 
 ### Help Center Architecture & Navigation
 **Technical Documentation Note:**
-- **Anchor Link Navigation:** Trang Help Center được thiết kế để hỗ trợ điều hướng trực tiếp đến các bài viết thông qua URL Hash (ví dụ: `#understanding-valuation`). Component `Accordion` sử dụng `useEffect` để lắng nghe sự kiện `hashchange` và tự động mở (expand) nội dung tương ứng, đồng thời cuộn trang (scrollIntoView) đến đúng vị trí của Accordion đó.
+- **Anchor Link Navigation:** Trang Help Center được thiết kế để hỗ trợ điều hướng trực tiếp đến các bài viết thông qua URL Hash (ví dụ: `#understanding-valuation`, `#management`, `#ownership`). Component `Accordion` sử dụng `useEffect` để lắng nghe sự kiện `hashchange` và tự động mở (expand) nội dung tương ứng, đồng thời cuộn trang (scrollIntoView) đến đúng vị trí của Accordion đó.
 - **Tooltip Component:** Các thuật ngữ tài chính (như DCF, PEG Ratio) được bọc trong một custom `Tooltip` component. Tooltip này sử dụng CSS (group-hover, absolute positioning) để hiển thị popup giải thích mà không cần dùng đến thư viện ngoài, đảm bảo hiệu năng và tính nhất quán của theme OLED Dark.
 - **Data Source Disclaimer:** Mục "Why is your data different from other sites?" được thiết kế nổi bật để giải thích rõ về phương pháp tính TTM (Trailing Twelve Months) của Finsang, giúp giải quyết các thắc mắc thường gặp của người dùng khi so sánh dữ liệu với các nền tảng khác (Cafef, Fireant).
+- **Management & Ownership Integration:** Đã bổ sung tài liệu chi tiết cho phần Ban lãnh đạo (Management) và Cơ cấu cổ đông (Ownership). Các phần này không ảnh hưởng trực tiếp đến điểm số Snowflake nhưng cung cấp các bài kiểm tra (Pass/Fail) quan trọng về lương thưởng CEO, kinh nghiệm ban lãnh đạo, giao dịch nội bộ và sự pha loãng cổ phiếu.
+- **FAQs & Data Sources:** Đã mở rộng phần FAQ để bao gồm các thông tin cụ thể về nguồn cấp dữ liệu cho Ownership (Proxies, 13Fs) và Insider Transactions (SEC Form 4).
 
 ## Future Growth Module
 

@@ -283,6 +283,13 @@ Used by the AI Studio environment to define the applet's metadata.
 - Enabled **Anchor Link Navigation** allowing users to jump directly to specific sections via URL hashes.
 - Added a "Help Center" tab to the main Sidebar navigation under the "Support" category.
 
+### Phase 12: Help Center Enhancements (Management & Ownership)
+- Expanded the **"HelpCenter"** component to include detailed documentation for the **Management** and **Ownership** sections.
+- **Management Section:** Added explanations for CEO compensation checks (vs Market, vs Earnings) and Leadership/Board experience (average tenure).
+- **Ownership Section:** Added documentation for Insider Transactions (Open Market vs Private) and Ownership Breakdown (Dilution of Shares, Top Shareholders).
+- **FAQs & Data Sources:** Added specific FAQs detailing the data providers and sources for Ownership Data (Proxies, 13Fs, Funds) and Insider Transactions Data (SEC Form 4, 3, 5, 13D/G).
+- Updated the Table of Contents in the Help Center sidebar to include the new Management and Ownership anchor links.
+
 ---
 
 ## 6. Pending Tasks / Under Construction

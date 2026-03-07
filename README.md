@@ -6,6 +6,7 @@ This project is a React-based web application that replicates the company analys
 ## 2. Key Features
 - **360° Company Overview:** Snowflake chart analyzing Value, Future, Past, Health, and Dividend.
 - **In-depth Analysis Tabs:** Detailed sections for Valuation, Future Growth, and Past Performance.
+- **Comprehensive Help Center:** Internal knowledge base with detailed guides on financial metrics, methodologies, and data sources.
 - **Interactive Data Visualization:** Custom Recharts implementations for financial metrics.
 - **Cross-tab Navigation:** Seamless smooth-scrolling navigation from summary rewards/risks to detailed charts.
 - **OLED Dark Theme:** Premium, eye-friendly dark mode UI tailored for financial data.
