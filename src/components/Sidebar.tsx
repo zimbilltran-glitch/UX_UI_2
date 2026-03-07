@@ -12,7 +12,8 @@ import {
   Activity,
   Shield,
   DollarSign,
-  Users
+  Users,
+  HelpCircle
 } from 'lucide-react';
 
 export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) {
@@ -47,6 +48,13 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setAct
           <NavItem icon={<Users size={20} />} label="Management" active={activeTab === 'Management'} onClick={() => setActiveTab('Management')} />
           <NavItem icon={<Briefcase size={20} />} label="Ownership" active={activeTab === 'Ownership'} onClick={() => setActiveTab('Ownership')} />
           <NavItem icon={<Newspaper size={20} />} label="Other information" active={activeTab === 'Other information'} onClick={() => setActiveTab('Other information')} />
+          
+          <div className="pt-4 pb-2 px-3 border-t border-gray-800 mt-4">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              Support
+            </p>
+          </div>
+          <NavItem icon={<HelpCircle size={20} />} label="Help Center" active={activeTab === 'Help Center'} onClick={() => setActiveTab('Help Center')} />
         </nav>
       </div>
       

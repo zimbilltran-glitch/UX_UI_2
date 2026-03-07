@@ -9,6 +9,7 @@ import { CompanyOverview } from './components/CompanyOverview';
 import { Valuation } from './components/Valuation';
 import { FutureGrowth } from './components/FutureGrowth';
 import { PastEarnings } from './components/PastEarnings';
+import { HelpCenter } from './components/HelpCenter';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Overview');
@@ -37,6 +38,7 @@ export default function App() {
       case 'Valuation': return <Valuation />;
       case 'Future Growth': return <FutureGrowth />;
       case 'Past Performance': return <PastEarnings />;
+      case 'Help Center': return <HelpCenter />;
       case 'Financial Health': 
       case 'Dividend':
       case 'Management':

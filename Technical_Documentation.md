@@ -269,9 +269,19 @@ Used by the AI Studio environment to define the applet's metadata.
 - Built the **"OverviewSupplementary"** component to enhance the "0.0 Overview" section.
 - Integrated **TradingView Advanced Chart** widget for real-time price visualization.
 - Created a **Key Metrics Grid** displaying 8 essential TTM indicators (P/E, P/B, ROE, Div Yield, Market Cap, EPS, 52W High/Low).
-- Implemented a **Linear Valuation Slider** to visually compare current P/E against industry standards.
+- Implemented a **Linear Valuation Slider** to visually compare current P/E against industry standards, using a gradient theme and glow pointers.
 - Added a **Banking Operation Info** panel highlighting industry-specific metrics like NIM, Total Deposits, Total Loans, and LDR.
 - Ensured strict adherence to the OLED Dark (`#050505`) theme and responsive design.
+- **TradingView API Integration:** Added comprehensive technical documentation on how to dynamically connect and manage the TradingView widget lifecycle when switching stock symbols.
+
+### Phase 11: Help Center (Internal Wikipedia)
+- Built the **"HelpCenter"** component to serve as an internal knowledge base, mimicking the UX of Simply Wall St Support.
+- Implemented an interactive **Accordion** system for collapsible FAQs and Guides.
+- Integrated **Tooltips** for quick explanations of financial jargon (e.g., DCF, PEG Ratio, EPS).
+- Created a structured **Knowledge Hierarchy** covering the Core Model (Snowflake), Valuation, Future Growth, Past Performance, Financial Health, and Dividend.
+- Added a dedicated section for **FAQs & Data Sources**, explaining the TTM methodology and data origins (Vietcap, S&P Global).
+- Enabled **Anchor Link Navigation** allowing users to jump directly to specific sections via URL hashes.
+- Added a "Help Center" tab to the main Sidebar navigation under the "Support" category.
 
 ---
 
