@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star, Plus, MoreHorizontal, X, ChevronRight, Info, Table } from 'lucide-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { OverviewSupplementary } from './OverviewSupplementary';
 
 const mockData = {
   stock_overview: {
@@ -204,6 +205,8 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
           </div>
         </div>
       </div>
+
+      <OverviewSupplementary />
 
       {/* Modals */}
       {showLearnModal && (

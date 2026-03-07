@@ -8,7 +8,7 @@ import { Sidebar } from './components/Sidebar';
 import { CompanyOverview } from './components/CompanyOverview';
 import { Valuation } from './components/Valuation';
 import { FutureGrowth } from './components/FutureGrowth';
-import { PastPerformance } from './components/PastPerformance';
+import { PastEarnings } from './components/PastEarnings';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Overview');
@@ -36,7 +36,7 @@ export default function App() {
       case 'Overview': return <CompanyOverview onNavigate={navigateTo} />;
       case 'Valuation': return <Valuation />;
       case 'Future Growth': return <FutureGrowth />;
-      case 'Past Performance': return <PastPerformance />;
+      case 'Past Performance': return <PastEarnings />;
       case 'Financial Health': 
       case 'Dividend':
       case 'Management':

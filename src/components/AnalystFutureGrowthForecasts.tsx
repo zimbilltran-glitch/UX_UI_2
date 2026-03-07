@@ -29,13 +29,15 @@ const BarGroup = ({ title, data }: { title: string, data: { label: string, value
         {data.map((item, index) => {
           const heightPercent = (item.value / maxValue) * 100;
           return (
-            <div key={index} className="flex flex-col items-center flex-1 group">
+            <div key={index} className="flex flex-col items-start justify-end flex-1 h-full group">
               <span className="text-white font-bold text-lg mb-1">{item.value.toFixed(1)}%</span>
               <div 
                 className="w-full relative transition-all duration-300"
                 style={{ height: `${heightPercent}%`, backgroundColor: item.color }}
               >
-                <span className="absolute top-2 left-2 text-white font-bold text-xs">{item.label}</span>
+                <span className={`absolute top-2 left-2 font-bold text-xs ${item.label === 'Industry' ? 'text-teal-900' : 'text-white'}`}>
+                  {item.label}
+                </span>
               </div>
             </div>
           );

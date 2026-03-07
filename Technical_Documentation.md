@@ -241,6 +241,38 @@ Used by the AI Studio environment to define the applet's metadata.
 - Added interactive features: Multi-select legend to toggle metrics, custom tooltips with analyst data, and a toggleable Data View (Table mode).
 - Used `ReferenceArea` and `ReferenceLine` to visually separate "Past" and "Analysts Forecasts" data.
 
+### Phase 6: Analyst Future Growth Forecasts
+- Built the **"2.2 Analyst Future Growth Forecasts"** component.
+- Implemented grouped bar charts for Earnings and Revenue growth comparisons.
+- Added interactive tooltips for definitions and a modal for data sources.
+
+### Phase 7: EPS Growth Forecasts
+- Built the **"2.3 Earnings per Share (EPS) Growth Forecasts"** component.
+- Implemented an EPS fan chart (Line and Area charts) to visualize historical data and future forecasts.
+- Included an interactive tooltip and a modal displaying detailed data tables (Summary, Future Estimates, Past Financials).
+
+### Phase 8: Future Return on Equity
+- Built the **"2.4 Future Return on Equity"** component.
+- Implemented a custom SVG Gauge Chart to visualize ROE forecasts for the company vs the industry.
+- Added interactive tooltips with dashed underlines and a "Learn" modal explaining the importance of Future ROE.
+- Consolidated documentation notes regarding the future internal Help Center.
+
+### Phase 9: Past Earnings Performance
+- Built the **"3. Past Earnings Performance"** module (`PastEarnings` and `PastEarningsOverview`).
+- Implemented an interactive checklist with smooth scrolling to detailed sections.
+- Created a Key Information table displaying historical metrics (Earnings growth, EPS growth, ROE, Net margin).
+- Integrated a Snowflake Radar chart highlighting the "PAST" sector.
+- Built a "Recent past performance updates" panel with a collapsible sidebar for viewing all historical updates.
+- **Technical Note:** Historical data for this section will be synchronized from Parquet files in the backend.
+
+### Phase 10: Overview Supplementary Frames
+- Built the **"OverviewSupplementary"** component to enhance the "0.0 Overview" section.
+- Integrated **TradingView Advanced Chart** widget for real-time price visualization.
+- Created a **Key Metrics Grid** displaying 8 essential TTM indicators (P/E, P/B, ROE, Div Yield, Market Cap, EPS, 52W High/Low).
+- Implemented a **Linear Valuation Slider** to visually compare current P/E against industry standards.
+- Added a **Banking Operation Info** panel highlighting industry-specific metrics like NIM, Total Deposits, Total Loans, and LDR.
+- Ensured strict adherence to the OLED Dark (`#050505`) theme and responsive design.
+
 ---
 
 ## 6. Pending Tasks / Under Construction

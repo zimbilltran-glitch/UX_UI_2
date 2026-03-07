@@ -7,12 +7,12 @@ const mockData = {
     score: "5/6",
     summary: "Military Commercial Bank is forecast to grow earnings and revenue by 16.7% and 25.6% per annum respectively. EPS is expected to grow by 14.7% per annum. Return on equity is forecast to be 20.8% in 3 years.",
     criteria: [
-      { label: "Earnings vs Savings Rate", status: "pass", id: "section_2_2" },
-      { label: "Earnings vs Market", status: "pass", id: "section_2_3" },
-      { label: "High Growth Earnings", status: "fail", id: "section_2_4" },
-      { label: "Revenue vs Market", status: "pass", id: "section_2_5" },
-      { label: "High Growth Revenue", status: "pass", id: "section_2_6" },
-      { label: "Future ROE", status: "pass", id: "section_2_7" }
+      { label: "Analyst Future Growth", status: "pass", id: "section_2_2" },
+      { label: "EPS Growth Forecasts", status: "pass", id: "section_2_3" },
+      { label: "Future ROE", status: "pass", id: "section_2_4" },
+      { label: "High Growth Earnings", status: "fail", id: "section_2_5" },
+      { label: "Revenue vs Market", status: "pass", id: "section_2_6" },
+      { label: "High Growth Revenue", status: "pass", id: "section_2_7" }
     ],
     key_metrics: {
       earnings_growth: "16.7%",
