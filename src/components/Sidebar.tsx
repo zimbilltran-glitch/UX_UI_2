@@ -8,11 +8,14 @@ import {
   Briefcase, 
   Newspaper, 
   Settings, 
-  Bell,
-  ChevronRight
+  ChevronRight,
+  Activity,
+  Shield,
+  DollarSign,
+  Users
 } from 'lucide-react';
 
-export function Sidebar() {
+export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) {
   return (
     <aside className="w-64 bg-[#111827] border-r border-gray-800 flex flex-col h-screen sticky top-0">
       <div className="p-4 flex items-center space-x-2 border-b border-gray-800">
@@ -35,14 +38,15 @@ export function Sidebar() {
             </p>
           </div>
           
-          <NavItem icon={<PieChart size={20} />} label="Overview" />
-          <NavItem icon={<BarChart2 size={20} />} label="Valuation" />
-          <NavItem icon={<TrendingUp size={20} />} label="Future Growth" active />
-          <NavItem icon={<BarChart2 size={20} />} label="Past Performance" />
-          <NavItem icon={<PieChart size={20} />} label="Financial Health" />
-          <NavItem icon={<BarChart2 size={20} />} label="Dividend" />
-          <NavItem icon={<Briefcase size={20} />} label="Management" />
-          <NavItem icon={<PieChart size={20} />} label="Ownership" />
+          <NavItem icon={<PieChart size={20} />} label="Overview" active={activeTab === 'Overview'} onClick={() => setActiveTab('Overview')} />
+          <NavItem icon={<BarChart2 size={20} />} label="Valuation" active={activeTab === 'Valuation'} onClick={() => setActiveTab('Valuation')} />
+          <NavItem icon={<TrendingUp size={20} />} label="Future Growth" active={activeTab === 'Future Growth'} onClick={() => setActiveTab('Future Growth')} />
+          <NavItem icon={<Activity size={20} />} label="Past Performance" active={activeTab === 'Past Performance'} onClick={() => setActiveTab('Past Performance')} />
+          <NavItem icon={<Shield size={20} />} label="Financial Health" active={activeTab === 'Financial Health'} onClick={() => setActiveTab('Financial Health')} />
+          <NavItem icon={<DollarSign size={20} />} label="Dividend" active={activeTab === 'Dividend'} onClick={() => setActiveTab('Dividend')} />
+          <NavItem icon={<Users size={20} />} label="Management" active={activeTab === 'Management'} onClick={() => setActiveTab('Management')} />
+          <NavItem icon={<Briefcase size={20} />} label="Ownership" active={activeTab === 'Ownership'} onClick={() => setActiveTab('Ownership')} />
+          <NavItem icon={<Newspaper size={20} />} label="Other information" active={activeTab === 'Other information'} onClick={() => setActiveTab('Other information')} />
         </nav>
       </div>
       
@@ -61,10 +65,14 @@ export function Sidebar() {
   );
 }
 
-function NavItem({ icon, label, active = false }: { icon: React.ReactNode; label: string; active?: boolean }) {
+function NavItem({ icon, label, active = false, onClick }: { icon: React.ReactNode; label: string; active?: boolean; onClick?: () => void }) {
   return (
     <a
       href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        if (onClick) onClick();
+      }}
       className={`group flex items-center px-3 py-2 text-sm font-medium rounded-md ${
         active 
           ? 'bg-blue-900/30 text-blue-400' 

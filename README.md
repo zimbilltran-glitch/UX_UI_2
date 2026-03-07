@@ -1,20 +1,32 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Finsang Update New (Simply Wall St Clone)
 
-# Run and deploy your AI Studio app
+## 1. Project Overview
+This project is a React-based web application that replicates the company analysis dashboard of Simply Wall St. It provides a comprehensive view of a company's financial health, valuation, future growth, and past performance using interactive charts and a clean, dark-themed UI.
 
-This contains everything you need to run your app locally.
+## 2. Key Features
+- **360° Company Overview:** Snowflake chart analyzing Value, Future, Past, Health, and Dividend.
+- **In-depth Analysis Tabs:** Detailed sections for Valuation, Future Growth, and Past Performance.
+- **Interactive Data Visualization:** Custom Recharts implementations for financial metrics.
+- **Cross-tab Navigation:** Seamless smooth-scrolling navigation from summary rewards/risks to detailed charts.
+- **OLED Dark Theme:** Premium, eye-friendly dark mode UI tailored for financial data.
 
-View your app in AI Studio: https://ai.studio/apps/a9de2ee0-90de-4e2c-a4ee-53f18d0650d2
+## 3. Tech Stack
+- **Framework:** React 18+ (Vite)
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Charts:** Recharts
 
-## Run Locally
+## 4. Quick Start
+```bash
+# Install dependencies
+npm install
 
-**Prerequisites:**  Node.js
+# Run development server
+npm run dev
 
+# Build for production
+npm run build
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 5. Documentation
+For detailed technical information, component architecture, API integration guidelines, and JSON data structures, please refer to the [Technical Documentation](./Technical_Documentation.md).
