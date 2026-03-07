@@ -200,7 +200,9 @@ export function EPSGrowthForecasts() {
               <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#666', strokeWidth: 1, strokeDasharray: '3 3' }} />
               
               {/* Background Areas */}
+              {/* @ts-ignore */}
               <ReferenceArea x1="2024" x2="2025" fill="#1A1A1A" fillOpacity={0.5} />
+              {/* @ts-ignore */}
               <ReferenceArea x1="2025" x2="2028" fill="#2A2A1A" fillOpacity={0.3} />
               
               {/* Separator Line */}

@@ -157,7 +157,9 @@ export function EarningsRevenueForecast() {
                   />
                   
                   {/* Background Shading */}
+                  {/* @ts-ignore */}
                   <ReferenceArea x1="2023-03-31" x2="2025-12-31" fill="#000000" fillOpacity={0.2} />
+                  {/* @ts-ignore */}
                   <ReferenceArea x1="2025-12-31" x2="2028-12-31" fill="#ffffff" fillOpacity={0.03} />
                   
                   {/* Divider Line with Labels */}

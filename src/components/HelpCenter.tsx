@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ChevronRight, BookOpen, HelpCircle, Database, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
+import { Search, ChevronRight, BookOpen, HelpCircle, Database, ChevronDown, ChevronUp, ExternalLink, Activity, Shield } from 'lucide-react';
 
 // Tooltip component for inline explanations
 const Tooltip = ({ children, text }: { children: React.ReactNode, text: string }) => (
@@ -1326,13 +1326,74 @@ export function HelpCenter({ ticker = "MBB" }) {
               <h2 className="text-2xl font-bold text-white">FAQs & Data Sources</h2>
             </div>
 
-            <Accordion id="snowflake-logic" title="Snowflake Logic: How is it calculated?">
-              <p className="mb-4">
-                The Snowflake's shape and size are determined by 30 individual checks (6 for each of the 5 axes: Value, Future, Past, Health, Dividend). Each check is a simple Pass/Fail test. 
-              </p>
-              <p>
-                For example, if a company passes 4 out of 6 checks for 'Value', the Value axis will stretch 4/6ths of the way to the edge. The overall color intensity (from red to green) also reflects the total score across all 30 checks.
-              </p>
+            <Accordion id="how-snowflake-works" title="How does the Snowflake work?">
+              <div className="space-y-6 text-gray-300">
+                <p>
+                  The Snowflake is a visual summary of Simply Wall St’s analysis across 5 assessment criteria on each company. The 5 criteria cover:
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Valuation</li>
+                  <li>Future growth</li>
+                  <li>Past performance</li>
+                  <li>Financial health</li>
+                  <li>Dividend</li>
+                </ul>
+                <p>
+                  The company’s score on each of these criteria determines the size, shape and colour of its Snowflake. If you are interested in learning more about our analysis model, please see our article How does Simply Wall St analyse stocks.
+                </p>
+                <p>
+                  The Snowflake is designed to allow you to do a quick scan of a particular stock, a group of stocks or the stock market as a whole. This helps you to quickly make comparisons across a wide range of securities and markets.
+                </p>
+
+                <div>
+                  <h4 className="text-xl font-bold text-white mb-3">What is the Snowflake showing me?</h4>
+                  <p className="mb-4">
+                    For each assessment criteria, there are 6 individual checks performed. If a check is successful, it is assigned a score of 1 and if it is unsuccessful, it is assigned a score of 0. The successful checks are added to give an overall score for each assessment criteria.
+                  </p>
+                  <p className="mb-4">
+                    For example, a stock may receive 5 successful checks for "Dividend", giving a total Dividend score of 5 (from a possible 6). The Snowflake’s boundary on the Dividend line moves outwards from the centre as the total Dividend score increases. The total score for each of the other assessment criteria is also shown on the snowflake in the same way. The higher the company scores in each criteria, the larger its Snowflake is.
+                  </p>
+                  <p>
+                    You can see each criteria’s score in more detail by hovering your mouse over the Snowflake at the top right of the Executive Summary for each company.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-white mb-3">What do the different colours mean?</h4>
+                  <p className="mb-4">
+                    In addition to the Snowflake’s size increasing depending on the number of successful checks a company has, its colour will change too.
+                  </p>
+                  <p className="mb-4">
+                    The Snowflake is colour-coded on a scale. The greater the number of successful checks a company has, the greener the Snowflake will appear. On the opposite end, the lower the number of successful checks a company has, the redder the Snowflake will appear.
+                  </p>
+                  <p>
+                    As the number of successful checks a company has increased, the Snowflake will transition from red to orange to yellow and finally to green.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-white mb-3">Why is the Snowflake blue?</h4>
+                  <p>
+                    Securities that have been categorised as funds or ETFs by default have a blue Snowflake. This is because funds are not able to be fully fitted into our analysis model used for stocks. So the assessment criteria for funds is not as comprehensive as it is for stocks and the Snowflake for funds is not comparable to the Snowflake for stocks.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-white mb-3">The Snowflake is NOT a buy or sell recommendation</h4>
+                  <p className="mb-4">
+                    While the size and colour of the Snowflake broadly indicate the quality of the company according to Simply Wall St’s analysis, a low score in particular assessment criteria should not necessarily exclude a stock from investment consideration.
+                  </p>
+                  <p className="mb-4">
+                    The Snowflake simply summarises the relevant characteristics of a stock.
+                  </p>
+                  <p className="mb-4">
+                    For example, a low "Dividend" score simply indicates the company may be paying a low dividend. However, it may also be experiencing high growth and reinvesting cash in growth initiatives.
+                  </p>
+                  <p>
+                    Investors should, therefore, consider each of the assessment criteria in terms of their own investment objectives. Our aim is to provide high-quality analysis based on the data we have available for any company. We want to empower you with information that can allow you to make informed decisions on your investments.
+                  </p>
+                </div>
+              </div>
             </Accordion>
 
             <Accordion id="data-updates" title="When is data updated?">

@@ -2,7 +2,43 @@ import React, { useState } from 'react';
 import { ChevronDown, Info, X, CheckCircle2, XCircle } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell, ResponsiveContainer } from 'recharts';
 
-const mockData = {
+interface Company {
+  ticker: string;
+  name: string;
+  value: number;
+  growth: string;
+  marketCap: string;
+  isIndustryAvg?: boolean;
+  isTarget?: boolean;
+}
+
+interface Range {
+  label: string;
+  min: number;
+  max: number;
+  count: number;
+  isTarget?: boolean;
+  isIndustryAvg?: boolean;
+}
+
+interface MetricData {
+  shortName: string;
+  targetValue: number;
+  industryAvg: number;
+  goodValue: boolean;
+  splitPercentage: number;
+  ranges: Range[];
+  companies: Record<string, Company[]>;
+}
+
+interface MockData {
+  ticker: string;
+  companyName: string;
+  industry: string;
+  metrics: Record<string, MetricData>;
+}
+
+const mockData: MockData = {
   ticker: "MBB",
   companyName: "Military Commercial Bank",
   industry: "VN Banks",
