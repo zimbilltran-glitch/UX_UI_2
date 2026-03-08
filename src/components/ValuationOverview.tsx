@@ -43,21 +43,21 @@ export const ValuationOverview = () => {
 
   return (
     <div className="mb-12 font-sans" id="section_1_0">
-      <h1 className="text-3xl font-bold text-white mb-2">1 Valuation</h1>
-      <p className="text-gray-300 mb-6">
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">1 Valuation</h1>
+      <p className="text-gray-600 mb-6">
         Is MBB undervalued compared to its fair value and its price relative to the market?
       </p>
 
-      <div className="bg-[#1F2937] rounded-xl p-8 border border-gray-800 flex flex-col md:flex-row shadow-lg">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 flex flex-col md:flex-row shadow-lg">
         {/* Left Column: Checklist */}
         <div className="w-full md:w-3/5 pr-0 md:pr-8 mb-8 md:mb-0">
-          <h3 className="text-xl font-bold text-white mb-6">Valuation Score {mockSummary.score}</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-6">Valuation Score {mockSummary.score}</h3>
           <div className="space-y-2">
             {mockSummary.checks.map((check, index) => (
               <div 
                 key={index}
                 onClick={() => scrollToSection(check.target_id)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#111111] cursor-pointer transition-colors group"
+                className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors group"
               >
                 <div className="flex items-center">
                   {check.status === 'pass' ? (
@@ -65,11 +65,11 @@ export const ValuationOverview = () => {
                   ) : (
                     <XCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
                   )}
-                  <span className="text-gray-200 font-medium group-hover:text-white transition-colors">
+                  <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">
                     {check.label}
                   </span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-gray-400 transition-colors" />
+                <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
               </div>
             ))}
           </div>
@@ -80,10 +80,10 @@ export const ValuationOverview = () => {
           <div className="w-full max-w-[300px] aspect-square">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="70%" data={snowflakeData}>
-                <PolarGrid stroke="#374151" />
+                <PolarGrid stroke="#e5e7eb" />
                 <PolarAngleAxis 
                   dataKey="subject" 
-                  tick={{ fill: '#9ca3af', fontSize: 10, fontWeight: 600 }} 
+                  tick={{ fill: '#6b7280', fontSize: 10, fontWeight: 600 }} 
                 />
                 <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
                 <Radar

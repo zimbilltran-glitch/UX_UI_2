@@ -26,20 +26,20 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-[#0a0a0a] border border-gray-800 p-4 rounded-lg shadow-2xl min-w-[250px]">
-        <p className="text-white font-bold mb-3">{data.displayDate}</p>
+      <div className="bg-white border border-gray-200 p-4 rounded-lg shadow-2xl min-w-[250px]">
+        <p className="text-gray-900 font-bold mb-3">{data.displayDate}</p>
         <div className="flex justify-between items-center mb-1">
-          <span className="text-gray-400 text-sm mr-8">EPS</span>
+          <span className="text-gray-500 text-sm mr-8">EPS</span>
           <span className="text-[#2dd4bf] font-bold">₫{(data.eps / 1000).toFixed(3)}k</span>
         </div>
         {!data.isActual && data.high && data.low && (
-          <div className="mt-2 pt-2 border-t border-gray-800/50">
+          <div className="mt-2 pt-2 border-t border-gray-100">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-gray-400 text-sm mr-8">Analysts' EPS Range</span>
+              <span className="text-gray-500 text-sm mr-8">Analysts' EPS Range</span>
               <span className="text-[#2dd4bf] font-bold">₫{(data.low / 1000).toFixed(3)}k - ₫{(data.high / 1000).toFixed(3)}k</span>
             </div>
-            <div className="text-gray-400 text-sm mt-2">{data.analysts} Analysts</div>
-            <div className="text-gray-500 text-xs mt-1">Last confirmed on Feb 19 2026</div>
+            <div className="text-gray-500 text-sm mt-2">{data.analysts} Analysts</div>
+            <div className="text-gray-400 text-xs mt-1">Last confirmed on Feb 19 2026</div>
           </div>
         )}
       </div>
@@ -172,41 +172,41 @@ export function EPSGrowthForecasts() {
   return (
     <div className="mb-16" id="section_2_3">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">2.3 Earnings per Share Growth Forecasts</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">2.3 Earnings per Share Growth Forecasts</h2>
       </div>
 
-      <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg relative overflow-hidden">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-lg relative overflow-hidden">
         {/* Chart Area */}
         <div className="h-[400px] w-full relative z-10">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 20, right: 20, left: -20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
               <XAxis 
                 dataKey="year" 
-                stroke="#666" 
-                tick={{ fill: '#888', fontSize: 12 }} 
+                stroke="#9ca3af" 
+                tick={{ fill: '#6b7280', fontSize: 12 }} 
                 tickLine={false} 
                 axisLine={false} 
                 dy={10}
               />
               <YAxis 
-                stroke="#666" 
-                tick={{ fill: '#888', fontSize: 12, fontWeight: 'bold' }} 
+                stroke="#9ca3af" 
+                tick={{ fill: '#6b7280', fontSize: 12, fontWeight: 'bold' }} 
                 tickLine={false} 
                 axisLine={false} 
                 tickFormatter={(val) => `₫${(val/1000).toFixed(0)}k`}
                 dx={-10}
               />
-              <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#666', strokeWidth: 1, strokeDasharray: '3 3' }} />
+              <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#9ca3af', strokeWidth: 1, strokeDasharray: '3 3' }} />
               
               {/* Background Areas */}
               {/* @ts-ignore */}
-              <ReferenceArea x1="2024" x2="2025" fill="#1A1A1A" fillOpacity={0.5} />
+              <ReferenceArea x1="2024" x2="2025" fill="#f3f4f6" fillOpacity={0.5} />
               {/* @ts-ignore */}
-              <ReferenceArea x1="2025" x2="2028" fill="#2A2A1A" fillOpacity={0.3} />
+              <ReferenceArea x1="2025" x2="2028" fill="#e5e7eb" fillOpacity={0.3} />
               
               {/* Separator Line */}
-              <ReferenceLine x="2025" stroke="#666" strokeOpacity={0.5} />
+              <ReferenceLine x="2025" stroke="#9ca3af" strokeOpacity={0.5} />
               
               {/* Area for Analysts Range */}
               <Area 
@@ -233,7 +233,7 @@ export function EPSGrowthForecasts() {
                       cy={cy} 
                       r={4} 
                       fill={payload.isActual ? '#3b82f6' : '#2dd4bf'} 
-                      stroke="#111" 
+                      stroke="#fff" 
                       strokeWidth={2} 
                     />
                   );
@@ -246,46 +246,46 @@ export function EPSGrowthForecasts() {
           
           {/* Labels for Actual vs Forecasts */}
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex space-x-4 text-xs font-bold">
-            <span className="text-white">Actual</span>
+            <span className="text-gray-900">Actual</span>
             <span className="text-gray-500">Analysts Forecasts</span>
           </div>
         </div>
 
         {/* Legend */}
         <div className="flex items-center space-x-4 mt-4 mb-8">
-          <div className="flex items-center px-3 py-1.5 bg-[#1A1A1A] border border-gray-800 rounded-md">
+          <div className="flex items-center px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md">
             <div className="w-3 h-3 rounded-full bg-[#3b82f6] mr-2"></div>
-            <span className="text-xs text-gray-300 font-medium">EPS</span>
+            <span className="text-xs text-gray-700 font-medium">EPS</span>
           </div>
-          <div className="flex items-center px-3 py-1.5 bg-[#1A1A1A] border border-gray-800 rounded-md">
+          <div className="flex items-center px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md">
             <div className="w-3 h-3 rounded-full bg-[#2dd4bf] opacity-50 mr-2"></div>
-            <span className="text-xs text-gray-300 font-medium">Analysts' EPS Range</span>
+            <span className="text-xs text-gray-700 font-medium">Analysts' EPS Range</span>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex justify-end border-t border-gray-800 pt-6">
+        <div className="flex justify-end border-t border-gray-200 pt-6">
           <div className="flex space-x-2">
             <button 
               onClick={() => setShowModal(true)}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-sm text-gray-300 transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               <Table className="w-4 h-4" />
               <span>Data</span>
             </button>
-            <button className="px-3 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-gray-400 transition-colors">
+            <button className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Help Link */}
-        <div className="mt-6 pt-6 border-t border-gray-800 text-sm text-gray-400">
+        <div className="mt-6 pt-6 border-t border-gray-200 text-sm text-gray-500">
           <a 
             href="https://support.simplywall.st/hc/en-us/articles/115006170908-Your-data-is-different-from-other-reports-and-websites-why-is-that" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-emerald-500 hover:text-emerald-400 font-medium inline-flex items-center transition-colors"
+            className="text-emerald-600 hover:text-emerald-500 font-medium inline-flex items-center transition-colors"
           >
             Tại sao dữ liệu của chúng tôi khác biệt? <ExternalLink className="w-3 h-3 ml-1" />
           </a>

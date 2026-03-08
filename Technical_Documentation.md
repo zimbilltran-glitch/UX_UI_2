@@ -41,8 +41,7 @@ This application follows a modular, component-based architecture using React (Vi
 
 ### 1.2 `Sidebar.tsx` (Navigation Menu)
 - **Role:** Renders the left-hand navigation.
-- **Props:** `activeTab` (string), `setActiveTab` (function).
-- **Styling:** Uses Tailwind to highlight the active tab (`bg-white/10 text-white`) versus inactive tabs (`text-gray-400 hover:bg-white/5`).
+- **Branding:** Displays "FinSang Terminal" with "Fin" (Bullish Green), "Sang" (Primary Black), and "Terminal" (Secondary Gray).
 
 ### 1.3 `CompanyOverview.tsx` (Dashboard Landing)
 - **Role:** The 360° summary view.
@@ -60,22 +59,33 @@ This application follows a modular, component-based architecture using React (Vi
 
 ---
 
-## 2. UI/UX Design System (OLED Dark)
+## 2. UI/UX Design System (FinSang Terminal v3.0)
 
-To maintain visual consistency, the project strictly adheres to an OLED Dark theme.
-- **Backgrounds:** 
-  - Main App Background: `#050505` (OLED Black)
-  - Card/Panel Backgrounds: `#111111` or `bg-white/5`
-- **Typography:** 
-  - Primary Text: `#ffffff` (White)
-  - Secondary Text: `#9ca3af` (Gray-400) or `#6b7280` (Gray-500)
-- **Status Colors:**
-  - Pass / Positive: `#10b981` (Emerald-500)
-  - Warning / Neutral: `#f59e0b` (Amber-500)
-  - Fail / Negative: `#ef4444` (Red-500)
-- **Chart Colors:**
-  - Primary Brand (Company): `#3b82f6` (Blue-500)
-  - Industry/Peers: `#2dd4bf` (Teal-400), `#d946ef` (Fuchsia-500)
+To maintain visual consistency, the project strictly adheres to the "Light Institutional Modern" theme.
+
+### 2.1 Color Palette
+- **Background:** `--bg-base` (#F4F6F8)
+- **Card Background:** `--bg-card` (#FFFFFF)
+- **Text:** `--text-primary` (#111827), `--text-secondary` (#4B5563)
+- **Accents:**
+  - Brand: `--brand-primary` (#007BFF)
+  - Bullish: `--color-bullish` (#28A745)
+  - Bearish: `--color-bearish` (#FF3B30)
+
+### 2.2 Typography
+- **UI Font:** Plus Jakarta Sans.
+- **Data Font:** JetBrains Mono.
+- **Tabular Data:** Use `font-tabular` class for all financial figures to ensure alignment.
+
+### 2.3 Logo & Branding
+- **Component:** `FinSangLogo` from `/src/theme`.
+- **Design:** Geometric polyhedron inside a rounded square container.
+- **Branding:** "Fin" (Bullish Green), "Sang" (Primary Black), "Terminal" (Secondary Gray).
+
+### 2.4 Implementation
+- Import `theme.css` in your global `index.css`.
+- Use CSS variables for all component styling.
+- Apply `surface-card` class for cards to get the institutional look.
 
 ---
 
@@ -283,12 +293,12 @@ Used by the AI Studio environment to define the applet's metadata.
 - Enabled **Anchor Link Navigation** allowing users to jump directly to specific sections via URL hashes.
 - Added a "Help Center" tab to the main Sidebar navigation under the "Support" category.
 
-### Phase 12: Help Center Enhancements (Management & Ownership)
-- Expanded the **"HelpCenter"** component to include detailed documentation for the **Management** and **Ownership** sections.
-- **Management Section:** Added explanations for CEO compensation checks (vs Market, vs Earnings) and Leadership/Board experience (average tenure).
-- **Ownership Section:** Added documentation for Insider Transactions (Open Market vs Private) and Ownership Breakdown (Dilution of Shares, Top Shareholders).
-- **FAQs & Data Sources:** Added specific FAQs detailing the data providers and sources for Ownership Data (Proxies, 13Fs, Funds) and Insider Transactions Data (SEC Form 4, 3, 5, 13D/G).
-- Updated the Table of Contents in the Help Center sidebar to include the new Management and Ownership anchor links.
+### Phase 13: Design System Update (FinSang Terminal v3.0)
+- Updated the entire design system to "Light Institutional Modern".
+- Implemented new color palette, typography (Plus Jakarta Sans, JetBrains Mono), and branding rules.
+- Redesigned the `FinSangLogo` to a geometric polyhedron in a rounded square.
+- Updated `Sidebar` branding: "Fin" (Bullish Green), "Sang" (Primary Black), "Terminal" (Secondary Gray).
+- Updated all technical documentation (`TECH_DOC.md`, `Technical_Documentation.md`) to reflect the new design system as the single source of truth.
 
 ---
 

@@ -79,8 +79,8 @@ export const KeyValuationMetric = () => {
         <div className="relative flex flex-col items-center">
           {/* Top Label */}
           <div className="absolute -top-14 flex flex-col items-center whitespace-nowrap">
-            <span className="text-gray-300 text-sm">{viewData.topText.label}</span>
-            <span className="text-white font-bold">{viewData.topText.value}</span>
+            <span className="text-gray-500 text-sm">{viewData.topText.label}</span>
+            <span className="text-gray-900 font-bold">{viewData.topText.value}</span>
           </div>
           
           {/* Pointer Line */}
@@ -88,22 +88,22 @@ export const KeyValuationMetric = () => {
           <div className="absolute -top-5 left-1/2 w-1.5 h-1.5 rounded-full bg-[#0ea5e9] -translate-x-1/2"></div>
 
           <svg width="180" height="180" viewBox="0 0 180 180" className="transform -rotate-90">
-            <circle cx="90" cy="90" r={radius} fill="transparent" stroke="#374151" strokeWidth={strokeWidth} />
+            <circle cx="90" cy="90" r={radius} fill="transparent" stroke="#e5e7eb" strokeWidth={strokeWidth} />
             <circle cx="90" cy="90" r={radius} fill="transparent" stroke="#0ea5e9" strokeWidth={strokeWidth} strokeDasharray={strokeDasharray} strokeLinecap="butt" />
           </svg>
           
           {/* Center Text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <span className="text-gray-300 text-sm">{viewData.centerText.label}</span>
-            <span className="text-white font-bold border-b border-white/30">{viewData.centerText.value}</span>
+            <span className="text-gray-500 text-sm">{viewData.centerText.label}</span>
+            <span className="text-gray-900 font-bold border-b border-gray-300">{viewData.centerText.value}</span>
           </div>
         </div>
 
         {/* Right Side Ratio */}
         <div className="ml-16 flex flex-col">
-          <span className="text-white font-bold text-4xl">{viewData.ratio}</span>
-          <span className="text-gray-300 text-sm font-medium border-b border-gray-500 border-dashed pb-1">{viewData.ratioLabel}</span>
-          {viewData.subText && <span className="text-gray-400 text-xs mt-1">{viewData.subText}</span>}
+          <span className="text-gray-900 font-bold text-4xl">{viewData.ratio}</span>
+          <span className="text-gray-500 text-sm font-medium border-b border-gray-300 border-dashed pb-1">{viewData.ratioLabel}</span>
+          {viewData.subText && <span className="text-gray-500 text-xs mt-1">{viewData.subText}</span>}
         </div>
       </div>
     );
@@ -117,26 +117,26 @@ export const KeyValuationMetric = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-white mb-4">1.2 Key Valuation Metric</h2>
-      <p className="text-gray-300 mb-6 font-medium">Which metric is best to use when looking at relative valuation for MBB?</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">1.2 Key Valuation Metric</h2>
+      <p className="text-gray-600 mb-6 font-medium">Which metric is best to use when looking at relative valuation for MBB?</p>
 
-      <div className="bg-[#1F2937] rounded-xl p-6 border border-gray-800 shadow-lg">
+      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column: Tabs & Explanation */}
         <div className="w-full lg:w-1/3 flex flex-col">
-          <div className="flex space-x-1 bg-gray-800 p-1 rounded-lg w-fit mb-4">
+          <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg w-fit mb-4">
             {['PE', 'PB', 'PS', 'Others'].map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTab === tab ? 'bg-gray-700 text-white shadow-sm' : 'text-gray-400 hover:text-gray-200'}`}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTab === tab ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 {tab}
               </button>
             ))}
           </div>
 
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300 text-sm leading-relaxed">
+          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-600 text-sm leading-relaxed">
              {activeTab === 'PE' && (
                <span><Star className="inline-block w-4 h-4 text-[#eab308] mr-2 -mt-1" fill="currentColor" /></span>
              )}
@@ -150,23 +150,23 @@ export const KeyValuationMetric = () => {
             renderDoughnut(currentViewData)
           ) : (
             <div className="flex flex-col w-full max-w-md">
-              <div className="text-white font-bold mb-2 text-sm">Key Statistics</div>
+              <div className="text-gray-900 font-bold mb-2 text-sm">Key Statistics</div>
               <div className="flex flex-col space-y-3">
                 {data.others_view.metrics.map((metric, idx) => (
-                  <div key={idx} className="flex justify-between items-center border-b border-gray-800 pb-2 relative">
+                  <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-2 relative">
                     <div 
-                      className={`text-gray-300 text-sm font-medium ${metric.tooltip ? 'border-b border-dashed border-gray-500 cursor-help' : ''}`}
+                      className={`text-gray-600 text-sm font-medium ${metric.tooltip ? 'border-b border-dashed border-gray-400 cursor-help' : ''}`}
                       onMouseEnter={() => metric.tooltip && setHoveredTooltip(metric.label)}
                       onMouseLeave={() => setHoveredTooltip(null)}
                     >
                       {metric.label}
                     </div>
-                    <div className="text-white font-bold text-sm">{metric.value}</div>
+                    <div className="text-gray-900 font-bold text-sm">{metric.value}</div>
                     
                     {/* Tooltip */}
                     {hoveredTooltip === metric.label && metric.tooltip && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-white text-gray-900 text-xs p-3 rounded shadow-lg z-50">
-                        <div className="absolute -top-2 left-4 w-4 h-4 bg-white transform rotate-45"></div>
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-white text-gray-900 text-xs p-3 rounded shadow-lg z-50 border border-gray-200">
+                        <div className="absolute -top-2 left-4 w-4 h-4 bg-white transform rotate-45 border-t border-l border-gray-200"></div>
                         <div className="relative z-10">{metric.tooltip}</div>
                       </div>
                     )}
@@ -186,38 +186,38 @@ export const KeyValuationMetric = () => {
         {activeTab === 'PE' && (
           <div className="flex items-center mr-4">
             <button 
-              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForwardPE ? 'bg-[#eab308]' : 'bg-gray-600'}`}
+              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForwardPE ? 'bg-[#eab308]' : 'bg-gray-200'}`}
               onClick={() => setIsForwardPE(!isForwardPE)}
             >
               <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${isForwardPE ? 'translate-x-4' : 'translate-x-1'}`} />
             </button>
-            <span className="ml-2 text-gray-300 text-sm font-medium">Forward PE</span>
+            <span className="ml-2 text-gray-600 text-sm font-medium">Forward PE</span>
           </div>
         )}
         {activeTab === 'PS' && (
           <div className="flex items-center mr-4">
             <button 
-              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForwardPS ? 'bg-[#eab308]' : 'bg-gray-600'}`}
+              className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForwardPS ? 'bg-[#eab308]' : 'bg-gray-200'}`}
               onClick={() => setIsForwardPS(!isForwardPS)}
             >
               <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${isForwardPS ? 'translate-x-4' : 'translate-x-1'}`} />
             </button>
-            <span className="ml-2 text-gray-300 text-sm font-medium">Forward PS</span>
+            <span className="ml-2 text-gray-600 text-sm font-medium">Forward PS</span>
           </div>
         )}
 
-        <button className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors">
+        <button className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
           <Database className="w-4 h-4 mr-2" />
           Data
         </button>
         <button 
           onClick={() => setIsLearnModalOpen(true)}
-          className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors"
+          className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
         >
           <Info className="w-4 h-4 mr-2" />
           Learn
         </button>
-        <button className="flex items-center px-2 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md border border-gray-700 transition-colors">
+        <button className="flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
           <MoreHorizontal className="w-4 h-4" />
         </button>
       </div>

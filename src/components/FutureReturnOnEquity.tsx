@@ -78,7 +78,7 @@ const GaugeChart = ({ companyValue, industryValue }: { companyValue: number, ind
         <path d={greenArc} fill="none" stroke="#22c55e" strokeWidth={strokeWidth} strokeLinecap="butt" />
 
         {/* Inner track for industry */}
-        <path d={industryTrackBg} fill="none" stroke="#1f2937" strokeWidth={strokeWidth} strokeLinecap="butt" />
+        <path d={industryTrackBg} fill="none" stroke="#e5e7eb" strokeWidth={strokeWidth} strokeLinecap="butt" />
         <path d={industryTrackFill} fill="none" stroke="#134e4a" strokeWidth={strokeWidth} strokeLinecap="butt" />
 
         {/* Industry Needle */}
@@ -88,19 +88,19 @@ const GaugeChart = ({ companyValue, industryValue }: { companyValue: number, ind
         <line x1={cx} y1={cy} x2={companyNeedle.x} y2={companyNeedle.y} stroke="#3b82f6" strokeWidth={4} strokeLinecap="round" />
 
         {/* Center Pivot */}
-        <circle cx={cx} cy={cy} r={6} fill="#111827" stroke="#4b5563" strokeWidth={2} />
+        <circle cx={cx} cy={cy} r={6} fill="#f3f4f6" stroke="#9ca3af" strokeWidth={2} />
 
         {/* Labels */}
-        <text x={10} y={105} fill="#e5e7eb" fontSize="8" fontWeight="bold">0%</text>
-        <text x={35} y={45} fill="#e5e7eb" fontSize="8" fontWeight="bold">10.0%</text>
-        <text x={100} y={10} fill="#e5e7eb" fontSize="8" fontWeight="bold" textAnchor="middle">20.0%</text>
-        <text x={165} y={45} fill="#e5e7eb" fontSize="8" fontWeight="bold">30.0%</text>
-        <text x={190} y={105} fill="#e5e7eb" fontSize="8" fontWeight="bold" textAnchor="end">40.0%</text>
+        <text x={10} y={105} fill="#374151" fontSize="8" fontWeight="bold">0%</text>
+        <text x={35} y={45} fill="#374151" fontSize="8" fontWeight="bold">10.0%</text>
+        <text x={100} y={10} fill="#374151" fontSize="8" fontWeight="bold" textAnchor="middle">20.0%</text>
+        <text x={165} y={45} fill="#374151" fontSize="8" fontWeight="bold">30.0%</text>
+        <text x={190} y={105} fill="#374151" fontSize="8" fontWeight="bold" textAnchor="end">40.0%</text>
       </svg>
 
       {/* Legend */}
       <div className="mt-0 text-center">
-        <h4 className="text-white font-bold text-sm mb-2">Future ROE (3yrs)</h4>
+        <h4 className="text-gray-900 font-bold text-sm mb-2">Future ROE (3yrs)</h4>
         <div className="inline-flex flex-col text-xs space-y-1 text-left">
           <div className="flex justify-between w-32">
             <span className="text-[#3b82f6] font-medium">Company</span>
@@ -108,7 +108,7 @@ const GaugeChart = ({ companyValue, industryValue }: { companyValue: number, ind
           </div>
           <div className="flex justify-between w-32">
             <span className="text-[#2dd4bf] font-medium">Industry</span>
-            <span className="text-[#e5e7eb] font-bold">{industryValue.toFixed(1)}%</span>
+            <span className="text-gray-700 font-bold">{industryValue.toFixed(1)}%</span>
           </div>
         </div>
       </div>
@@ -125,18 +125,18 @@ export function FutureReturnOnEquity() {
     <div className="mb-16" id="section_2_4">
       <div className="mb-6 flex justify-between items-start">
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">2.4 Future Return on Equity</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">2.4 Future Return on Equity</h2>
         </div>
         <button 
           onClick={() => setShowLearnModal(true)}
-          className="flex items-center space-x-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 text-gray-300 px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium shadow-sm"
         >
           <Info className="w-4 h-4" />
           <span>Learn</span>
         </button>
       </div>
 
-      <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-lg">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
           
           {/* Gauge Chart */}
@@ -148,8 +148,8 @@ export function FutureReturnOnEquity() {
           <div className="w-full md:w-1/2">
             <div className="flex items-start space-x-3">
               <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
-              <p className="text-gray-300 text-lg leading-relaxed">
-                <span className="text-emerald-500 font-medium">Future ROE: </span>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                <span className="text-emerald-600 font-medium">Future ROE: </span>
                 MBB's <TooltipText text="Return on Equity" tooltip="A profitability measure which show how efficiently a company's management team has used it's shareholders money to generate profits" /> is forecast to be high in 3 years time ({companyROE}%)
               </p>
             </div>
@@ -161,22 +161,22 @@ export function FutureReturnOnEquity() {
       {/* Learn Modal */}
       {showLearnModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="bg-[#111111] border border-gray-800 rounded-xl w-full max-w-2xl shadow-2xl overflow-hidden">
-            <div className="flex justify-between items-center p-6 border-b border-gray-800">
-              <h3 className="text-xl font-bold text-white">Future Return on Equity</h3>
-              <button onClick={() => setShowLearnModal(false)} className="text-gray-500 hover:text-gray-300 transition-colors">
+          <div className="bg-white border border-gray-200 rounded-xl w-full max-w-2xl shadow-2xl overflow-hidden">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900">Future Return on Equity</h3>
+              <button onClick={() => setShowLearnModal(false)} className="text-gray-500 hover:text-gray-700 transition-colors">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-300 space-y-4">
+            <div className="p-6 text-gray-600 space-y-4">
               <p>
                 <strong>Return on Equity (ROE)</strong> is a measure of a company's profitability that reveals how much profit a company generates with the money shareholders have invested.
               </p>
               <p>
                 A high forecast ROE indicates that the company is expected to be efficient at generating profits from its equity base in the future. This is a positive signal for growth investors, as it suggests the company can reinvest its earnings effectively to drive further growth.
               </p>
-              <div className="mt-8 pt-6 border-t border-gray-800 text-sm text-gray-400">
-                For a more detailed breakdown of Future ROE calculations, please check out our <a href="#" className="text-emerald-500 hover:text-emerald-400 font-medium inline-flex items-center">Help Centre <ExternalLink className="w-3 h-3 ml-1" /></a>.
+              <div className="mt-8 pt-6 border-t border-gray-200 text-sm text-gray-500">
+                For a more detailed breakdown of Future ROE calculations, please check out our <a href="#" className="text-emerald-600 hover:text-emerald-500 font-medium inline-flex items-center">Help Centre <ExternalLink className="w-3 h-3 ml-1" /></a>.
               </div>
             </div>
           </div>

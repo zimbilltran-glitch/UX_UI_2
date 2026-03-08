@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ChevronDown, Database, MoreHorizontal, Star, Info, X } from 'lucide-react';
+import { colors } from '../theme/colors';
 
 const mockData = {
   ticker: "MBB",
@@ -94,11 +95,11 @@ const mockData = {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-black border border-gray-800 p-3 rounded-md shadow-xl min-w-[250px]">
-        <p className="text-white font-bold text-sm mb-1">{payload[0].payload.date}</p>
+      <div className="bg-white border border-gray-200 p-3 rounded-xl shadow-lg min-w-[250px]">
+        <p className="text-gray-900 font-bold text-sm mb-1">{payload[0].payload.date}</p>
         <div className="flex justify-between items-center">
-          <p className="text-gray-400 text-sm">{mockData.companyName}</p>
-          <p className="text-[#0ea5e9] font-bold text-sm">{payload[0].value.toFixed(1)}x</p>
+          <p className="text-gray-500 text-sm">{mockData.companyName}</p>
+          <p className="text-blue-600 font-bold text-sm font-mono">{payload[0].value.toFixed(1)}x</p>
         </div>
       </div>
     );
@@ -120,33 +121,33 @@ export const HistoricalFinancialRatioChart = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-white mb-4">
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">
         1.4 Historical {selectedMetric} Ratio
       </h2>
-      <p className="text-gray-300 mb-6 leading-relaxed">
+      <p className="text-gray-600 mb-6 leading-relaxed">
         {currentData.explanation}
       </p>
 
-      <div className="bg-[#1F2937] rounded-xl p-6 border border-gray-800 shadow-lg">
+      <div className="surface-card p-6">
         {/* Top Controls */}
       <div className="flex justify-between items-center mb-6 relative z-20">
         {/* Dropdown */}
         <div className="relative">
           <button 
-            className="flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white text-sm font-medium rounded-full border border-gray-700 transition-colors"
+            className="flex items-center px-4 py-2 bg-white hover:bg-gray-50 text-gray-900 text-sm font-semibold rounded-xl border border-gray-200 transition-colors shadow-sm"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            <Star className="w-4 h-4 text-[#eab308] mr-2" fill="currentColor" />
+            <Star className="w-4 h-4 text-yellow-500 mr-2" fill="currentColor" />
             {selectedMetric}
             <ChevronDown className="w-4 h-4 ml-2 text-gray-400" />
           </button>
           
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl overflow-hidden">
+            <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
               {mockData.data_types.map((metric) => (
                 <button
                   key={metric}
-                  className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-700 text-white font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                  className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-50 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
                   onClick={() => {
                     setSelectedMetric(metric);
                     setIsDropdownOpen(false);
@@ -164,10 +165,10 @@ export const HistoricalFinancialRatioChart = () => {
           {['3M', '6M', '1Y', '3Y', '5Y'].map((time) => (
             <button
               key={time}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
                 selectedTimeframe === time 
-                  ? 'bg-gray-800 text-gray-300' 
-                  : 'text-gray-500 hover:text-gray-300'
+                  ? 'bg-gray-100 text-gray-900' 
+                  : 'text-gray-500 hover:text-gray-900'
               }`}
               onClick={() => setSelectedTimeframe(time)}
             >
@@ -186,38 +187,38 @@ export const HistoricalFinancialRatioChart = () => {
           >
             <defs>
               <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0}/>
+                <stop offset="5%" stopColor={colors.brandPrimary} stopOpacity={0.2}/>
+                <stop offset="95%" stopColor={colors.brandPrimary} stopOpacity={0}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#374151" opacity={0.5} />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={colors.borderSubtle} />
             <XAxis 
               dataKey="year" 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#9CA3AF', fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: colors.textSecondary, fontSize: 12, fontWeight: 600, fontFamily: 'JetBrains Mono' }}
               dy={10}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#9CA3AF', fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: colors.textSecondary, fontSize: 12, fontWeight: 600, fontFamily: 'JetBrains Mono' }}
               domain={[0, yAxisMax]}
               ticks={[0, parseFloat((yAxisMax / 2).toFixed(1)), yAxisMax]}
             />
             <Tooltip 
               content={<CustomTooltip />} 
-              cursor={{ stroke: '#4B5563', strokeWidth: 1, strokeDasharray: '4 4' }}
+              cursor={{ stroke: colors.textSecondary, strokeWidth: 1, strokeDasharray: '4 4' }}
               isAnimationActive={false}
             />
             <Area 
               type="monotone" 
               dataKey="value" 
-              stroke="#0ea5e9" 
+              stroke={colors.brandPrimary} 
               strokeWidth={3}
               fillOpacity={1} 
               fill="url(#colorValue)" 
-              activeDot={{ r: 6, fill: '#111827', stroke: '#0ea5e9', strokeWidth: 2 }}
+              activeDot={{ r: 6, fill: colors.bgCard, stroke: colors.brandPrimary, strokeWidth: 2 }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -226,25 +227,25 @@ export const HistoricalFinancialRatioChart = () => {
       {/* Bottom Controls */}
       <div className="flex justify-between items-center mt-6">
         {/* Legend */}
-        <div className="flex items-center px-3 py-1.5 bg-gray-800 rounded-md border border-gray-700 w-fit">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0ea5e9] mr-2"></div>
-          <span className="text-gray-300 text-xs font-medium">HOSE:MBB</span>
+        <div className="flex items-center px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200 w-fit">
+          <div className="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></div>
+          <span className="text-gray-600 text-xs font-semibold">HOSE:MBB</span>
         </div>
 
         {/* Action Buttons */}
         <div className="flex space-x-2">
-          <button className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors">
+          <button className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm">
             <Database className="w-4 h-4 mr-2" />
             Data
           </button>
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors"
+            className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
           </button>
-          <button className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md border border-gray-700 transition-colors">
+          <button className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors shadow-sm">
             <MoreHorizontal className="w-4 h-4" />
           </button>
         </div>
@@ -253,23 +254,23 @@ export const HistoricalFinancialRatioChart = () => {
 
       {/* Learn Modal */}
       {isLearnModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-2xl font-serif font-bold text-gray-900">Historical {selectedMetric} Ratio</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl border border-gray-200">
+            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+              <h3 className="text-2xl font-bold text-gray-900">Historical {selectedMetric} Ratio</h3>
               <button onClick={() => setIsLearnModalOpen(false)} className="text-gray-400 hover:text-gray-600">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-800 space-y-6 text-base leading-relaxed">
+            <div className="p-6 text-gray-700 space-y-6 text-base leading-relaxed">
               <p>The Historical {selectedMetric} Ratio chart helps you visualize how the market has valued the company over time. By looking at the historical trend, you can identify whether the current valuation is relatively high or low compared to its own past.</p>
               <p>A ratio that is significantly lower than its historical average might indicate that the stock is undervalued, assuming the company's fundamentals haven't deteriorated. Conversely, a ratio much higher than its historical average could suggest overvaluation.</p>
-              <p className="pt-2">For more information on how to interpret historical financial ratios, please check out our <a href="#" className="text-[#d97706] hover:text-[#b45309] underline decoration-[#d97706]/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
+              <p className="pt-2">For more information on how to interpret historical financial ratios, please check out our <a href="#" className="text-blue-600 hover:text-blue-700 underline decoration-blue-600/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
             </div>
-            <div className="p-4 border-t border-gray-200 flex justify-end">
+            <div className="p-4 border-t border-gray-100 flex justify-end">
               <button 
                 onClick={() => setIsLearnModalOpen(false)}
-                className="px-4 py-2 bg-[#fde047] hover:bg-[#facc15] text-gray-900 font-medium rounded-md transition-colors"
+                className="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors"
               >
                 Close
               </button>

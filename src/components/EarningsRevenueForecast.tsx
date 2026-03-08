@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceArea, ReferenceLine, Label } from 'recharts';
 import { Table, MoreHorizontal } from 'lucide-react';
+import { colors } from '../theme/colors';
 
 const forecastData = [
   { date: '2023-03-31', revenue: 38000000, earnings: 18000000, freeCashFlow: -100000000, cashFromOp: -90000000, isForecast: false },
@@ -51,11 +52,11 @@ const CustomTooltip = ({ active, payload, activeMetrics }: any) => {
     const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
     return (
-      <div className="bg-black border border-gray-800 rounded-lg p-3 shadow-xl text-sm min-w-[320px]">
+      <div className="bg-white border border-gray-200 rounded-xl p-3 shadow-lg text-sm min-w-[320px]">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-gray-800 text-xs text-gray-400">
-              <th className="pb-2 font-bold text-white text-sm">{formattedDate}</th>
+            <tr className="border-b border-gray-100 text-xs text-gray-400">
+              <th className="pb-2 font-bold text-gray-900 text-sm">{formattedDate}</th>
               {dataPoint.isForecast && (
                 <>
                   <th className="pb-2 text-right font-normal">Analysts</th>
@@ -70,14 +71,14 @@ const CustomTooltip = ({ active, payload, activeMetrics }: any) => {
               const value = dataPoint[key];
               return (
                 <tr key={key}>
-                  <td className="py-1 text-gray-300 font-medium">{config.label}</td>
-                  <td className="py-1 text-right font-bold" style={{ color: config.color }}>
+                  <td className="py-1 text-gray-600 font-medium">{config.label}</td>
+                  <td className="py-1 text-right font-bold font-mono" style={{ color: config.color }}>
                     {formatTooltipValue(value)}
                   </td>
                   {dataPoint.isForecast && (
                     <>
-                      <td className="py-1 text-right text-gray-300">{value !== null && value !== undefined ? dataPoint.analysts : 'n/a'}</td>
-                      <td className="py-1 text-right text-gray-300 text-xs">{value !== null && value !== undefined ? dataPoint.lastUpdated : 'n/a'}</td>
+                      <td className="py-1 text-right text-gray-600">{value !== null && value !== undefined ? dataPoint.analysts : 'n/a'}</td>
+                      <td className="py-1 text-right text-gray-600 text-xs">{value !== null && value !== undefined ? dataPoint.lastUpdated : 'n/a'}</td>
                     </>
                   )}
                 </tr>
@@ -110,10 +111,10 @@ export function EarningsRevenueForecast() {
   return (
     <div className="mb-16" id="section_2_1">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">2.1 Earnings and Revenue Growth Forecasts</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">2.1 Earnings and Revenue Growth Forecasts</h2>
       </div>
 
-      <div className="bg-[#111111] rounded-xl p-6 border border-gray-800 shadow-lg">
+      <div className="surface-card p-6">
         {viewMode === 'chart' ? (
           <>
             <div className="h-[400px] w-full relative">
@@ -121,22 +122,22 @@ export function EarningsRevenueForecast() {
                 <ComposedChart data={forecastData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorFCF" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor={metricsConfig.freeCashFlow.color} stopOpacity={0.3}/>
+                      <stop offset="5%" stopColor={metricsConfig.freeCashFlow.color} stopOpacity={0.2}/>
                       <stop offset="95%" stopColor={metricsConfig.freeCashFlow.color} stopOpacity={0}/>
                     </linearGradient>
                     <linearGradient id="colorCFO" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor={metricsConfig.cashFromOp.color} stopOpacity={0.3}/>
+                      <stop offset="5%" stopColor={metricsConfig.cashFromOp.color} stopOpacity={0.2}/>
                       <stop offset="95%" stopColor={metricsConfig.cashFromOp.color} stopOpacity={0}/>
                     </linearGradient>
                   </defs>
                   
-                  <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={colors.borderSubtle} vertical={false} />
                   
                   <XAxis 
                     dataKey="date" 
                     tickFormatter={(val) => new Date(val).getFullYear().toString()} 
-                    stroke="#666" 
-                    tick={{ fill: '#999', fontSize: 12 }}
+                    stroke={colors.textSecondary} 
+                    tick={{ fill: colors.textSecondary, fontSize: 12, fontFamily: 'JetBrains Mono' }}
                     axisLine={false}
                     tickLine={false}
                     minTickGap={30}
@@ -144,32 +145,32 @@ export function EarningsRevenueForecast() {
                   
                   <YAxis 
                     tickFormatter={formatYAxis} 
-                    stroke="#666" 
-                    tick={{ fill: '#999', fontSize: 12 }}
+                    stroke={colors.textSecondary} 
+                    tick={{ fill: colors.textSecondary, fontSize: 12, fontFamily: 'JetBrains Mono' }}
                     axisLine={false}
                     tickLine={false}
                   />
                   
                   <Tooltip 
                     content={<CustomTooltip activeMetrics={activeMetrics} />} 
-                    cursor={{ stroke: '#666', strokeWidth: 1, strokeDasharray: '3 3' }} 
+                    cursor={{ stroke: colors.textSecondary, strokeWidth: 1, strokeDasharray: '3 3' }} 
                     isAnimationActive={false}
                   />
                   
                   {/* Background Shading */}
                   {/* @ts-ignore */}
-                  <ReferenceArea x1="2023-03-31" x2="2025-12-31" fill="#000000" fillOpacity={0.2} />
+                  <ReferenceArea x1="2023-03-31" x2="2025-12-31" fill="#000000" fillOpacity={0.03} />
                   {/* @ts-ignore */}
-                  <ReferenceArea x1="2025-12-31" x2="2028-12-31" fill="#ffffff" fillOpacity={0.03} />
+                  <ReferenceArea x1="2025-12-31" x2="2028-12-31" fill={colors.brandPrimary} fillOpacity={0.03} />
                   
                   {/* Divider Line with Labels */}
-                  <ReferenceLine x="2025-12-31" stroke="#444" strokeDasharray="3 3">
-                    <Label value="Past" position="insideTopLeft" fill="#ccc" fontSize={12} offset={10} />
-                    <Label value="Analysts Forecasts" position="insideTopRight" fill="#888" fontSize={12} offset={10} />
+                  <ReferenceLine x="2025-12-31" stroke={colors.textSecondary} strokeDasharray="3 3">
+                    <Label value="Past" position="insideTopLeft" fill={colors.textSecondary} fontSize={12} offset={10} />
+                    <Label value="Analysts Forecasts" position="insideTopRight" fill={colors.textSecondary} fontSize={12} offset={10} />
                   </ReferenceLine>
 
                   {/* Zero Line */}
-                  <ReferenceLine y={0} stroke="#666" strokeWidth={1} />
+                  <ReferenceLine y={0} stroke={colors.textSecondary} strokeWidth={1} />
 
                   {/* Areas for Cash Flows */}
                   {activeMetrics.freeCashFlow && (
@@ -181,10 +182,10 @@ export function EarningsRevenueForecast() {
 
                   {/* Lines for Revenue and Earnings */}
                   {activeMetrics.revenue && (
-                    <Line type="monotone" dataKey="revenue" stroke={metricsConfig.revenue.color} strokeWidth={2} dot={false} activeDot={{ r: 6, fill: metricsConfig.revenue.color, stroke: '#000', strokeWidth: 2 }} connectNulls />
+                    <Line type="monotone" dataKey="revenue" stroke={metricsConfig.revenue.color} strokeWidth={2} dot={false} activeDot={{ r: 6, fill: colors.bgCard, stroke: metricsConfig.revenue.color, strokeWidth: 2 }} connectNulls />
                   )}
                   {activeMetrics.earnings && (
-                    <Line type="monotone" dataKey="earnings" stroke={metricsConfig.earnings.color} strokeWidth={2} dot={false} activeDot={{ r: 6, fill: metricsConfig.earnings.color, stroke: '#000', strokeWidth: 2 }} connectNulls />
+                    <Line type="monotone" dataKey="earnings" stroke={metricsConfig.earnings.color} strokeWidth={2} dot={false} activeDot={{ r: 6, fill: colors.bgCard, stroke: metricsConfig.earnings.color, strokeWidth: 2 }} connectNulls />
                   )}
                 </ComposedChart>
               </ResponsiveContainer>
@@ -198,10 +199,10 @@ export function EarningsRevenueForecast() {
                   <button
                     key={key}
                     onClick={() => toggleMetric(key)}
-                    className={`flex items-center space-x-2 px-3 py-1.5 rounded-md border text-sm transition-colors ${
+                    className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
                       isActive 
-                        ? 'bg-[#1A1A1A] border-gray-700 text-gray-200' 
-                        : 'bg-transparent border-gray-800 text-gray-500 hover:border-gray-700'
+                        ? 'bg-gray-50 border-gray-200 text-gray-900' 
+                        : 'bg-transparent border-gray-100 text-gray-400 hover:border-gray-200'
                     }`}
                   >
                     <span 
@@ -218,44 +219,44 @@ export function EarningsRevenueForecast() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-gray-800 text-sm text-gray-400">
-                  <th className="py-3 px-4 font-medium">Date</th>
-                  <th className="py-3 px-4 font-medium text-right">Revenue</th>
-                  <th className="py-3 px-4 font-medium text-right">Earnings</th>
-                  <th className="py-3 px-4 font-medium text-right">Free Cash Flow</th>
-                  <th className="py-3 px-4 font-medium text-right">Cash from Op</th>
-                  <th className="py-3 px-4 font-medium text-right">Avg. No. Analysts</th>
+                <tr className="border-b border-gray-100 text-sm text-gray-500">
+                  <th className="py-3 px-4 font-semibold">Date</th>
+                  <th className="py-3 px-4 font-semibold text-right">Revenue</th>
+                  <th className="py-3 px-4 font-semibold text-right">Earnings</th>
+                  <th className="py-3 px-4 font-semibold text-right">Free Cash Flow</th>
+                  <th className="py-3 px-4 font-semibold text-right">Cash from Op</th>
+                  <th className="py-3 px-4 font-semibold text-right">Avg. No. Analysts</th>
                 </tr>
               </thead>
               <tbody>
                 {[...forecastData].reverse().map((row, idx) => (
-                  <tr key={idx} className="border-b border-gray-800/50 hover:bg-white/5 text-sm text-gray-300">
-                    <td className="py-3 px-4">{new Date(row.date).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}</td>
-                    <td className="py-3 px-4 text-right">{row.revenue !== null && row.revenue !== undefined ? row.revenue.toLocaleString() : 'N/A'}</td>
-                    <td className="py-3 px-4 text-right">{row.earnings !== null && row.earnings !== undefined ? row.earnings.toLocaleString() : 'N/A'}</td>
-                    <td className="py-3 px-4 text-right">{row.freeCashFlow !== null && row.freeCashFlow !== undefined ? row.freeCashFlow.toLocaleString() : 'N/A'}</td>
-                    <td className="py-3 px-4 text-right">{row.cashFromOp !== null && row.cashFromOp !== undefined ? row.cashFromOp.toLocaleString() : 'N/A'}</td>
-                    <td className="py-3 px-4 text-right">{row.analysts || 'N/A'}</td>
+                  <tr key={idx} className="border-b border-gray-100/50 hover:bg-gray-50 text-sm text-gray-700">
+                    <td className="py-3 px-4 font-mono">{new Date(row.date).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}</td>
+                    <td className="py-3 px-4 text-right font-mono">{row.revenue !== null && row.revenue !== undefined ? row.revenue.toLocaleString() : 'N/A'}</td>
+                    <td className="py-3 px-4 text-right font-mono">{row.earnings !== null && row.earnings !== undefined ? row.earnings.toLocaleString() : 'N/A'}</td>
+                    <td className="py-3 px-4 text-right font-mono">{row.freeCashFlow !== null && row.freeCashFlow !== undefined ? row.freeCashFlow.toLocaleString() : 'N/A'}</td>
+                    <td className="py-3 px-4 text-right font-mono">{row.cashFromOp !== null && row.cashFromOp !== undefined ? row.cashFromOp.toLocaleString() : 'N/A'}</td>
+                    <td className="py-3 px-4 text-right font-mono">{row.analysts || 'N/A'}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <button className="w-full py-3 mt-2 bg-[#1A1A1A] hover:bg-[#222222] text-gray-300 text-sm font-medium rounded-lg transition-colors">
+            <button className="w-full py-3 mt-2 bg-gray-50 hover:bg-gray-100 text-gray-600 text-sm font-semibold rounded-lg transition-colors">
               Show more
             </button>
           </div>
         )}
 
         {/* View Toggle */}
-        <div className="flex justify-end mt-6 space-x-2 border-t border-gray-800 pt-4">
+        <div className="flex justify-end mt-6 space-x-2 border-t border-gray-100 pt-4">
           <button
             onClick={() => setViewMode(viewMode === 'chart' ? 'data' : 'chart')}
-            className="flex items-center space-x-2 px-4 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-sm text-gray-300 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 font-semibold transition-colors shadow-sm"
           >
             <Table className="w-4 h-4" />
             <span>{viewMode === 'chart' ? 'Data' : 'Chart'}</span>
           </button>
-          <button className="px-3 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-gray-400 transition-colors">
+          <button className="px-3 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-400 transition-colors shadow-sm">
             <MoreHorizontal className="w-4 h-4" />
           </button>
         </div>

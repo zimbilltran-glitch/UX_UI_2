@@ -3,9 +3,9 @@ import { PastEarningsOverview } from './PastEarningsOverview';
 import { HelpCircle } from 'lucide-react';
 
 const HelpCentreLink = () => (
-  <div className="mt-6 pt-6 border-t border-gray-800">
-    <p className="text-gray-400 text-sm">
-      For a more detailed breakdown of how we evaluate past earnings performance, please check out our <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">Help Centre</a>.
+  <div className="mt-6 pt-6 border-t border-gray-200">
+    <p className="text-gray-500 text-sm">
+      For a more detailed breakdown of how we evaluate past earnings performance, please check out our <a href="#" className="text-blue-600 hover:text-blue-700 transition-colors font-medium">Help Centre</a>.
     </p>
   </div>
 );
@@ -13,10 +13,10 @@ const HelpCentreLink = () => (
 const SectionHeader = ({ id, title, description }: { id: string, title: string, description: string }) => (
   <div className="mb-6 flex items-center justify-between">
     <div>
-      <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
-      <p className="text-gray-400">{description}</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p className="text-gray-600">{description}</p>
     </div>
-    <button className="flex items-center space-x-2 px-4 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg transition-colors text-sm font-medium text-gray-300">
+    <button className="flex items-center space-x-2 px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg transition-colors text-sm font-semibold text-gray-700 shadow-sm">
       <HelpCircle className="w-4 h-4" />
       <span>Learn</span>
     </button>
@@ -32,9 +32,9 @@ export const PastEarnings = () => {
       <div className="space-y-16">
         <div id="section_3_1">
           <SectionHeader id="section_3_1" title="3.1 Quality Earnings" description="Does MBB have high-quality earnings?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>
@@ -42,9 +42,9 @@ export const PastEarnings = () => {
 
         <div id="section_3_2">
           <SectionHeader id="section_3_2" title="3.2 Growing Profit Margin" description="Are MBB's profit margins improving?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>
@@ -52,9 +52,9 @@ export const PastEarnings = () => {
 
         <div id="section_3_3">
           <SectionHeader id="section_3_3" title="3.3 Earnings Trend" description="How have MBB's earnings trended over the past 5 years?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>
@@ -62,9 +62,9 @@ export const PastEarnings = () => {
 
         <div id="section_3_4">
           <SectionHeader id="section_3_4" title="3.4 Accelerating Growth" description="Is MBB's recent earnings growth accelerating?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>
@@ -72,9 +72,9 @@ export const PastEarnings = () => {
 
         <div id="section_3_5">
           <SectionHeader id="section_3_5" title="3.5 Earnings vs Industry" description="How does MBB's earnings growth compare to the industry?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>
@@ -82,9 +82,9 @@ export const PastEarnings = () => {
 
         <div id="section_3_6">
           <SectionHeader id="section_3_6" title="3.6 High ROE" description="Does MBB have a high Return on Equity?" />
-          <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg flex flex-col min-h-[200px]">
+          <div className="surface-card p-8 flex flex-col min-h-[200px]">
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-gray-500">Under Construction</p>
+              <p className="text-gray-400 font-medium">Under Construction</p>
             </div>
             <HelpCentreLink />
           </div>

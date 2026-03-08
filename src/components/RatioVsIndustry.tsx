@@ -152,31 +152,31 @@ export const RatioVsIndustry = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-white mb-2">
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">
         1.5 {selectedMetric} Ratio vs Industry
       </h2>
-      <p className="text-gray-300 mb-6">
+      <p className="text-gray-600 mb-6">
         How does {mockData.ticker}'s {currentData.shortName} Ratio compare vs other companies in the {mockData.industry} Industry?
       </p>
 
-      <div className="bg-[#1F2937] rounded-xl p-6 border border-gray-800 shadow-lg">
+      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
         {/* Top Controls */}
         <div className="flex justify-end mb-6 relative z-20">
           <div className="relative">
             <button 
-              className="flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white text-sm font-medium rounded-full border border-gray-700 transition-colors"
+              className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 text-sm font-medium rounded-full border border-gray-300 transition-colors"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               {selectedMetric}
-              <ChevronDown className="w-4 h-4 ml-2 text-gray-400" />
+              <ChevronDown className="w-4 h-4 ml-2 text-gray-500" />
             </button>
             
             {isDropdownOpen && (
-              <div className="absolute top-full right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl overflow-hidden">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
                 {Object.keys(mockData.metrics).map((metric) => (
                   <button
                     key={metric}
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-700 text-white font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
                     onClick={() => handleMetricChange(metric)}
                   >
                     {metric}
@@ -191,37 +191,37 @@ export const RatioVsIndustry = () => {
         <div className="h-64 w-full mb-4 relative">
           {/* Background zones */}
           <div className="absolute inset-0 flex z-0">
-            <div className="h-full bg-[#10b981]/20" style={{ width: `${currentData.splitPercentage}%` }}></div>
-            <div className="h-full bg-red-900/20 relative overflow-hidden" style={{ width: `${100 - currentData.splitPercentage}%` }}>
-              <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(239, 68, 68, 0.15) 5px, rgba(239, 68, 68, 0.15) 10px)' }}></div>
+            <div className="h-full bg-[#10b981]/10" style={{ width: `${currentData.splitPercentage}%` }}></div>
+            <div className="h-full bg-red-500/5 relative overflow-hidden" style={{ width: `${100 - currentData.splitPercentage}%` }}>
+              <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(239, 68, 68, 0.05) 5px, rgba(239, 68, 68, 0.05) 10px)' }}></div>
             </div>
           </div>
           
           <ResponsiveContainer width="100%" height="100%" className="relative z-10">
             <BarChart data={currentData.ranges} margin={{ top: 30, right: 0, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
               <XAxis 
                 dataKey="label" 
                 hide={true} // Hide default XAxis to use custom tabs below
               />
               <YAxis 
-                stroke="#9ca3af" 
-                tick={{fill: '#9ca3af', fontSize: 12}} 
+                stroke="#6b7280" 
+                tick={{fill: '#6b7280', fontSize: 12}} 
                 tickLine={false} 
                 axisLine={false}
                 ticks={[0, Math.max(...currentData.ranges.map(r => r.count))]}
-                label={{ value: 'No. of Companies', angle: -90, position: 'insideLeft', fill: '#9ca3af', fontSize: 10 }}
+                label={{ value: 'No. of Companies', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 10 }}
               />
               <Tooltip 
-                cursor={{fill: '#374151', opacity: 0.4}} 
-                contentStyle={{ backgroundColor: '#111827', borderColor: '#374151', color: '#fff' }}
+                cursor={{fill: '#f3f4f6', opacity: 0.4}} 
+                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e5e7eb', color: '#111827' }}
                 formatter={(value: number) => [value, 'Companies']}
               />
               <Bar dataKey="count" fill="#10b981" onClick={(data) => setSelectedRange(data.label)} cursor="pointer">
                 {currentData.ranges.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`} 
-                    fill={entry.isTarget ? '#0ea5e9' : (index > avgIndex ? '#374151' : '#10b981')} 
+                    fill={entry.isTarget ? '#0ea5e9' : (index > avgIndex ? '#9ca3af' : '#10b981')} 
                     opacity={entry.isTarget ? 1 : 0.9} 
                   />
                 ))}
@@ -254,15 +254,15 @@ export const RatioVsIndustry = () => {
         </div>
 
         {/* Range Tabs */}
-        <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-800 mb-6">
+        <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-6">
           {currentData.ranges.map((range) => (
             <button
               key={range.label}
               onClick={() => setSelectedRange(range.label)}
               className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
                 selectedRange === range.label 
-                  ? 'text-[#eab308] border-[#eab308] bg-gray-800/50' 
-                  : 'text-gray-500 border-transparent hover:text-gray-300 hover:bg-gray-800/30'
+                  ? 'text-[#eab308] border-[#eab308] bg-gray-100' 
+                  : 'text-gray-500 border-transparent hover:text-gray-700 hover:bg-gray-50'
               }`}
             >
               {range.label}
@@ -274,24 +274,24 @@ export const RatioVsIndustry = () => {
         <div className="overflow-x-auto">
           {currentCompanies.length > 0 ? (
             <>
-              <table className="w-full text-sm text-left text-gray-300">
-                <thead className="text-xs text-gray-400 uppercase border-b border-gray-800">
+              <table className="w-full text-sm text-left text-gray-600">
+                <thead className="text-xs text-gray-500 uppercase border-b border-gray-200">
                   <tr>
                     <th className="px-4 py-3 font-medium">{currentCompanies.length} {currentCompanies.length === 1 ? 'Company' : 'Companies'}</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-500 inline-block">Price / {currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'}</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-500 inline-block">Estimated Growth</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-500 inline-block">Market Cap</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Price / {currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'}</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Estimated Growth</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Market Cap</th>
                   </tr>
                 </thead>
                 <tbody>
                   {displayCompanies.map((company, index) => (
                     <tr 
                       key={index} 
-                      className={`border-b border-gray-800/50 transition-colors hover:bg-gray-800/30 ${
-                        company.isIndustryAvg ? 'bg-yellow-900/10' : company.isTarget ? 'bg-gray-800/50' : ''
+                      className={`border-b border-gray-200 transition-colors hover:bg-gray-50 ${
+                        company.isIndustryAvg ? 'bg-yellow-50' : company.isTarget ? 'bg-gray-100' : ''
                       }`}
                     >
-                      <td className={`px-4 py-3 font-medium ${company.isIndustryAvg ? 'text-[#eab308]' : company.isTarget ? 'text-[#eab308]' : 'text-white'}`}>
+                      <td className={`px-4 py-3 font-medium ${company.isIndustryAvg ? 'text-[#eab308]' : company.isTarget ? 'text-[#eab308]' : 'text-gray-900'}`}>
                         {company.isTarget ? (
                           <><span className="font-bold mr-2">{company.ticker}</span> {company.name}</>
                         ) : company.isIndustryAvg ? (
@@ -310,7 +310,7 @@ export const RatioVsIndustry = () => {
               {hasMoreCompanies && !showAll && (
                 <button 
                   onClick={() => setShowAll(true)}
-                  className="w-full mt-4 py-3 bg-gray-800/50 hover:bg-gray-800 text-[#eab308] font-medium rounded-lg transition-colors border border-gray-700/50"
+                  className="w-full mt-4 py-3 bg-gray-100 hover:bg-gray-200 text-[#eab308] font-medium rounded-lg transition-colors border border-gray-300"
                 >
                   Show all {currentCompanies.length} Companies
                 </button>
@@ -327,7 +327,7 @@ export const RatioVsIndustry = () => {
         <div className="flex justify-end mt-6">
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors"
+            className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
@@ -342,8 +342,8 @@ export const RatioVsIndustry = () => {
         ) : (
           <XCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0 mt-0.5" />
         )}
-        <p className="text-sm text-gray-300">
-          <span className={currentData.goodValue ? "text-emerald-400 font-medium" : "text-red-400 font-medium"}>
+        <p className="text-sm text-gray-600">
+          <span className={currentData.goodValue ? "text-emerald-600 font-medium" : "text-red-600 font-medium"}>
             Price-To-{currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'} vs Industry:
           </span> {mockData.ticker} is {currentData.goodValue ? 'good' : 'poor'} value based on its Price-To-{currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'} Ratio ({currentData.targetValue}x) compared to the {mockData.industry} industry average ({currentData.industryAvg}x).
         </p>

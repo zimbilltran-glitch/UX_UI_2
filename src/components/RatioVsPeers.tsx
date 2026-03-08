@@ -89,20 +89,20 @@ export function RatioVsPeers() {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-white mb-4">
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">
         1.3 {metricLabel} Ratio vs Peers
       </h2>
-      <p className="text-gray-300 mb-6">
+      <p className="text-gray-600 mb-6">
         How does MBB's {metric} Ratio compare to its peers?
       </p>
 
-      <div className="bg-[#111827] rounded-xl p-6 border border-gray-800 shadow-lg">
+      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
         
         {/* Top Controls */}
         <div className="flex justify-end mb-12 space-x-3 relative z-30">
           <button 
             onClick={() => setIsEditPeersModalOpen(true)}
-            className="flex items-center space-x-2 px-4 py-1.5 bg-transparent hover:bg-gray-800 text-white rounded-full text-sm border border-gray-600 transition-colors"
+            className="flex items-center space-x-2 px-4 py-1.5 bg-transparent hover:bg-gray-100 text-gray-900 rounded-full text-sm border border-gray-300 transition-colors"
           >
             <Pencil className="w-4 h-4" />
             <span>Edit Peers</span>
@@ -111,7 +111,7 @@ export function RatioVsPeers() {
           <div className="relative">
             <button 
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center space-x-2 px-4 py-1.5 bg-transparent hover:bg-gray-800 text-white rounded-full text-sm border border-gray-600 transition-colors"
+              className="flex items-center space-x-2 px-4 py-1.5 bg-transparent hover:bg-gray-100 text-gray-900 rounded-full text-sm border border-gray-300 transition-colors"
             >
               <Star className="w-4 h-4 text-yellow-500" fill="#eab308" />
               <span>{metricLabel}</span>
@@ -119,7 +119,7 @@ export function RatioVsPeers() {
             </button>
             
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-[#1F2937] border border-gray-700 rounded-lg shadow-xl z-50 py-1">
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl z-50 py-1">
                 {(['PE', 'PB', 'PS'] as const).map((m) => (
                   <button
                     key={m}
@@ -128,7 +128,7 @@ export function RatioVsPeers() {
                       if (m === 'PB') setIsForward(false);
                       setIsDropdownOpen(false); 
                     }}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                   >
                     {metricNameMap[m]}
                   </button>
@@ -174,7 +174,7 @@ export function RatioVsPeers() {
                 <div key={idx} className="relative h-14 flex items-center">
                   {/* Bar */}
                   <div 
-                    className={`absolute left-0 top-0 bottom-0 rounded-r-sm ${peer.is_target ? 'bg-[#262626] border border-gray-600' : 'bg-[#2ecc71]'}`}
+                    className={`absolute left-0 top-0 bottom-0 rounded-r-sm ${peer.is_target ? 'bg-gray-800 border border-gray-400' : 'bg-[#2ecc71]'}`}
                     style={{ width: `${(peer.value / maxValue) * 100}%` }}
                   ></div>
                   
@@ -196,14 +196,14 @@ export function RatioVsPeers() {
             </div>
 
             {/* Growth Column */}
-            <div className="w-24 flex-shrink-0 flex flex-col space-y-2 border-l border-gray-600/50 pl-4 relative z-20">
+            <div className="w-24 flex-shrink-0 flex flex-col space-y-2 border-l border-gray-200 pl-4 relative z-20">
               {/* Header for Growth */}
-              <div className="absolute -top-8 left-4 text-gray-400 text-xs border-b border-dashed border-gray-500 pb-0.5">
+              <div className="absolute -top-8 left-4 text-gray-500 text-xs border-b border-dashed border-gray-300 pb-0.5">
                 {currentData.growth_label.split(' ').map((word, i) => <div key={i}>{word}</div>)}
               </div>
               
               {currentData.peers.map((peer, idx) => (
-                <div key={idx} className="h-14 flex items-center text-white text-sm font-medium">
+                <div key={idx} className="h-14 flex items-center text-gray-900 text-sm font-medium">
                   {peer.growth}
                 </div>
               ))}
@@ -212,7 +212,7 @@ export function RatioVsPeers() {
           
           {/* X-axis labels */}
           <div className="flex mt-2 relative z-20">
-            <div className="flex-grow flex justify-between text-gray-400 text-xs font-bold pr-4">
+            <div className="flex-grow flex justify-between text-gray-500 text-xs font-bold pr-4">
               <span>{metric}</span>
               <span>{Math.round(maxValue * 0.25)}</span>
               <span>{Math.round(maxValue * 0.5)}</span>
@@ -224,34 +224,34 @@ export function RatioVsPeers() {
         </div>
 
         {/* Bottom Controls */}
-        <div className="flex justify-between items-center mt-8 pt-4 border-t border-gray-800">
+        <div className="flex justify-between items-center mt-8 pt-4 border-t border-gray-200">
           <div className="flex items-center">
             {metric !== 'PB' && (
               <>
                 <button 
-                  className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForward ? 'bg-[#eab308]' : 'bg-gray-600'}`}
+                  className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${isForward ? 'bg-[#eab308]' : 'bg-gray-200'}`}
                   onClick={() => setIsForward(!isForward)}
                 >
                   <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${isForward ? 'translate-x-4' : 'translate-x-1'}`} />
                 </button>
-                <span className="ml-3 text-gray-400 text-sm font-medium">Forward {metric}</span>
+                <span className="ml-3 text-gray-600 text-sm font-medium">Forward {metric}</span>
               </>
             )}
           </div>
 
           <div className="flex space-x-2">
-            <button className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors">
+            <button className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
               <Database className="w-4 h-4 mr-2" />
               Data
             </button>
             <button 
               onClick={() => setIsLearnModalOpen(true)}
-              className="flex items-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors"
+              className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
             >
               <Info className="w-4 h-4 mr-2" />
               Learn
             </button>
-            <button className="flex items-center px-2 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md border border-gray-700 transition-colors">
+            <button className="flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -260,8 +260,8 @@ export function RatioVsPeers() {
         {/* Audit Summary */}
         <div className="mt-6 flex items-start space-x-3 bg-transparent">
           <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
-          <p className="text-gray-300 text-sm leading-relaxed">
-            <span className="text-emerald-400 font-medium">{metricLabel} vs Peers:</span> MBB is good value based on its {metricLabel} ({targetValue}x) compared to the peer average ({currentData.peer_avg.toFixed(1)}x).
+          <p className="text-gray-600 text-sm leading-relaxed">
+            <span className="text-emerald-600 font-medium">{metricLabel} vs Peers:</span> MBB is good value based on its {metricLabel} ({targetValue}x) compared to the peer average ({currentData.peer_avg.toFixed(1)}x).
           </p>
         </div>
       </div>

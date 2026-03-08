@@ -9,10 +9,10 @@ import { Info, ExternalLink } from 'lucide-react';
 const SectionHeader = ({ title, description, id }: { title: string, description: string, id: string }) => (
   <div className="mb-6 flex justify-between items-start" id={id}>
     <div>
-      <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
-      <p className="text-gray-300 text-sm">{description}</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p className="text-gray-600 text-sm">{description}</p>
     </div>
-    <button className="flex items-center space-x-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 text-gray-300 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+    <button className="flex items-center space-x-2 bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors text-sm font-semibold shadow-sm">
       <Info className="w-4 h-4" />
       <span>Learn</span>
     </button>
@@ -20,8 +20,8 @@ const SectionHeader = ({ title, description, id }: { title: string, description:
 );
 
 const HelpCentreLink = () => (
-  <div className="mt-8 pt-6 border-t border-gray-800 text-sm text-gray-400">
-    For a more detailed breakdown of future growth forecasts, please check out our <a href="#" className="text-emerald-500 hover:text-emerald-400 font-medium inline-flex items-center">Help Centre <ExternalLink className="w-3 h-3 ml-1" /></a>.
+  <div className="mt-8 pt-6 border-t border-gray-200 text-sm text-gray-500">
+    For a more detailed breakdown of future growth forecasts, please check out our <a href="#" className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center">Help Centre <ExternalLink className="w-3 h-3 ml-1" /></a>.
   </div>
 );
 
@@ -43,40 +43,40 @@ export function FutureGrowth() {
           title="2.5 High Growth Earnings" 
           description="Are MBB's earnings forecast to grow significantly?"
         />
-        <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+        <div className="surface-card p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="w-full md:w-1/2">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center border border-red-800/50">
-                  <span className="text-red-500 font-bold text-lg">Fail</span>
+                <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center border border-red-200">
+                  <span className="text-red-600 font-bold text-lg">Fail</span>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  <span className="text-white font-medium">High Growth Earnings:</span> MBB's earnings are forecast to grow, but not significantly (below 20% per year).
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <span className="text-gray-900 font-bold">High Growth Earnings:</span> MBB's earnings are forecast to grow, but not significantly (below 20% per year).
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/2 bg-[#1A1A1A] p-6 rounded-lg border border-gray-800 relative overflow-hidden">
-               <div className="absolute right-0 top-0 bottom-0 w-1/4 bg-red-900/10 border-l border-red-900/30 flex items-center justify-center">
-                 <span className="text-red-500/50 text-xs font-bold rotate-90 whitespace-nowrap tracking-widest uppercase">High Growth Threshold</span>
+            <div className="w-full md:w-1/2 bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden shadow-sm">
+               <div className="absolute right-0 top-0 bottom-0 w-1/4 bg-red-50 border-l border-red-100 flex items-center justify-center">
+                 <span className="text-red-300 text-xs font-bold rotate-90 whitespace-nowrap tracking-widest uppercase">High Growth Threshold</span>
                </div>
                <div className="space-y-4 relative z-10 pr-12">
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">MBB Earnings Growth</span>
-                     <span className="text-red-400 font-bold">16.7%</span>
+                     <span className="text-gray-500 font-medium">MBB Earnings Growth</span>
+                     <span className="text-red-500 font-bold">16.7%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2 relative">
+                   <div className="w-full bg-gray-200 rounded-full h-2 relative">
                      <div className="bg-red-500 h-2 rounded-full" style={{ width: '83.5%' }}></div>
-                     <div className="absolute top-0 bottom-0 left-[100%] w-px bg-red-500/50 h-4 -mt-1"></div>
+                     <div className="absolute top-0 bottom-0 left-[100%] w-px bg-red-300 h-4 -mt-1"></div>
                    </div>
                  </div>
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">Target (&gt; 20%)</span>
-                     <span className="text-gray-300 font-bold">20.0%</span>
+                     <span className="text-gray-500 font-medium">Target (&gt; 20%)</span>
+                     <span className="text-gray-900 font-bold">20.0%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2">
-                     <div className="bg-gray-600 h-2 rounded-full" style={{ width: '100%' }}></div>
+                   <div className="w-full bg-gray-200 rounded-full h-2">
+                     <div className="bg-gray-400 h-2 rounded-full" style={{ width: '100%' }}></div>
                    </div>
                  </div>
                </div>
@@ -93,36 +93,36 @@ export function FutureGrowth() {
           title="2.6 Revenue vs Market" 
           description="Is MBB's revenue forecast to grow faster than the market?"
         />
-        <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+        <div className="surface-card p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="w-full md:w-1/2">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-900/30 flex items-center justify-center border border-emerald-800/50">
-                  <span className="text-emerald-500 font-bold text-lg">Pass</span>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200">
+                  <span className="text-emerald-600 font-bold text-lg">Pass</span>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  <span className="text-white font-medium">Revenue vs Market:</span> MBB's revenue (25.6% per year) is forecast to grow faster than the VN market (14.2% per year).
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <span className="text-gray-900 font-bold">Revenue vs Market:</span> MBB's revenue (25.6% per year) is forecast to grow faster than the VN market (14.2% per year).
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/2 bg-[#1A1A1A] p-6 rounded-lg border border-gray-800">
+            <div className="w-full md:w-1/2 bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm">
                <div className="space-y-4">
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">MBB Revenue Growth</span>
-                     <span className="text-emerald-500 font-bold">25.6%</span>
+                     <span className="text-gray-500 font-medium">MBB Revenue Growth</span>
+                     <span className="text-emerald-600 font-bold">25.6%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2">
+                   <div className="w-full bg-gray-200 rounded-full h-2">
                      <div className="bg-emerald-500 h-2 rounded-full" style={{ width: '90%' }}></div>
                    </div>
                  </div>
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">VN Market Revenue</span>
-                     <span className="text-gray-300 font-bold">14.2%</span>
+                     <span className="text-gray-500 font-medium">VN Market Revenue</span>
+                     <span className="text-gray-900 font-bold">14.2%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2">
-                     <div className="bg-gray-500 h-2 rounded-full" style={{ width: '50%' }}></div>
+                   <div className="w-full bg-gray-200 rounded-full h-2">
+                     <div className="bg-gray-400 h-2 rounded-full" style={{ width: '50%' }}></div>
                    </div>
                  </div>
                </div>
@@ -139,40 +139,40 @@ export function FutureGrowth() {
           title="2.7 High Growth Revenue" 
           description="Is MBB's revenue forecast to grow significantly?"
         />
-        <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+        <div className="surface-card p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="w-full md:w-1/2">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-900/30 flex items-center justify-center border border-emerald-800/50">
-                  <span className="text-emerald-500 font-bold text-lg">Pass</span>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200">
+                  <span className="text-emerald-600 font-bold text-lg">Pass</span>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  <span className="text-white font-medium">High Growth Revenue:</span> MBB's revenue (25.6% per year) is forecast to grow faster than 20% per year.
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <span className="text-gray-900 font-bold">High Growth Revenue:</span> MBB's revenue (25.6% per year) is forecast to grow faster than 20% per year.
                 </p>
               </div>
             </div>
-            <div className="w-full md:w-1/2 bg-[#1A1A1A] p-6 rounded-lg border border-gray-800 relative overflow-hidden">
-               <div className="absolute right-0 top-0 bottom-0 w-1/4 bg-emerald-900/10 border-l border-emerald-900/30 flex items-center justify-center">
-                 <span className="text-emerald-500/50 text-xs font-bold rotate-90 whitespace-nowrap tracking-widest uppercase">High Growth Threshold</span>
+            <div className="w-full md:w-1/2 bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden shadow-sm">
+               <div className="absolute right-0 top-0 bottom-0 w-1/4 bg-emerald-50 border-l border-emerald-100 flex items-center justify-center">
+                 <span className="text-emerald-300 text-xs font-bold rotate-90 whitespace-nowrap tracking-widest uppercase">High Growth Threshold</span>
                </div>
                <div className="space-y-4 relative z-10 pr-12">
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">MBB Revenue Growth</span>
-                     <span className="text-emerald-400 font-bold">25.6%</span>
+                     <span className="text-gray-500 font-medium">MBB Revenue Growth</span>
+                     <span className="text-emerald-600 font-bold">25.6%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2 relative">
+                   <div className="w-full bg-gray-200 rounded-full h-2 relative">
                      <div className="bg-emerald-500 h-2 rounded-full" style={{ width: '100%' }}></div>
                    </div>
                  </div>
                  <div>
                    <div className="flex justify-between text-sm mb-1">
-                     <span className="text-gray-400">Target (&gt; 20%)</span>
-                     <span className="text-gray-300 font-bold">20.0%</span>
+                     <span className="text-gray-500 font-medium">Target (&gt; 20%)</span>
+                     <span className="text-gray-900 font-bold">20.0%</span>
                    </div>
-                   <div className="w-full bg-gray-800 rounded-full h-2">
-                     <div className="bg-gray-600 h-2 rounded-full" style={{ width: '78%' }}></div>
-                     <div className="absolute top-0 bottom-0 left-[78%] w-px bg-gray-500/50 h-4 -mt-1"></div>
+                   <div className="w-full bg-gray-200 rounded-full h-2">
+                     <div className="bg-gray-400 h-2 rounded-full" style={{ width: '78%' }}></div>
+                     <div className="absolute top-0 bottom-0 left-[78%] w-px bg-gray-400 h-4 -mt-1"></div>
                    </div>
                  </div>
                </div>
@@ -189,27 +189,27 @@ export function FutureGrowth() {
           title="2.7 Future Return on Equity" 
           description="Is MBB's Return on Equity forecast to be high in 3 years time?"
         />
-        <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+        <div className="surface-card p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="w-full md:w-1/2">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-900/30 flex items-center justify-center border border-emerald-800/50">
-                  <span className="text-emerald-500 font-bold text-lg">Pass</span>
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200">
+                  <span className="text-emerald-600 font-bold text-lg">Pass</span>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  <span className="text-white font-medium">Future ROE:</span> MBB's Return on Equity is forecast to be high in 3 years time (20.8%).
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <span className="text-gray-900 font-bold">Future ROE:</span> MBB's Return on Equity is forecast to be high in 3 years time (20.8%).
                 </p>
               </div>
             </div>
             <div className="w-full md:w-1/2 flex items-center justify-center">
               <div className="relative w-48 h-48">
-                <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90 drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]">
-                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#1A1A1A" strokeWidth="12" />
+                <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90 drop-shadow-sm">
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#e5e7eb" strokeWidth="12" />
                   <circle cx="50" cy="50" r="40" fill="transparent" stroke="#10b981" strokeWidth="12" strokeDasharray="251.2" strokeDashoffset="50.24" strokeLinecap="round" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold text-white">20.8%</span>
-                  <span className="text-xs text-gray-400 uppercase tracking-wider mt-1">ROE</span>
+                  <span className="text-3xl font-bold text-gray-900">20.8%</span>
+                  <span className="text-xs text-gray-500 uppercase tracking-wider mt-1 font-semibold">ROE</span>
                 </div>
               </div>
             </div>

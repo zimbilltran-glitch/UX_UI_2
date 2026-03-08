@@ -25,12 +25,12 @@ const BarGroup = ({ title, data }: { title: string, data: { label: string, value
 
   return (
     <div className="flex flex-col items-center w-full max-w-[300px]">
-      <div className="flex items-end justify-center h-64 w-full gap-1 mb-4 border-b border-gray-800">
+      <div className="flex items-end justify-center h-64 w-full gap-1 mb-4 border-b border-gray-200">
         {data.map((item, index) => {
           const heightPercent = (item.value / maxValue) * 100;
           return (
             <div key={index} className="flex flex-col items-start justify-end flex-1 h-full group">
-              <span className="text-white font-bold text-lg mb-1">{item.value.toFixed(1)}%</span>
+              <span className="text-gray-900 font-bold text-lg mb-1">{item.value.toFixed(1)}%</span>
               <div 
                 className="w-full relative transition-all duration-300"
                 style={{ height: `${heightPercent}%`, backgroundColor: item.color }}
@@ -43,7 +43,7 @@ const BarGroup = ({ title, data }: { title: string, data: { label: string, value
           );
         })}
       </div>
-      <h3 className="text-white font-bold text-sm">{title}</h3>
+      <h3 className="text-gray-900 font-bold text-sm">{title}</h3>
     </div>
   );
 };
@@ -75,10 +75,10 @@ export function AnalystFutureGrowthForecasts() {
   return (
     <div className="mb-16" id="section_2_2">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">2.2 Analyst Future Growth Forecasts</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">2.2 Analyst Future Growth Forecasts</h2>
       </div>
 
-      <div className="bg-[#111111] rounded-xl p-8 border border-gray-800 shadow-lg">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-lg">
         
         {/* Bar Charts */}
         <div className="flex flex-col md:flex-row justify-around items-end gap-12 mb-12 pt-8">
@@ -91,12 +91,12 @@ export function AnalystFutureGrowthForecasts() {
           <div className="flex space-x-2">
             <button 
               onClick={() => setShowModal(true)}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-sm text-gray-300 transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               <Table className="w-4 h-4" />
               <span>Data</span>
             </button>
-            <button className="px-3 py-2 bg-[#1A1A1A] hover:bg-[#222222] border border-gray-800 rounded-lg text-gray-400 transition-colors">
+            <button className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -106,32 +106,32 @@ export function AnalystFutureGrowthForecasts() {
         <div className="space-y-4">
           <div className="flex items-start">
             <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-            <div className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-emerald-500 font-medium">Earnings vs Savings Rate:</span> MBB's forecast earnings growth (16.7% per year) is above the <TooltipText tooltip="The 5-year average rate of return (%) you would receive on a low risk government bond">savings rate</TooltipText> (3.1%).
+            <div className="text-gray-600 text-sm leading-relaxed">
+              <span className="text-emerald-600 font-medium">Earnings vs Savings Rate:</span> MBB's forecast earnings growth (16.7% per year) is above the <TooltipText tooltip="The 5-year average rate of return (%) you would receive on a low risk government bond">savings rate</TooltipText> (3.1%).
             </div>
           </div>
           <div className="flex items-start">
             <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-            <div className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-emerald-500 font-medium">Earnings vs Market:</span> MBB's earnings (16.7% per year) are forecast to grow faster than the VN market (13.7% per year).
+            <div className="text-gray-600 text-sm leading-relaxed">
+              <span className="text-emerald-600 font-medium">Earnings vs Market:</span> MBB's earnings (16.7% per year) are forecast to grow faster than the VN market (13.7% per year).
             </div>
           </div>
           <div className="flex items-start">
             <XCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0 mt-0.5" />
-            <div className="text-gray-300 text-sm leading-relaxed">
+            <div className="text-gray-600 text-sm leading-relaxed">
               <span className="text-red-500 font-medium">High Growth Earnings:</span> MBB's earnings are forecast to grow, but not <TooltipText tooltip="We consider anything above 20% annual earnings growth to be significant">significantly</TooltipText>.
             </div>
           </div>
           <div className="flex items-start">
             <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-            <div className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-emerald-500 font-medium">Revenue vs Market:</span> MBB's revenue (25.6% per year) is forecast to grow faster than the VN market (14.2% per year).
+            <div className="text-gray-600 text-sm leading-relaxed">
+              <span className="text-emerald-600 font-medium">Revenue vs Market:</span> MBB's revenue (25.6% per year) is forecast to grow faster than the VN market (14.2% per year).
             </div>
           </div>
           <div className="flex items-start">
             <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-            <div className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-emerald-500 font-medium">High Growth Revenue:</span> MBB's revenue (25.6% per year) is forecast to grow faster than 20% per year.
+            <div className="text-gray-600 text-sm leading-relaxed">
+              <span className="text-emerald-600 font-medium">High Growth Revenue:</span> MBB's revenue (25.6% per year) is forecast to grow faster than 20% per year.
             </div>
           </div>
         </div>

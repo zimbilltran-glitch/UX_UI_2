@@ -45,22 +45,22 @@ export const RatioVsFairRatio = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-white mb-4">
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">
         1.6 {metric_name} Ratio vs Fair Ratio
       </h2>
       
-      <div className="text-gray-300 mb-8 relative text-base">
+      <div className="text-gray-600 mb-8 relative text-base">
         What is {ticker}'s {short_name} Ratio compared to its{' '}
         <span 
           className="relative inline-block cursor-help group"
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
         >
-          <span className="border-b border-dotted border-yellow-500 text-white font-medium">Fair {short_name} Ratio?</span>
+          <span className="border-b border-dotted border-yellow-500 text-gray-900 font-medium">Fair {short_name} Ratio?</span>
           
           {/* Tooltip */}
           {showTooltip && (
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-white text-gray-900 text-sm p-3 rounded-lg shadow-xl z-50 pointer-events-none">
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-white text-gray-900 text-sm p-3 rounded-lg shadow-xl z-50 pointer-events-none border border-gray-200">
               {fair_ratio_definition}
               <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white"></div>
             </div>
@@ -69,7 +69,7 @@ export const RatioVsFairRatio = () => {
         {' '}This is the expected {short_name} Ratio taking into account the company's forecast earnings growth, profit margins and other risk factors.
       </div>
 
-      <div className="bg-[#1F2937] rounded-xl p-6 border border-gray-800 shadow-lg flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg flex flex-col md:flex-row items-center md:items-start gap-8">
         
         {/* Left Side: Chart or Data */}
         <div className="w-full md:w-1/2 flex flex-col items-center">
@@ -120,15 +120,15 @@ export const RatioVsFairRatio = () => {
                   strokeLinecap="round"
                 />
                 <circle cx={cx} cy={cy} r="8" fill="#0ea5e9" />
-                <circle cx={cx} cy={cy} r="3" fill="#1F2937" />
+                <circle cx={cx} cy={cy} r="3" fill="#111827" />
 
                 {/* Scale Labels */}
-                <text x={cx - r - strokeWidth/2 - 10} y={cy + 5} fill="#9ca3af" fontSize="12" textAnchor="end" fontWeight="500">0x</text>
-                <text x={cx + r + strokeWidth/2 + 10} y={cy + 5} fill="#9ca3af" fontSize="12" textAnchor="start" fontWeight="500">{gauge_max}x</text>
+                <text x={cx - r - strokeWidth/2 - 10} y={cy + 5} fill="#6b7280" fontSize="12" textAnchor="end" fontWeight="500">0x</text>
+                <text x={cx + r + strokeWidth/2 + 10} y={cy + 5} fill="#6b7280" fontSize="12" textAnchor="start" fontWeight="500">{gauge_max}x</text>
                 
                 {/* Midpoints */}
-                <text x={cx + (r + strokeWidth/2 + 15) * Math.cos(Math.PI * 0.75)} y={cy - (r + strokeWidth/2 + 15) * Math.sin(Math.PI * 0.75)} fill="#9ca3af" fontSize="12" textAnchor="end" alignmentBaseline="middle" fontWeight="500">{(gauge_max * 0.25).toFixed(1)}x</text>
-                <text x={cx + (r + strokeWidth/2 + 15) * Math.cos(Math.PI * 0.25)} y={cy - (r + strokeWidth/2 + 15) * Math.sin(Math.PI * 0.25)} fill="#9ca3af" fontSize="12" textAnchor="start" alignmentBaseline="middle" fontWeight="500">{(gauge_max * 0.75).toFixed(1)}x</text>
+                <text x={cx + (r + strokeWidth/2 + 15) * Math.cos(Math.PI * 0.75)} y={cy - (r + strokeWidth/2 + 15) * Math.sin(Math.PI * 0.75)} fill="#6b7280" fontSize="12" textAnchor="end" alignmentBaseline="middle" fontWeight="500">{(gauge_max * 0.25).toFixed(1)}x</text>
+                <text x={cx + (r + strokeWidth/2 + 15) * Math.cos(Math.PI * 0.25)} y={cy - (r + strokeWidth/2 + 15) * Math.sin(Math.PI * 0.25)} fill="#6b7280" fontSize="12" textAnchor="start" alignmentBaseline="middle" fontWeight="500">{(gauge_max * 0.75).toFixed(1)}x</text>
               </svg>
 
               {/* HTML Labels for better styling */}
@@ -166,19 +166,19 @@ export const RatioVsFairRatio = () => {
             </div>
           ) : (
             <div className="w-full mt-4">
-              <table className="w-full text-sm text-left text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+              <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-lg overflow-hidden">
                 <tbody>
-                  <tr className="border-b border-gray-700 bg-gray-800/50">
-                    <td className="px-4 py-3 font-medium text-white">Fair Ratio</td>
+                  <tr className="border-b border-gray-200 bg-gray-50">
+                    <td className="px-4 py-3 font-medium text-gray-900">Fair Ratio</td>
                     <td className="px-4 py-3 text-right"></td>
                   </tr>
-                  <tr className="border-b border-gray-700">
+                  <tr className="border-b border-gray-200">
                     <td className="px-4 py-3 font-medium">Current {short_name} Ratio</td>
-                    <td className="px-4 py-3 text-right text-white font-medium">{current_val}x</td>
+                    <td className="px-4 py-3 text-right text-gray-900 font-medium">{current_val}x</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 font-medium">Fair {short_name} Ratio</td>
-                    <td className="px-4 py-3 text-right text-white font-medium">{fair_val}x</td>
+                    <td className="px-4 py-3 text-right text-gray-900 font-medium">{fair_val}x</td>
                   </tr>
                 </tbody>
               </table>
@@ -192,19 +192,19 @@ export const RatioVsFairRatio = () => {
           <div className="flex space-x-2 mt-8">
             <button 
               onClick={() => setShowData(!showData)}
-              className={`flex items-center px-4 py-2 text-sm font-medium rounded-md border transition-colors ${showData ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-800 hover:bg-gray-700 text-gray-300 border-gray-700'}`}
+              className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors shadow-sm ${showData ? 'bg-blue-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
             >
               <Database className="w-4 h-4 mr-2" />
               Data
             </button>
             <button 
               onClick={() => setIsLearnModalOpen(true)}
-              className="flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-md border border-gray-700 transition-colors"
+              className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
             >
               <Info className="w-4 h-4 mr-2" />
               Learn
             </button>
-            <button className="flex items-center px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md border border-gray-700 transition-colors">
+            <button className="flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -213,8 +213,8 @@ export const RatioVsFairRatio = () => {
         {/* Right Side: Audit Summary */}
         <div className="w-full md:w-1/2 flex items-start md:mt-16">
           <CheckCircle2 className="w-6 h-6 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-          <p className="text-base text-gray-300 leading-relaxed">
-            <span className="text-emerald-400 font-medium">
+          <p className="text-base text-gray-600 leading-relaxed">
+            <span className="text-emerald-600 font-medium">
               {metric_name} vs Fair Ratio:
             </span>{' '}
             {ticker} is {status_text} based on its {metric_name} Ratio ({current_val}x) compared to the estimated Fair {metric_name} Ratio ({fair_val}x).
