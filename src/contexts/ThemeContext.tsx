@@ -18,8 +18,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const root = window.document.documentElement;
+    root.setAttribute('data-theme', theme);
     if (theme === 'dark') {
-      root.classList.add('dark');
+      root.classList.add('dark'); // Keep this for tailwind dark mode if needed
     } else {
       root.classList.remove('dark');
     }

@@ -2,7 +2,9 @@
   "header": {
     "searchPlaceholder": "Search ticker...",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "aiAnalysis": "AI Analysis",
+    "newData": "New Data"
   },
   "nav": {
     "overview": "Overview",

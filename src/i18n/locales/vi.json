@@ -2,7 +2,9 @@
   "header": {
     "searchPlaceholder": "Tìm mã cổ phiếu...",
     "language": "Ngôn ngữ",
-    "theme": "Giao diện"
+    "theme": "Giao diện",
+    "aiAnalysis": "AI Phân Tích",
+    "newData": "Dữ Liệu Mới"
   },
   "nav": {
     "overview": "Tổng quan",

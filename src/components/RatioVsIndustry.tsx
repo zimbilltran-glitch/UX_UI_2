@@ -152,31 +152,31 @@ export const RatioVsIndustry = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+      <h2 className="text-2xl font-bold text-primary mb-2">
         1.5 {selectedMetric} Ratio vs Industry
       </h2>
-      <p className="text-gray-600 mb-6">
+      <p className="text-secondary mb-6">
         How does {mockData.ticker}'s {currentData.shortName} Ratio compare vs other companies in the {mockData.industry} Industry?
       </p>
 
-      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
+      <div className="bg-card rounded-xl p-6 border border-subtle shadow-lg">
         {/* Top Controls */}
         <div className="flex justify-end mb-6 relative z-20">
           <div className="relative">
             <button 
-              className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 text-sm font-medium rounded-full border border-gray-300 transition-colors"
+              className="flex items-center px-4 py-2 bg-base hover:bg-subtle text-primary text-sm font-medium rounded-full border border-subtle transition-colors"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               {selectedMetric}
-              <ChevronDown className="w-4 h-4 ml-2 text-gray-500" />
+              <ChevronDown className="w-4 h-4 ml-2 text-secondary" />
             </button>
             
             {isDropdownOpen && (
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-xl overflow-hidden">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-card border border-subtle rounded-lg shadow-xl overflow-hidden">
                 {Object.keys(mockData.metrics).map((metric) => (
                   <button
                     key={metric}
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-base text-primary font-medium' : 'text-secondary hover:bg-subtle hover:text-primary'}`}
                     onClick={() => handleMetricChange(metric)}
                   >
                     {metric}
@@ -192,29 +192,29 @@ export const RatioVsIndustry = () => {
           {/* Background zones */}
           <div className="absolute inset-0 flex z-0">
             <div className="h-full bg-[#10b981]/10" style={{ width: `${currentData.splitPercentage}%` }}></div>
-            <div className="h-full bg-red-500/5 relative overflow-hidden" style={{ width: `${100 - currentData.splitPercentage}%` }}>
+            <div className="h-full bg-bearish/5 relative overflow-hidden" style={{ width: `${100 - currentData.splitPercentage}%` }}>
               <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(239, 68, 68, 0.05) 5px, rgba(239, 68, 68, 0.05) 10px)' }}></div>
             </div>
           </div>
           
           <ResponsiveContainer width="100%" height="100%" className="relative z-10">
             <BarChart data={currentData.ranges} margin={{ top: 30, right: 0, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
               <XAxis 
                 dataKey="label" 
                 hide={true} // Hide default XAxis to use custom tabs below
               />
               <YAxis 
-                stroke="#6b7280" 
-                tick={{fill: '#6b7280', fontSize: 12}} 
+                stroke="var(--text-secondary)" 
+                tick={{fill: 'var(--text-secondary)', fontSize: 12}} 
                 tickLine={false} 
                 axisLine={false}
                 ticks={[0, Math.max(...currentData.ranges.map(r => r.count))]}
-                label={{ value: 'No. of Companies', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 10 }}
+                label={{ value: 'No. of Companies', angle: -90, position: 'insideLeft', fill: 'var(--text-secondary)', fontSize: 10 }}
               />
               <Tooltip 
-                cursor={{fill: '#f3f4f6', opacity: 0.4}} 
-                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e5e7eb', color: '#111827' }}
+                cursor={{fill: 'var(--bg-subtle)', opacity: 0.4}} 
+                contentStyle={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                 formatter={(value: number) => [value, 'Companies']}
               />
               <Bar dataKey="count" fill="#10b981" onClick={(data) => setSelectedRange(data.label)} cursor="pointer">
@@ -245,7 +245,7 @@ export const RatioVsIndustry = () => {
               className="absolute top-0 -translate-x-1/2 flex flex-col items-center"
               style={{ left: `${currentData.splitPercentage}%` }}
             >
-              <div className="bg-[#eab308] text-black text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
+              <div className="bg-[#eab308] text-primary text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
                 Industry Avg. {currentData.industryAvg}x
               </div>
               <div className="w-0.5 h-6 bg-[#eab308] mt-1"></div>
@@ -254,15 +254,15 @@ export const RatioVsIndustry = () => {
         </div>
 
         {/* Range Tabs */}
-        <div className="flex overflow-x-auto hide-scrollbar border-b border-gray-200 mb-6">
+        <div className="flex overflow-x-auto hide-scrollbar border-b border-subtle mb-6">
           {currentData.ranges.map((range) => (
             <button
               key={range.label}
               onClick={() => setSelectedRange(range.label)}
               className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
                 selectedRange === range.label 
-                  ? 'text-[#eab308] border-[#eab308] bg-gray-100' 
-                  : 'text-gray-500 border-transparent hover:text-gray-700 hover:bg-gray-50'
+                  ? 'text-[#eab308] border-[#eab308] bg-base' 
+                  : 'text-secondary border-transparent hover:text-secondary hover:bg-subtle'
               }`}
             >
               {range.label}
@@ -274,24 +274,24 @@ export const RatioVsIndustry = () => {
         <div className="overflow-x-auto">
           {currentCompanies.length > 0 ? (
             <>
-              <table className="w-full text-sm text-left text-gray-600">
-                <thead className="text-xs text-gray-500 uppercase border-b border-gray-200">
+              <table className="w-full text-sm text-left text-secondary">
+                <thead className="text-xs text-secondary uppercase border-b border-subtle">
                   <tr>
                     <th className="px-4 py-3 font-medium">{currentCompanies.length} {currentCompanies.length === 1 ? 'Company' : 'Companies'}</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Price / {currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'}</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Estimated Growth</th>
-                    <th className="px-4 py-3 font-medium border-b border-dotted border-gray-300 inline-block">Market Cap</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-subtle inline-block">Price / {currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'}</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-subtle inline-block">Estimated Growth</th>
+                    <th className="px-4 py-3 font-medium border-b border-dotted border-subtle inline-block">Market Cap</th>
                   </tr>
                 </thead>
                 <tbody>
                   {displayCompanies.map((company, index) => (
                     <tr 
                       key={index} 
-                      className={`border-b border-gray-200 transition-colors hover:bg-gray-50 ${
-                        company.isIndustryAvg ? 'bg-yellow-50' : company.isTarget ? 'bg-gray-100' : ''
+                      className={`border-b border-subtle transition-colors hover:bg-subtle ${
+                        company.isIndustryAvg ? 'bg-yellow-500/10' : company.isTarget ? 'bg-base' : ''
                       }`}
                     >
-                      <td className={`px-4 py-3 font-medium ${company.isIndustryAvg ? 'text-[#eab308]' : company.isTarget ? 'text-[#eab308]' : 'text-gray-900'}`}>
+                      <td className={`px-4 py-3 font-medium ${company.isIndustryAvg ? 'text-[#eab308]' : company.isTarget ? 'text-[#eab308]' : 'text-primary'}`}>
                         {company.isTarget ? (
                           <><span className="font-bold mr-2">{company.ticker}</span> {company.name}</>
                         ) : company.isIndustryAvg ? (
@@ -310,14 +310,14 @@ export const RatioVsIndustry = () => {
               {hasMoreCompanies && !showAll && (
                 <button 
                   onClick={() => setShowAll(true)}
-                  className="w-full mt-4 py-3 bg-gray-100 hover:bg-gray-200 text-[#eab308] font-medium rounded-lg transition-colors border border-gray-300"
+                  className="w-full mt-4 py-3 bg-base hover:bg-subtle text-[#eab308] font-medium rounded-lg transition-colors border border-subtle"
                 >
                   Show all {currentCompanies.length} Companies
                 </button>
               )}
             </>
           ) : (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-secondary">
               No more companies available in this {currentData.shortName} range
             </div>
           )}
@@ -327,7 +327,7 @@ export const RatioVsIndustry = () => {
         <div className="flex justify-end mt-6">
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+            className="btn-interactive flex items-center px-3 py-1.5 bg-brand hover:bg-brand/90 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
@@ -338,12 +338,12 @@ export const RatioVsIndustry = () => {
       {/* Audit Summary */}
       <div className="mt-6 flex items-start">
         {currentData.goodValue ? (
-          <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
+          <CheckCircle2 className="w-5 h-5 text-bullish mr-3 flex-shrink-0 mt-0.5" />
         ) : (
-          <XCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0 mt-0.5" />
+          <XCircle className="w-5 h-5 text-bearish mr-3 flex-shrink-0 mt-0.5" />
         )}
-        <p className="text-sm text-gray-600">
-          <span className={currentData.goodValue ? "text-emerald-600 font-medium" : "text-red-600 font-medium"}>
+        <p className="text-sm text-secondary">
+          <span className={currentData.goodValue ? "text-bullish font-medium" : "text-bearish font-medium"}>
             Price-To-{currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'} vs Industry:
           </span> {mockData.ticker} is {currentData.goodValue ? 'good' : 'poor'} value based on its Price-To-{currentData.shortName === 'PE' ? 'Earnings' : currentData.shortName === 'PS' ? 'Sales' : 'Book'} Ratio ({currentData.targetValue}x) compared to the {mockData.industry} industry average ({currentData.industryAvg}x).
         </p>
@@ -352,21 +352,21 @@ export const RatioVsIndustry = () => {
       {/* Learn Modal */}
       {isLearnModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-2xl font-serif font-bold text-gray-900">Preferred Ratio vs Industry</h3>
-              <button onClick={() => setIsLearnModalOpen(false)} className="text-gray-400 hover:text-gray-600">
+          <div className="bg-card rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
+            <div className="flex justify-between items-center p-6 border-b border-subtle">
+              <h3 className="text-2xl font-serif font-bold text-primary">Preferred Ratio vs Industry</h3>
+              <button onClick={() => setIsLearnModalOpen(false)} className="text-secondary hover:text-secondary">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-800 space-y-6 text-base leading-relaxed">
+            <div className="p-6 text-primary space-y-6 text-base leading-relaxed">
               <p>Comparing a company to its industry is useful to gain a wider perspective of how it is valued. The advantage is that you generally have more companies to compare to, with the trade off being that you are comparing with companies that may be at a different stage of the lifecycle to the company you are valuing.</p>
               <p className="pt-2">For a more detailed breakdown of how to compare stocks to their industry, please check out our <a href="#" className="text-[#d97706] hover:text-[#b45309] underline decoration-[#d97706]/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
             </div>
-            <div className="p-4 border-t border-gray-200 flex justify-end">
+            <div className="p-4 border-t border-subtle flex justify-end">
               <button 
                 onClick={() => setIsLearnModalOpen(false)}
-                className="px-4 py-2 bg-[#fde047] hover:bg-[#facc15] text-gray-900 font-medium rounded-md transition-colors"
+                className="px-4 py-2 bg-[#fde047] hover:bg-[#facc15] text-primary font-medium rounded-md transition-colors"
               >
                 Close
               </button>

@@ -26,20 +26,20 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-white border border-gray-200 p-4 rounded-lg shadow-2xl min-w-[250px]">
-        <p className="text-gray-900 font-bold mb-3">{data.displayDate}</p>
+      <div className="bg-card border border-subtle p-4 rounded-lg shadow-2xl min-w-[250px]">
+        <p className="text-primary font-bold mb-3">{data.displayDate}</p>
         <div className="flex justify-between items-center mb-1">
-          <span className="text-gray-500 text-sm mr-8">EPS</span>
+          <span className="text-secondary text-sm mr-8">EPS</span>
           <span className="text-[#2dd4bf] font-bold">₫{(data.eps / 1000).toFixed(3)}k</span>
         </div>
         {!data.isActual && data.high && data.low && (
-          <div className="mt-2 pt-2 border-t border-gray-100">
+          <div className="mt-2 pt-2 border-t border-subtle">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-gray-500 text-sm mr-8">Analysts' EPS Range</span>
+              <span className="text-secondary text-sm mr-8">Analysts' EPS Range</span>
               <span className="text-[#2dd4bf] font-bold">₫{(data.low / 1000).toFixed(3)}k - ₫{(data.high / 1000).toFixed(3)}k</span>
             </div>
-            <div className="text-gray-500 text-sm mt-2">{data.analysts} Analysts</div>
-            <div className="text-gray-400 text-xs mt-1">Last confirmed on Feb 19 2026</div>
+            <div className="text-secondary text-sm mt-2">{data.analysts} Analysts</div>
+            <div className="text-secondary text-xs mt-1">Last confirmed on Feb 19 2026</div>
           </div>
         )}
       </div>
@@ -53,25 +53,25 @@ const DataModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }
   
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-          <h2 className="text-xl font-bold text-gray-900 font-serif">Earnings per Share Growth Forecasts</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 transition-colors">
+      <div className="bg-card rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div className="sticky top-0 bg-card border-b border-subtle px-6 py-4 flex justify-between items-center z-10">
+          <h2 className="text-xl font-bold text-primary font-serif">Earnings per Share Growth Forecasts</h2>
+          <button onClick={onClose} className="text-secondary hover:text-secondary transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
         
         <div className="p-6">
-          <table className="w-full text-sm text-left mb-8 border border-gray-200">
-            <thead className="bg-gray-100 text-gray-700">
+          <table className="w-full text-sm text-left mb-8 border border-subtle">
+            <thead className="bg-base text-secondary">
               <tr>
-                <th className="px-4 py-3 font-medium border-b border-gray-200">Data Point</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200">Source</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">Value</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle">Data Point</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle">Source</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">Value</th>
               </tr>
             </thead>
-            <tbody className="text-gray-800">
-              <tr className="border-b border-gray-200">
+            <tbody className="text-primary">
+              <tr className="border-b border-subtle">
                 <td className="px-4 py-3">Past Financials</td>
                 <td className="px-4 py-3">Company Filings (12/31/2025)</td>
                 <td className="px-4 py-3 text-right">See Below</td>
@@ -84,30 +84,30 @@ const DataModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }
             </tbody>
           </table>
           
-          <div className="text-right text-xs text-gray-400 mb-2 uppercase tracking-wider">HOSE:MBB Past and Future Earnings per Share</div>
-          <p className="text-gray-800 mb-6 font-medium">
+          <div className="text-right text-xs text-secondary mb-2 uppercase tracking-wider">HOSE:MBB Past and Future Earnings per Share</div>
+          <p className="text-primary mb-6 font-medium">
             All data from Military Commercial Bank Company Filings, last reported 12/31/2025, and in <a href="#" className="text-yellow-600 underline decoration-yellow-600/30 underline-offset-4 hover:text-yellow-700">trailing twelve months (TTM)</a> annual period rather than quarterly.
           </p>
           
-          <table className="w-full text-sm text-left mb-8 border border-gray-200">
-            <thead className="bg-gray-100 text-gray-700">
+          <table className="w-full text-sm text-left mb-8 border border-subtle">
+            <thead className="bg-base text-secondary">
               <tr>
-                <th className="px-4 py-3 font-medium border-b border-gray-200">Date</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">EPS *</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">EPS High Estimate</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">EPS Low Estimate</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">Avg. No. Analysts</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle">Date</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS *</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS High Estimate</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS Low Estimate</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">Avg. No. Analysts</th>
               </tr>
             </thead>
-            <tbody className="text-gray-800">
-              <tr className="border-b border-gray-200">
+            <tbody className="text-primary">
+              <tr className="border-b border-subtle">
                 <td className="px-4 py-3">12/31/2026</td>
                 <td className="px-4 py-3 text-right">3,767.98</td>
                 <td className="px-4 py-3 text-right">3,948.89</td>
                 <td className="px-4 py-3 text-right">3,564</td>
                 <td className="px-4 py-3 text-right">5</td>
               </tr>
-              <tr className="border-b border-gray-200">
+              <tr className="border-b border-subtle">
                 <td className="px-4 py-3">12/31/2027</td>
                 <td className="px-4 py-3 text-right">4,525.46</td>
                 <td className="px-4 py-3 text-right">4,985.31</td>
@@ -124,16 +124,16 @@ const DataModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }
             </tbody>
           </table>
           
-          <div className="text-right text-xs text-gray-400 mb-8 uppercase tracking-wider">HOSE:MBB Future Estimates Data (VND)</div>
+          <div className="text-right text-xs text-secondary mb-8 uppercase tracking-wider">HOSE:MBB Future Estimates Data (VND)</div>
           
-          <table className="w-full text-sm text-left mb-4 border border-gray-200">
-            <thead className="bg-gray-100 text-gray-700">
+          <table className="w-full text-sm text-left mb-4 border border-subtle">
+            <thead className="bg-base text-secondary">
               <tr>
-                <th className="px-4 py-3 font-medium border-b border-gray-200">Date</th>
-                <th className="px-4 py-3 font-medium border-b border-gray-200 text-right">EPS *</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle">Date</th>
+                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS *</th>
               </tr>
             </thead>
-            <tbody className="text-gray-800">
+            <tbody className="text-primary">
               {[
                 { date: '12/31/2025', eps: '3,324.51' },
                 { date: '9/30/2025', eps: '3,234.98' },
@@ -144,20 +144,20 @@ const DataModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }
                 { date: '6/30/2024', eps: '2,443.24' },
                 { date: '3/31/2024', eps: '2,102.42' },
               ].map((row, i) => (
-                <tr key={i} className="border-b border-gray-200 last:border-0">
+                <tr key={i} className="border-b border-subtle last:border-0">
                   <td className="px-4 py-3">{row.date}</td>
                   <td className="px-4 py-3 text-right">{row.eps}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="text-right text-xs text-gray-400 mb-6 uppercase tracking-wider">HOSE:MBB Past Financials Data (VND)</div>
+          <div className="text-right text-xs text-secondary mb-6 uppercase tracking-wider">HOSE:MBB Past Financials Data (VND)</div>
           
-          <p className="text-sm text-gray-800 font-medium">*GAAP earnings excluding extraordinary items.</p>
+          <p className="text-sm text-primary font-medium">*GAAP earnings excluding extraordinary items.</p>
         </div>
         
-        <div className="sticky bottom-0 bg-white border-t border-gray-200 px-6 py-4 flex justify-end z-10">
-          <button onClick={onClose} className="px-6 py-2 bg-[#F5C347] hover:bg-[#e5b337] text-gray-900 font-bold rounded-lg transition-colors shadow-sm">
+        <div className="sticky bottom-0 bg-card border-t border-subtle px-6 py-4 flex justify-end z-10">
+          <button onClick={onClose} className="px-6 py-2 bg-[#F5C347] hover:bg-[#e5b337] text-primary font-bold rounded-lg transition-colors shadow-sm">
             Close
           </button>
         </div>
@@ -172,38 +172,38 @@ export function EPSGrowthForecasts() {
   return (
     <div className="mb-16" id="section_2_3">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">2.3 Earnings per Share Growth Forecasts</h2>
+        <h2 className="text-2xl font-bold text-primary mb-2">2.3 Earnings per Share Growth Forecasts</h2>
       </div>
 
-      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-lg relative overflow-hidden">
+      <div className="bg-card rounded-xl p-8 border border-subtle shadow-lg relative overflow-hidden">
         {/* Chart Area */}
         <div className="h-[400px] w-full relative z-10">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 20, right: 20, left: -20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" vertical={false} />
               <XAxis 
                 dataKey="year" 
-                stroke="#9ca3af" 
-                tick={{ fill: '#6b7280', fontSize: 12 }} 
+                stroke="var(--text-secondary)" 
+                tick={{ fill: 'var(--text-secondary)', fontSize: 12 }} 
                 tickLine={false} 
                 axisLine={false} 
                 dy={10}
               />
               <YAxis 
-                stroke="#9ca3af" 
-                tick={{ fill: '#6b7280', fontSize: 12, fontWeight: 'bold' }} 
+                stroke="var(--text-secondary)" 
+                tick={{ fill: 'var(--text-secondary)', fontSize: 12, fontWeight: 'bold' }} 
                 tickLine={false} 
                 axisLine={false} 
                 tickFormatter={(val) => `₫${(val/1000).toFixed(0)}k`}
                 dx={-10}
               />
-              <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#9ca3af', strokeWidth: 1, strokeDasharray: '3 3' }} />
+              <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'var(--text-secondary)', strokeWidth: 1, strokeDasharray: '3 3' }} />
               
               {/* Background Areas */}
               {/* @ts-ignore */}
-              <ReferenceArea x1="2024" x2="2025" fill="#f3f4f6" fillOpacity={0.5} />
+              <ReferenceArea x1="2024" x2="2025" fill="var(--bg-subtle)" fillOpacity={0.5} />
               {/* @ts-ignore */}
-              <ReferenceArea x1="2025" x2="2028" fill="#e5e7eb" fillOpacity={0.3} />
+              <ReferenceArea x1="2025" x2="2028" fill="var(--bg-base)" fillOpacity={0.3} />
               
               {/* Separator Line */}
               <ReferenceLine x="2025" stroke="#9ca3af" strokeOpacity={0.5} />
@@ -233,12 +233,12 @@ export function EPSGrowthForecasts() {
                       cy={cy} 
                       r={4} 
                       fill={payload.isActual ? '#3b82f6' : '#2dd4bf'} 
-                      stroke="#fff" 
+                      stroke="var(--bg-card)" 
                       strokeWidth={2} 
                     />
                   );
                 }}
-                activeDot={{ r: 6, fill: '#fff', strokeWidth: 0 }}
+                activeDot={{ r: 6, fill: 'var(--text-primary)', strokeWidth: 0 }}
                 isAnimationActive={false}
               />
             </ComposedChart>
@@ -246,46 +246,46 @@ export function EPSGrowthForecasts() {
           
           {/* Labels for Actual vs Forecasts */}
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex space-x-4 text-xs font-bold">
-            <span className="text-gray-900">Actual</span>
-            <span className="text-gray-500">Analysts Forecasts</span>
+            <span className="text-primary">Actual</span>
+            <span className="text-secondary">Analysts Forecasts</span>
           </div>
         </div>
 
         {/* Legend */}
         <div className="flex items-center space-x-4 mt-4 mb-8">
-          <div className="flex items-center px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md">
+          <div className="flex items-center px-3 py-1.5 bg-base border border-subtle rounded-md">
             <div className="w-3 h-3 rounded-full bg-[#3b82f6] mr-2"></div>
-            <span className="text-xs text-gray-700 font-medium">EPS</span>
+            <span className="text-xs text-secondary font-medium">EPS</span>
           </div>
-          <div className="flex items-center px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-md">
+          <div className="flex items-center px-3 py-1.5 bg-base border border-subtle rounded-md">
             <div className="w-3 h-3 rounded-full bg-[#2dd4bf] opacity-50 mr-2"></div>
-            <span className="text-xs text-gray-700 font-medium">Analysts' EPS Range</span>
+            <span className="text-xs text-secondary font-medium">Analysts' EPS Range</span>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex justify-end border-t border-gray-200 pt-6">
+        <div className="flex justify-end border-t border-subtle pt-6">
           <div className="flex space-x-2">
             <button 
               onClick={() => setShowModal(true)}
-              className="btn-interactive flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
+              className="btn-interactive flex items-center space-x-2 px-4 py-2 bg-brand hover:bg-brand/90 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               <Table className="w-4 h-4" />
               <span>Data</span>
             </button>
-            <button className="btn-interactive px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive px-3 py-2 bg-brand hover:bg-brand/90 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Help Link */}
-        <div className="mt-6 pt-6 border-t border-gray-200 text-sm text-gray-500">
+        <div className="mt-6 pt-6 border-t border-subtle text-sm text-secondary">
           <a 
             href="https://support.simplywall.st/hc/en-us/articles/115006170908-Your-data-is-different-from-other-reports-and-websites-why-is-that" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-emerald-600 hover:text-emerald-500 font-medium inline-flex items-center transition-colors"
+            className="text-bullish hover:text-bullish font-medium inline-flex items-center transition-colors"
           >
             Tại sao dữ liệu của chúng tôi khác biệt? <ExternalLink className="w-3 h-3 ml-1" />
           </a>

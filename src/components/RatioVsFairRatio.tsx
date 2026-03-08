@@ -45,31 +45,31 @@ export const RatioVsFairRatio = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+      <h2 className="text-2xl font-bold text-primary mb-4">
         1.6 {metric_name} Ratio vs Fair Ratio
       </h2>
       
-      <div className="text-gray-600 mb-8 relative text-base">
+      <div className="text-secondary mb-8 relative text-base">
         What is {ticker}'s {short_name} Ratio compared to its{' '}
         <span 
           className="relative inline-block cursor-help group"
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
         >
-          <span className="border-b border-dotted border-yellow-500 text-gray-900 font-medium">Fair {short_name} Ratio?</span>
+          <span className="border-b border-dotted border-yellow-500 text-primary font-medium">Fair {short_name} Ratio?</span>
           
           {/* Tooltip */}
           {showTooltip && (
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-white text-gray-900 text-sm p-3 rounded-lg shadow-xl z-50 pointer-events-none border border-gray-200">
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 bg-card text-primary text-sm p-3 rounded-lg shadow-xl z-50 pointer-events-none border border-subtle">
               {fair_ratio_definition}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white"></div>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-card"></div>
             </div>
           )}
         </span>
         {' '}This is the expected {short_name} Ratio taking into account the company's forecast earnings growth, profit margins and other risk factors.
       </div>
 
-      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div className="bg-card rounded-xl p-6 border border-subtle shadow-lg flex flex-col md:flex-row items-center md:items-start gap-8">
         
         {/* Left Side: Chart or Data */}
         <div className="w-full md:w-1/2 flex flex-col items-center">
@@ -157,7 +157,7 @@ export const RatioVsFairRatio = () => {
                   marginTop: '-15px'
                 }}
               >
-                <div className="bg-[#eab308] text-gray-900 px-3 py-1.5 rounded-md shadow-lg flex flex-col items-center">
+                <div className="bg-[#eab308] text-primary px-3 py-1.5 rounded-md shadow-lg flex flex-col items-center">
                   <span className="text-xs font-medium">Fair {short_name}</span>
                   <span className="text-sm font-bold">{fair_val}x</span>
                 </div>
@@ -166,23 +166,23 @@ export const RatioVsFairRatio = () => {
             </div>
           ) : (
             <div className="w-full mt-4">
-              <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-lg overflow-hidden">
+              <table className="w-full text-sm text-left text-secondary border border-subtle rounded-lg overflow-hidden">
                 <tbody>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <td className="px-4 py-3 font-medium text-gray-900">Fair Ratio</td>
+                  <tr className="border-b border-subtle bg-base">
+                    <td className="px-4 py-3 font-medium text-primary">Fair Ratio</td>
                     <td className="px-4 py-3 text-right"></td>
                   </tr>
-                  <tr className="border-b border-gray-200">
+                  <tr className="border-b border-subtle">
                     <td className="px-4 py-3 font-medium">Current {short_name} Ratio</td>
-                    <td className="px-4 py-3 text-right text-gray-900 font-medium">{current_val}x</td>
+                    <td className="px-4 py-3 text-right text-primary font-medium">{current_val}x</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 font-medium">Fair {short_name} Ratio</td>
-                    <td className="px-4 py-3 text-right text-gray-900 font-medium">{fair_val}x</td>
+                    <td className="px-4 py-3 text-right text-primary font-medium">{fair_val}x</td>
                   </tr>
                 </tbody>
               </table>
-              <div className="mt-4 text-xs text-gray-500">
+              <div className="mt-4 text-xs text-secondary">
                 {ticker} {short_name} Ratio vs Fair Ratio.
               </div>
             </div>
@@ -192,19 +192,19 @@ export const RatioVsFairRatio = () => {
           <div className="flex space-x-2 mt-8">
             <button 
               onClick={() => setShowData(!showData)}
-              className={`btn-interactive flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors shadow-sm ${showData ? 'bg-blue-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+              className={`btn-interactive flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors shadow-sm ${showData ? 'bg-blue-700 text-white' : 'bg-brand hover:bg-brand/90 text-white'}`}
             >
               <Database className="w-4 h-4 mr-2" />
               Data
             </button>
             <button 
               onClick={() => setIsLearnModalOpen(true)}
-              className="btn-interactive flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+              className="btn-interactive flex items-center px-4 py-2 bg-brand hover:bg-brand/90 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
             >
               <Info className="w-4 h-4 mr-2" />
               Learn
             </button>
-            <button className="btn-interactive flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive flex items-center px-3 py-2 bg-brand hover:bg-brand/90 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>
@@ -212,9 +212,9 @@ export const RatioVsFairRatio = () => {
 
         {/* Right Side: Audit Summary */}
         <div className="w-full md:w-1/2 flex items-start md:mt-16">
-          <CheckCircle2 className="w-6 h-6 text-emerald-500 mr-3 flex-shrink-0 mt-0.5" />
-          <p className="text-base text-gray-600 leading-relaxed">
-            <span className="text-emerald-600 font-medium">
+          <CheckCircle2 className="w-6 h-6 text-bullish mr-3 flex-shrink-0 mt-0.5" />
+          <p className="text-base text-secondary leading-relaxed">
+            <span className="text-bullish font-medium">
               {metric_name} vs Fair Ratio:
             </span>{' '}
             {ticker} is {status_text} based on its {metric_name} Ratio ({current_val}x) compared to the estimated Fair {metric_name} Ratio ({fair_val}x).
@@ -225,21 +225,21 @@ export const RatioVsFairRatio = () => {
       {/* Learn Modal */}
       {isLearnModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
-            <div className="flex justify-between items-center p-6 border-b border-gray-200">
-              <h3 className="text-2xl font-serif font-bold text-gray-900">Preferred Ratio vs Fair Ratio</h3>
-              <button onClick={() => setIsLearnModalOpen(false)} className="text-gray-400 hover:text-gray-600">
+          <div className="bg-card rounded-xl w-full max-w-2xl overflow-hidden shadow-2xl">
+            <div className="flex justify-between items-center p-6 border-b border-subtle">
+              <h3 className="text-2xl font-serif font-bold text-primary">Preferred Ratio vs Fair Ratio</h3>
+              <button onClick={() => setIsLearnModalOpen(false)} className="text-secondary hover:text-secondary">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-800 space-y-6 text-base leading-relaxed">
+            <div className="p-6 text-primary space-y-6 text-base leading-relaxed">
               <p>{learn_content}</p>
               <p className="pt-2">For a more detailed breakdown of how we compare stocks to their industry, please check out our <a href="#" className="text-[#d97706] hover:text-[#b45309] underline decoration-[#d97706]/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
             </div>
-            <div className="p-4 border-t border-gray-200 flex justify-end">
+            <div className="p-4 border-t border-subtle flex justify-end">
               <button 
                 onClick={() => setIsLearnModalOpen(false)}
-                className="px-4 py-2 bg-[#fde047] hover:bg-[#facc15] text-gray-900 font-medium rounded-md transition-colors"
+                className="px-4 py-2 bg-[#fde047] hover:bg-[#facc15] text-primary font-medium rounded-md transition-colors"
               >
                 Close
               </button>

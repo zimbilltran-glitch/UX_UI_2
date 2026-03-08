@@ -95,11 +95,11 @@ const mockData = {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white border border-gray-200 p-3 rounded-xl shadow-lg min-w-[250px]">
-        <p className="text-gray-900 font-bold text-sm mb-1">{payload[0].payload.date}</p>
+      <div className="bg-card border border-subtle p-3 rounded-xl shadow-lg min-w-[250px]">
+        <p className="text-primary font-bold text-sm mb-1">{payload[0].payload.date}</p>
         <div className="flex justify-between items-center">
-          <p className="text-gray-500 text-sm">{mockData.companyName}</p>
-          <p className="text-blue-600 font-bold text-sm font-mono">{payload[0].value.toFixed(1)}x</p>
+          <p className="text-secondary text-sm">{mockData.companyName}</p>
+          <p className="text-brand font-bold text-sm font-mono">{payload[0].value.toFixed(1)}x</p>
         </div>
       </div>
     );
@@ -121,10 +121,10 @@ export const HistoricalFinancialRatioChart = () => {
 
   return (
     <div className="mb-12 font-sans">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+      <h2 className="text-2xl font-bold text-primary mb-4">
         1.4 Historical {selectedMetric} Ratio
       </h2>
-      <p className="text-gray-600 mb-6 leading-relaxed">
+      <p className="text-secondary mb-6 leading-relaxed">
         {currentData.explanation}
       </p>
 
@@ -134,20 +134,20 @@ export const HistoricalFinancialRatioChart = () => {
         {/* Dropdown */}
         <div className="relative">
           <button 
-            className="flex items-center px-4 py-2 bg-white hover:bg-gray-50 text-gray-900 text-sm font-semibold rounded-xl border border-gray-200 transition-colors shadow-sm"
+            className="flex items-center px-4 py-2 bg-card hover:bg-subtle text-primary text-sm font-semibold rounded-xl border border-subtle transition-colors shadow-sm"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <Star className="w-4 h-4 text-yellow-500 mr-2" fill="currentColor" />
             {selectedMetric}
-            <ChevronDown className="w-4 h-4 ml-2 text-gray-400" />
+            <ChevronDown className="w-4 h-4 ml-2 text-secondary" />
           </button>
           
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
+            <div className="absolute top-full left-0 mt-2 w-48 bg-card border border-subtle rounded-xl shadow-xl overflow-hidden">
               {mockData.data_types.map((metric) => (
                 <button
                   key={metric}
-                  className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-gray-50 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}
+                  className={`w-full text-left px-4 py-3 text-sm transition-colors ${selectedMetric === metric ? 'bg-base text-primary font-semibold' : 'text-secondary hover:bg-subtle hover:text-primary'}`}
                   onClick={() => {
                     setSelectedMetric(metric);
                     setIsDropdownOpen(false);
@@ -167,8 +167,8 @@ export const HistoricalFinancialRatioChart = () => {
               key={time}
               className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
                 selectedTimeframe === time 
-                  ? 'bg-gray-100 text-gray-900' 
-                  : 'text-gray-500 hover:text-gray-900'
+                  ? 'bg-base text-primary' 
+                  : 'text-secondary hover:text-primary'
               }`}
               onClick={() => setSelectedTimeframe(time)}
             >
@@ -227,25 +227,25 @@ export const HistoricalFinancialRatioChart = () => {
       {/* Bottom Controls */}
       <div className="flex justify-between items-center mt-6">
         {/* Legend */}
-        <div className="flex items-center px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-200 w-fit">
-          <div className="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></div>
-          <span className="text-gray-600 text-xs font-semibold">HOSE:MBB</span>
+        <div className="flex items-center px-3 py-1.5 bg-base rounded-lg border border-subtle w-fit">
+          <div className="w-2.5 h-2.5 rounded-full bg-brand mr-2"></div>
+          <span className="text-secondary text-xs font-semibold">HOSE:MBB</span>
         </div>
 
         {/* Action Buttons */}
         <div className="flex space-x-2">
-          <button className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm">
+          <button className="btn-interactive flex items-center px-3 py-1.5 bg-card hover:bg-subtle text-secondary text-sm font-semibold rounded-lg border border-subtle transition-colors shadow-sm">
             <Database className="w-4 h-4 mr-2" />
             Data
           </button>
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm"
+            className="btn-interactive flex items-center px-3 py-1.5 bg-card hover:bg-subtle text-secondary text-sm font-semibold rounded-lg border border-subtle transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
           </button>
-          <button className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors shadow-sm">
+          <button className="btn-interactive flex items-center px-3 py-1.5 bg-card hover:bg-subtle text-secondary rounded-lg border border-subtle transition-colors shadow-sm">
             <MoreHorizontal className="w-4 h-4" />
           </button>
         </div>
@@ -255,22 +255,22 @@ export const HistoricalFinancialRatioChart = () => {
       {/* Learn Modal */}
       {isLearnModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl border border-gray-200">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900">Historical {selectedMetric} Ratio</h3>
-              <button onClick={() => setIsLearnModalOpen(false)} className="text-gray-400 hover:text-gray-600">
+          <div className="bg-card rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl border border-subtle">
+            <div className="flex justify-between items-center p-6 border-b border-subtle">
+              <h3 className="text-2xl font-bold text-primary">Historical {selectedMetric} Ratio</h3>
+              <button onClick={() => setIsLearnModalOpen(false)} className="text-secondary hover:text-secondary">
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 text-gray-700 space-y-6 text-base leading-relaxed">
+            <div className="p-6 text-secondary space-y-6 text-base leading-relaxed">
               <p>The Historical {selectedMetric} Ratio chart helps you visualize how the market has valued the company over time. By looking at the historical trend, you can identify whether the current valuation is relatively high or low compared to its own past.</p>
               <p>A ratio that is significantly lower than its historical average might indicate that the stock is undervalued, assuming the company's fundamentals haven't deteriorated. Conversely, a ratio much higher than its historical average could suggest overvaluation.</p>
-              <p className="pt-2">For more information on how to interpret historical financial ratios, please check out our <a href="#" className="text-blue-600 hover:text-blue-700 underline decoration-blue-600/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
+              <p className="pt-2">For more information on how to interpret historical financial ratios, please check out our <a href="#" className="text-brand hover:text-brand underline decoration-blue-600/30 underline-offset-4 transition-colors">Help Centre</a>.</p>
             </div>
-            <div className="p-4 border-t border-gray-100 flex justify-end">
+            <div className="p-4 border-t border-subtle flex justify-end">
               <button 
                 onClick={() => setIsLearnModalOpen(false)}
-                className="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors"
+                className="px-4 py-2 bg-primary text-base hover:opacity-90 font-semibold rounded-xl transition-colors"
               >
                 Close
               </button>
