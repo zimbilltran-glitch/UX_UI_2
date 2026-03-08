@@ -268,12 +268,12 @@ export function EPSGrowthForecasts() {
           <div className="flex space-x-2">
             <button 
               onClick={() => setShowModal(true)}
-              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
+              className="btn-interactive flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               <Table className="w-4 h-4" />
               <span>Data</span>
             </button>
-            <button className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>

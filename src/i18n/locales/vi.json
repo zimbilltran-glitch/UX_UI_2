@@ -1,0 +1,15 @@
+{
+  "header": {
+    "searchPlaceholder": "Tìm mã cổ phiếu...",
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện"
+  },
+  "nav": {
+    "overview": "Tổng quan",
+    "valuation": "Định giá",
+    "futureGrowth": "Tăng trưởng tương lai",
+    "pastPerformance": "Hiệu suất quá khứ",
+    "financialHealth": "Sức khỏe tài chính",
+    "dividend": "Cổ tức"
+  }
+}

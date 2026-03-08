@@ -42,3 +42,4 @@
 - Import `theme.css` in your global `index.css`.
 - Use CSS variables for all component styling.
 - Apply `surface-card` class for cards to get the institutional look.
+- **MANDATORY RULE FOR FUTURE FEATURES**: All new features and components MUST strictly adhere to this Design System Guidelines (FinSang Terminal v3.0). This includes using the defined color palette, typography (Plus Jakarta Sans for UI, JetBrains Mono for data), interactive classes (`btn-interactive`, `tab-interactive`, `list-row`), and the `surface-card` class for containers. Do not introduce new styling patterns without updating these guidelines first.

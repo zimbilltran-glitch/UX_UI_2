@@ -192,19 +192,19 @@ export const RatioVsFairRatio = () => {
           <div className="flex space-x-2 mt-8">
             <button 
               onClick={() => setShowData(!showData)}
-              className={`flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors shadow-sm ${showData ? 'bg-blue-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+              className={`btn-interactive flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors shadow-sm ${showData ? 'bg-blue-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
             >
               <Database className="w-4 h-4 mr-2" />
               Data
             </button>
             <button 
               onClick={() => setIsLearnModalOpen(true)}
-              className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+              className="btn-interactive flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
             >
               <Info className="w-4 h-4 mr-2" />
               Learn
             </button>
-            <button className="flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>

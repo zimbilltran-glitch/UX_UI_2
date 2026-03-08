@@ -80,7 +80,7 @@ export const KeyValuationMetric = () => {
           {/* Top Label */}
           <div className="absolute -top-14 flex flex-col items-center whitespace-nowrap">
             <span className="text-gray-500 text-sm">{viewData.topText.label}</span>
-            <span className="text-gray-900 font-bold">{viewData.topText.value}</span>
+            <span className="text-gray-900 font-bold font-tabular">{viewData.topText.value}</span>
           </div>
           
           {/* Pointer Line */}
@@ -95,13 +95,13 @@ export const KeyValuationMetric = () => {
           {/* Center Text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <span className="text-gray-500 text-sm">{viewData.centerText.label}</span>
-            <span className="text-gray-900 font-bold border-b border-gray-300">{viewData.centerText.value}</span>
+            <span className="text-gray-900 font-bold border-b border-gray-300 font-tabular">{viewData.centerText.value}</span>
           </div>
         </div>
 
         {/* Right Side Ratio */}
         <div className="ml-16 flex flex-col">
-          <span className="text-gray-900 font-bold text-4xl">{viewData.ratio}</span>
+          <span className="text-gray-900 font-bold text-4xl font-tabular">{viewData.ratio}</span>
           <span className="text-gray-500 text-sm font-medium border-b border-gray-300 border-dashed pb-1">{viewData.ratioLabel}</span>
           {viewData.subText && <span className="text-gray-500 text-xs mt-1">{viewData.subText}</span>}
         </div>
@@ -129,7 +129,7 @@ export const KeyValuationMetric = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTab === tab ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                className={`btn-interactive px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTab === tab ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
               >
                 {tab}
               </button>
@@ -161,7 +161,7 @@ export const KeyValuationMetric = () => {
                     >
                       {metric.label}
                     </div>
-                    <div className="text-gray-900 font-bold text-sm">{metric.value}</div>
+                    <div className="text-gray-900 font-bold text-sm font-tabular">{metric.value}</div>
                     
                     {/* Tooltip */}
                     {hoveredTooltip === metric.label && metric.tooltip && (
@@ -206,18 +206,18 @@ export const KeyValuationMetric = () => {
           </div>
         )}
 
-        <button className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
+        <button className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
           <Database className="w-4 h-4 mr-2" />
           Data
         </button>
         <button 
           onClick={() => setIsLearnModalOpen(true)}
-          className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+          className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
         >
           <Info className="w-4 h-4 mr-2" />
           Learn
         </button>
-        <button className="flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+        <button className="btn-interactive flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
           <MoreHorizontal className="w-4 h-4" />
         </button>
       </div>

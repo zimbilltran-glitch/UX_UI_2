@@ -71,7 +71,7 @@ const GaugeChart = ({ companyValue, industryValue }: { companyValue: number, ind
 
   return (
     <div className="relative w-full max-w-[300px] mx-auto">
-      <svg viewBox="0 0 200 130" className="w-full h-full overflow-visible">
+      <svg viewBox="0 0 200 115" className="w-full h-auto">
         {/* Outer Arcs */}
         <path d={redArc} fill="none" stroke="#b91c1c" strokeWidth={strokeWidth} strokeLinecap="butt" />
         <path d={yellowArc} fill="none" stroke="#eab308" strokeWidth={strokeWidth} strokeLinecap="butt" />
@@ -129,7 +129,7 @@ export function FutureReturnOnEquity() {
         </div>
         <button 
           onClick={() => setShowLearnModal(true)}
-          className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium shadow-sm"
+          className="btn-interactive flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium shadow-sm"
         >
           <Info className="w-4 h-4" />
           <span>Learn</span>

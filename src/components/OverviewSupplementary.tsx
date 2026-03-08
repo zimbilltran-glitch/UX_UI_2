@@ -49,35 +49,35 @@ export function OverviewSupplementary() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">P/E (TTM)</div>
-            <div className="text-xl font-bold text-gray-900">8.6x</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">8.6x</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">P/B</div>
-            <div className="text-xl font-bold text-gray-900">1.6x</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">1.6x</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">ROE</div>
-            <div className="text-xl font-bold text-emerald-600">17.0%</div>
+            <div className="text-xl font-bold text-emerald-600 font-tabular">17.0%</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">Div Yield</div>
-            <div className="text-xl font-bold text-gray-900">0.0%</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">0.0%</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">Market Cap</div>
-            <div className="text-xl font-bold text-gray-900">229.568T VND</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">229.568T VND</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">EPS (TTM)</div>
-            <div className="text-xl font-bold text-gray-900">3,325 ₫</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">3,325 ₫</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">52W HIGH</div>
-            <div className="text-xl font-bold text-gray-900">29,500 ₫</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">29,500 ₫</div>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 shadow-sm">
             <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">52W LOW</div>
-            <div className="text-xl font-bold text-gray-900">14,600 ₫</div>
+            <div className="text-xl font-bold text-gray-900 font-tabular">14,600 ₫</div>
           </div>
         </div>
       </div>

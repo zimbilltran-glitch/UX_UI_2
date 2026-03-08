@@ -81,18 +81,18 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
           <div>
             <h1 className="text-2xl font-bold text-gray-900">{data.name}</h1>
             <p className="text-gray-500 font-medium">HOSE:{data.ticker} Stock Report</p>
-            <p className="text-gray-500 mt-1">Market Cap <span className="text-gray-900 font-bold">₫217.9t</span></p>
+            <p className="text-gray-500 mt-1">Market Cap <span className="text-gray-900 font-bold font-tabular">₫217.9t</span></p>
             
             <div className="flex space-x-3 mt-4">
-              <button className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors shadow-sm">
+              <button className="btn-interactive flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors shadow-sm">
                 <Plus size={18} />
                 <span>Add to Portfolio</span>
               </button>
-              <button className="flex items-center space-x-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg font-semibold transition-colors border border-gray-200 shadow-sm">
+              <button className="btn-interactive flex items-center space-x-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg font-semibold transition-colors border border-gray-200 shadow-sm">
                 <Star size={18} />
                 <span>Watching</span>
               </button>
-              <button className="flex items-center justify-center bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-lg transition-colors border border-gray-200 shadow-sm">
+              <button className="btn-interactive flex items-center justify-center bg-white hover:bg-gray-50 text-gray-700 w-10 h-10 rounded-lg transition-colors border border-gray-200 shadow-sm">
                 <MoreHorizontal size={18} />
               </button>
             </div>
@@ -188,19 +188,19 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
           <div className="absolute bottom-0 right-0 flex space-x-2">
             <button 
               onClick={() => setShowDataModal(true)}
-              className="flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
+              className="btn-interactive flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
             >
               <Table size={14} />
               <span>Data</span>
             </button>
             <button 
               onClick={() => setShowLearnModal(true)}
-              className="flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
+              className="btn-interactive flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
             >
               <Info size={14} />
               <span>Learn</span>
             </button>
-            <button className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white w-8 h-8 rounded-lg transition-colors shadow-sm">
               <MoreHorizontal size={14} />
             </button>
           </div>

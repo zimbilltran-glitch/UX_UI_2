@@ -234,18 +234,18 @@ export const HistoricalFinancialRatioChart = () => {
 
         {/* Action Buttons */}
         <div className="flex space-x-2">
-          <button className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm">
+          <button className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm">
             <Database className="w-4 h-4 mr-2" />
             Data
           </button>
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm"
+            className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 text-sm font-semibold rounded-lg border border-gray-200 transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
           </button>
-          <button className="flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors shadow-sm">
+          <button className="btn-interactive flex items-center px-3 py-1.5 bg-white hover:bg-gray-50 text-gray-600 rounded-lg border border-gray-200 transition-colors shadow-sm">
             <MoreHorizontal className="w-4 h-4" />
           </button>
         </div>

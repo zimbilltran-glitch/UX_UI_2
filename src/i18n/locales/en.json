@@ -1,0 +1,15 @@
+{
+  "header": {
+    "searchPlaceholder": "Search ticker...",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "nav": {
+    "overview": "Overview",
+    "valuation": "Valuation",
+    "futureGrowth": "Future Growth",
+    "pastPerformance": "Past Performance",
+    "financialHealth": "Financial Health",
+    "dividend": "Dividend"
+  }
+}

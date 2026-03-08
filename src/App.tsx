@@ -10,6 +10,8 @@ import { Valuation } from './components/Valuation';
 import { FutureGrowth } from './components/FutureGrowth';
 import { PastEarnings } from './components/PastEarnings';
 import { HelpCenter } from './components/HelpCenter';
+import Header from './components/Header';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { colors } from './theme/colors';
 
 export default function App() {
@@ -48,8 +50,8 @@ export default function App() {
         return (
           <div className="flex items-center justify-center h-full">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">{activeTab}</h2>
-              <p className="text-gray-500">This section is under construction.</p>
+              <h2 className="text-2xl font-bold text-primary mb-2">{activeTab}</h2>
+              <p className="text-secondary">This section is under construction.</p>
             </div>
           </div>
         );
@@ -58,11 +60,16 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)]">
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-      <main className="flex-1 overflow-y-auto">
-        {renderContent()}
-      </main>
-    </div>
+    <ThemeProvider>
+      <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)] transition-colors duration-300">
+        <Header />
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+          <main className="flex-1 overflow-y-auto">
+            {renderContent()}
+          </main>
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }

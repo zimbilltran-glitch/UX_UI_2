@@ -111,7 +111,7 @@ export const FutureGrowthOverview = () => {
                     <div 
                       key={index}
                       onClick={() => scrollToSection(check.id)}
-                      className="flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors group"
+                      className="list-row flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors group"
                     >
                       <div className="flex items-center">
                         {check.status === 'pass' ? (
@@ -180,12 +180,12 @@ export const FutureGrowthOverview = () => {
           
           <div className="flex space-x-8 mb-8">
             <div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">{data.key_metrics.earnings_growth}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-1 font-tabular">{data.key_metrics.earnings_growth}</div>
               <div className="text-xs text-gray-500 border-b border-dashed border-gray-300 pb-1 inline-block">Earnings growth rate</div>
             </div>
             <div className="w-px bg-gray-200"></div>
             <div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">{data.key_metrics.eps_growth}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-1 font-tabular">{data.key_metrics.eps_growth}</div>
               <div className="text-xs text-gray-500 border-b border-dashed border-gray-300 pb-1 inline-block">EPS growth rate</div>
             </div>
           </div>
@@ -193,15 +193,15 @@ export const FutureGrowthOverview = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center border-b border-gray-100 pb-3">
               <span className="text-sm text-gray-500 border-b border-dashed border-gray-300 pb-0.5">Banks earnings growth</span>
-              <span className="text-sm font-medium text-gray-900">{data.key_metrics.industry_avg}</span>
+              <span className="text-sm font-medium text-gray-900 font-tabular">{data.key_metrics.industry_avg}</span>
             </div>
             <div className="flex justify-between items-center border-b border-gray-100 pb-3">
               <span className="text-sm text-gray-500 border-b border-dashed border-gray-300 pb-0.5">Revenue growth rate</span>
-              <span className="text-sm font-medium text-gray-900">{data.key_metrics.revenue_growth}</span>
+              <span className="text-sm font-medium text-gray-900 font-tabular">{data.key_metrics.revenue_growth}</span>
             </div>
             <div className="flex justify-between items-center border-b border-gray-100 pb-3">
               <span className="text-sm text-gray-500 border-b border-dashed border-gray-300 pb-0.5">Future return on equity</span>
-              <span className="text-sm font-medium text-gray-900">{data.key_metrics.future_roe}</span>
+              <span className="text-sm font-medium text-gray-900 font-tabular">{data.key_metrics.future_roe}</span>
             </div>
             <div className="flex justify-between items-center border-b border-gray-100 pb-3">
               <span className="text-sm text-gray-500 border-b border-dashed border-gray-300 pb-0.5">Analyst coverage</span>
@@ -209,7 +209,7 @@ export const FutureGrowthOverview = () => {
             </div>
             <div className="flex justify-between items-center pt-1">
               <span className="text-sm text-gray-500">Last updated</span>
-              <span className="text-sm font-medium text-gray-900">{data.key_metrics.last_updated}</span>
+              <span className="text-sm font-medium text-gray-900 font-tabular">{data.key_metrics.last_updated}</span>
             </div>
           </div>
         </div>
@@ -232,7 +232,7 @@ export const FutureGrowthOverview = () => {
 
           <button 
             onClick={() => setShowAllUpdates(true)}
-            className="w-full mt-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors shadow-sm"
+            className="btn-interactive w-full mt-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors shadow-sm"
           >
             Show all updates
           </button>

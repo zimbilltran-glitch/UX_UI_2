@@ -5,12 +5,12 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --color-base: #F4F6F8;
-  --color-card: #FFFFFF;
-  --color-subtle: rgba(0, 0, 0, 0.08);
-  --color-primary: #111827;
-  --color-secondary: #4B5563;
-  --color-bullish: #28A745;
-  --color-bearish: #FF3B30;
-  --color-brand: #007BFF;
+  --color-base: var(--bg-base);
+  --color-card: var(--bg-card);
+  --color-subtle: var(--border-subtle);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-bullish: var(--color-bullish);
+  --color-bearish: var(--color-bearish);
+  --color-brand: var(--brand-primary);
 }

@@ -240,18 +240,18 @@ export function RatioVsPeers() {
           </div>
 
           <div className="flex space-x-2">
-            <button className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm">
               <Database className="w-4 h-4 mr-2" />
               Data
             </button>
             <button 
               onClick={() => setIsLearnModalOpen(true)}
-              className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+              className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
             >
               <Info className="w-4 h-4 mr-2" />
               Learn
             </button>
-            <button className="flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
+            <button className="btn-interactive flex items-center px-2 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm">
               <MoreHorizontal className="w-4 h-4" />
             </button>
           </div>

@@ -327,7 +327,7 @@ export const RatioVsIndustry = () => {
         <div className="flex justify-end mt-6">
           <button 
             onClick={() => setIsLearnModalOpen(true)}
-            className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
+            className="btn-interactive flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm"
           >
             <Info className="w-4 h-4 mr-2" />
             Learn
