@@ -58,8 +58,7 @@ This application follows a modular, component-based architecture using React (Vi
   - **Anchors:** Every major section is wrapped in a `div` with a specific `id` (e.g., `<div id="section_1_1">`). **Crucial:** These IDs must exactly match the `link` properties in the Risk Checks JSON data.
 
 ---
-
-## 2. UI/UX Design System (FinSang Terminal v3.0)
+### 2. UI/UX Design System (FinSang Terminal v3.0)
 
 To maintain visual consistency, the project strictly adheres to the "Light Institutional Modern" theme.
 
@@ -73,8 +72,8 @@ To maintain visual consistency, the project strictly adheres to the "Light Insti
   - Bearish: `--color-bearish` (#FF3B30)
 
 ### 2.2 Typography
-- **UI Font:** Plus Jakarta Sans.
-- **Data Font:** JetBrains Mono.
+- **UI Font:** Plus Jakarta Sans
+- **Data Font:** JetBrains Mono
 - **Tabular Data:** Use `font-tabular` class for all financial figures to ensure alignment.
 
 ### 2.3 Logo & Branding
@@ -87,6 +86,7 @@ To maintain visual consistency, the project strictly adheres to the "Light Insti
 - Use CSS variables for all component styling.
 - Apply `surface-card` class for cards to get the institutional look.
 - **MANDATORY RULE FOR FUTURE FEATURES**: All new features and components MUST strictly adhere to this Design System Guidelines (FinSang Terminal v3.0). This includes using the defined color palette, typography (Plus Jakarta Sans for UI, JetBrains Mono for data), interactive classes (`btn-interactive`, `tab-interactive`, `list-row`), and the `surface-card` class for containers. Do not introduce new styling patterns without updating these guidelines first.
+
 
 ---
 

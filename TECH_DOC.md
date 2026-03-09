@@ -1,22 +1,7 @@
-# Technical Documentation
+# Technical Documentation (Supplementary)
 
-## Overview Module
-
-### 0.0 Overview Supplementary Frames
-**Technical Documentation Note:**
-- **TradingView Widget:** Biểu đồ giá được nhúng trực tiếp thông qua script của TradingView (`embed-widget-advanced-chart.js`).
-- **Snowflake Chart:** Sử dụng màu Bullish Green (`#84cc16`) cho các điểm số đạt yêu cầu để đồng bộ với phong cách thiết kế của FinSang.
-- **Data Synchronization:** Các chỉ số định giá trong "Chỉ số chính" (P/E, P/B, ROE, v.v.) và "Định giá theo P/E" cần được đồng bộ hoàn toàn với dữ liệu từ mục **1.0 Valuation**.
-- **Banking Operation Info:** Khung này hiện đang được thiết kế riêng cho ngành Ngân hàng (MBB). Hệ thống cần có logic để hiển thị các chỉ số chuyên biệt khác nhau tùy thuộc vào ngành nghề của mã cổ phiếu đang được chọn.
-
-## Help Center Module
-
-### Help Center Architecture & Navigation
-**Technical Documentation Note:**
-- **Anchor Link Navigation:** Trang Help Center hỗ trợ điều hướng trực tiếp đến các bài viết thông qua URL Hash.
-- **Tooltip Component:** Các thuật ngữ tài chính được bọc trong một custom `Tooltip` component.
-- **Data Source Disclaimer:** Mục "Why is your data different from other sites?" giải thích rõ về phương pháp tính TTM (Trailing Twelve Months) của Finsang.
-- **Management & Ownership Integration:** Đã bổ sung tài liệu chi tiết cho phần Ban lãnh đạo (Management) và Cơ cấu cổ đông (Ownership).
+## Overview
+This document provides supplementary technical notes and design system guidelines for the FinSang Terminal project. For the comprehensive architecture and data integration guide, refer to [Technical_Documentation.md](./Technical_Documentation.md).
 
 ## Design System Guidelines (FinSang Terminal v3.0)
 
@@ -30,17 +15,23 @@
   - Bearish: `--color-bearish` (#FF3B30)
 
 ### 2. Typography
-- Use the **Plus Jakarta Sans** font family for all UI elements.
-- Use **JetBrains Mono** for financial data (tabular numbers).
-- Use `font-tabular` class for all financial figures to ensure alignment.
+- **UI Font:** Plus Jakarta Sans
+- **Data Font:** JetBrains Mono (tabular numbers)
+- **Class:** Use `font-tabular` for all financial figures.
 
 ### 3. Logo & Branding
-- Use the `FinSangLogo` component from `/src/theme`.
-- The logo is a geometric polyhedron inside a rounded square container.
-- Branding: "Fin" (Bullish Green), "Sang" (Primary Black), "Terminal" (Secondary Gray).
+- **Component:** `FinSangLogo` from `/src/theme`.
+- **Design:** Geometric polyhedron inside a rounded square container.
+- **Branding:** "Fin" (Bullish Green), "Sang" (Primary Black), "Terminal" (Secondary Gray).
 
-### 4. Implementation
+### 4. Implementation Rules
 - Import `theme.css` in your global `index.css`.
 - Use CSS variables for all component styling.
 - Apply `surface-card` class for cards to get the institutional look.
-- **MANDATORY RULE FOR FUTURE FEATURES**: All new features and components MUST strictly adhere to this Design System Guidelines (FinSang Terminal v3.0). This includes using the defined color palette, typography (Plus Jakarta Sans for UI, JetBrains Mono for data), interactive classes (`btn-interactive`, `tab-interactive`, `list-row`), and the `surface-card` class for containers. Do not introduce new styling patterns without updating these guidelines first.
+- **MANDATORY:** All new features MUST strictly adhere to these guidelines, including defined colors, typography, and interactive classes (`btn-interactive`, `tab-interactive`, `list-row`).
+
+## Key Technical Notes
+- **TradingView Widget:** Embedded via script (`embed-widget-advanced-chart.js`).
+- **Snowflake Chart:** Uses Bullish Green (`#84cc16`) for successful scores.
+- **Help Center:** Supports anchor link navigation via URL Hash.
+- **Data Synchronization:** All financial metrics must be synchronized with the backend data structure.

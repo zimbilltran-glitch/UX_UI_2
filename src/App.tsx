@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { CompanyOverview } from './components/CompanyOverview';
@@ -14,9 +9,15 @@ import { HelpCenter } from './components/HelpCenter';
 import Header from './components/Header';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { colors } from './theme/colors';
+import { useFinancialData } from './hooks/useFinancialData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Overview');
+  const { data, loading, error } = useFinancialData('MBB');
+
+  console.log('App test - Data:', data);
+  console.log('App test - Loading:', loading);
+  console.log('App test - Error:', error);
 
   const navigateTo = (tab: string, sectionId?: string) => {
     setActiveTab(tab);
