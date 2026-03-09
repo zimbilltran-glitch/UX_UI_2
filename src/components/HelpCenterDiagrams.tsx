@@ -9,13 +9,13 @@ export const SnowflakeDiagram = () => (
     <line x1="50" y1="50" x2="50" y2="90" stroke="#E5E7EB" strokeWidth="0.5" />
     <line x1="50" y1="50" x2="10" y2="70" stroke="#E5E7EB" strokeWidth="0.5" />
     <line x1="50" y1="50" x2="10" y2="30" stroke="#E5E7EB" strokeWidth="0.5" />
-    <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" fill="rgba(0, 123, 255, 0.1)" stroke="#007BFF" strokeWidth="1.5" />
-    <circle cx="50" cy="20" r="2" fill="#007BFF" />
-    <circle cx="80" cy="35" r="2" fill="#007BFF" />
-    <circle cx="80" cy="65" r="2" fill="#007BFF" />
-    <circle cx="50" cy="80" r="2" fill="#007BFF" />
-    <circle cx="20" cy="65" r="2" fill="#007BFF" />
-    <circle cx="20" cy="35" r="2" fill="#007BFF" />
+    <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" fill="rgba(132, 204, 22, 0.1)" stroke="#84cc16" strokeWidth="1.5" />
+    <circle cx="50" cy="20" r="2" fill="#84cc16" />
+    <circle cx="80" cy="35" r="2" fill="#84cc16" />
+    <circle cx="80" cy="65" r="2" fill="#84cc16" />
+    <circle cx="50" cy="80" r="2" fill="#84cc16" />
+    <circle cx="20" cy="65" r="2" fill="#84cc16" />
+    <circle cx="20" cy="35" r="2" fill="#84cc16" />
   </svg>
 );
 

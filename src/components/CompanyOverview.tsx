@@ -48,7 +48,7 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
   ];
 
   const totalScore = Object.values(data.snowflake_scores).reduce((a, b) => a + b, 0);
-  const snowflakeColor = totalScore >= 20 ? '#22c55e' : totalScore >= 10 ? '#eab308' : '#ef4444';
+  const snowflakeColor = totalScore >= 10 ? '#84cc16' : '#ef4444';
   
   const hasRisks = data.risk_checks.some(check => check.status === 'fail');
 
@@ -73,9 +73,9 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
   return (
     <div className="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 font-sans" id="section_0_0">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start mb-8 surface-card p-6">
+      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-8 p-6 flex flex-col md:flex-row justify-between items-start">
         <div className="flex items-start space-x-4">
-          <div className="w-16 h-16 bg-base border border-subtle rounded-xl flex items-center justify-center p-2 shadow-sm">
+          <div className="w-16 h-16 bg-white border border-subtle rounded-xl flex items-center justify-center p-2 shadow-sm">
              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Logo_MB_new.png/600px-Logo_MB_new.png" alt="MBB Logo" className="object-contain" referrerPolicy="no-referrer" />
           </div>
           <div>
@@ -122,87 +122,109 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
       </div>
 
       {/* Overview & Snowflake */}
-      <div className="surface-card p-8 mb-8 grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h2 className="text-2xl font-bold text-primary mb-2">{data.name} ({data.ticker}) Stock Overview</h2>
-          <p className="text-secondary mb-8 leading-relaxed">Provides banking products and services. <a href="#" className="text-brand hover:underline font-medium">More details &gt;</a></p>
-          
-          <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4">REWARDS</h3>
-          <ul className="space-y-4 mb-8">
-            {data.rewards.map((reward, idx) => (
-              <li key={idx} className="flex items-start group cursor-pointer" onClick={() => scrollToSection(reward.tab, reward.link)}>
-                <Star className="w-5 h-5 text-bullish mr-3 flex-shrink-0 mt-0.5" fill={reward.isGood ? "#10b981" : "none"} />
-                <span className="text-secondary group-hover:text-primary transition-colors group-hover:underline decoration-subtle underline-offset-4 font-medium">{reward.text} <ChevronRight className="inline w-4 h-4 text-secondary group-hover:text-secondary transition-colors" /></span>
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4">RISK ANALYSIS</h3>
-          {hasRisks ? (
-            <div className="mb-4">
-              <p className="text-bearish font-semibold mb-2">Risks detected for {data.ticker} from our risk checks.</p>
-              <ul className="list-disc pl-5 text-secondary text-sm space-y-1">
-                {data.risk_checks.filter(r => r.status === 'fail').map((risk, idx) => (
-                  <li key={idx}>{risk.label}</li>
+      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-8">
+        <div className="p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Left Column: Rewards & Risks */}
+            <div className="w-full md:w-1/2 bg-base rounded-xl p-6 border border-subtle">
+              <h2 className="text-xl font-bold text-primary mb-2">{data.name} ({data.ticker}) Overview</h2>
+              <p className="text-secondary text-sm mb-6 leading-relaxed">Provides banking products and services. <a href="#" className="text-brand hover:underline font-medium">More details &gt;</a></p>
+              
+              <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4">REWARDS</h3>
+              <ul className="space-y-3 mb-6">
+                {data.rewards.map((reward, idx) => (
+                  <li key={idx} className="flex items-start group cursor-pointer" onClick={() => scrollToSection(reward.tab, reward.link)}>
+                    <Star className="w-4 h-4 text-bullish mr-3 flex-shrink-0 mt-0.5" fill={reward.isGood ? "#10b981" : "none"} />
+                    <span className="text-secondary text-sm group-hover:text-primary transition-colors group-hover:underline decoration-subtle underline-offset-4 font-medium">
+                      {reward.text} <ChevronRight className="inline w-3 h-3 text-secondary group-hover:text-secondary transition-colors" />
+                    </span>
+                  </li>
                 ))}
               </ul>
-            </div>
-          ) : (
-            <p className="text-primary font-medium mb-6">No risks detected for {data.ticker} from our risk checks.</p>
-          )}
-          <button 
-            onClick={() => setShowRiskModal(true)}
-            className="bg-brand hover:bg-brand/90 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm"
-          >
-            See All Risk Checks
-          </button>
-        </div>
 
-        <div className="flex flex-col items-center justify-center relative">
-          <div className="w-80 h-80 relative">
-            <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={snowflakeData}>
-                  <PolarGrid stroke="#e5e7eb" />
-                  <PolarAngleAxis 
-                    dataKey="subject" 
-                    tick={{ fill: '#6b7280', fontSize: 12, fontWeight: 700 }} 
-                    tickMargin={10}
-                  />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
-                  <Radar 
-                    name={data.ticker} 
-                    dataKey="A" 
-                    stroke={snowflakeColor} 
-                    strokeWidth={2} 
-                    fill={snowflakeColor} 
-                    fillOpacity={0.6} 
-                  />
-                </RadarChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="text-center mt-4">
-            <p className="text-secondary text-sm font-semibold uppercase tracking-wide">Snowflake Analysis</p>
-            <p className="text-primary font-bold text-lg">Undervalued with high growth potential.</p>
-          </div>
-          
-          <div className="absolute bottom-0 right-0 flex space-x-2">
-            <button 
-              onClick={() => setShowDataModal(true)}
-              className="btn-interactive flex items-center space-x-1.5 bg-brand hover:bg-brand/90 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
-            >
-              <Table size={14} />
-              <span>Data</span>
-            </button>
-            <button 
-              onClick={() => setShowLearnModal(true)}
-              className="btn-interactive flex items-center space-x-1.5 bg-brand hover:bg-brand/90 text-white px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm"
-            >
-              <Info size={14} />
-              <span>Learn</span>
-            </button>
-            <button className="btn-interactive flex items-center justify-center bg-brand hover:bg-brand/90 text-white w-8 h-8 rounded-lg transition-colors shadow-sm">
-              <MoreHorizontal size={14} />
-            </button>
+              <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4">RISK ANALYSIS</h3>
+              {hasRisks ? (
+                <div className="mb-4">
+                  <p className="text-bearish text-sm font-semibold mb-2">Risks detected for {data.ticker} from our risk checks.</p>
+                  <ul className="list-disc pl-5 text-secondary text-xs space-y-1">
+                    {data.risk_checks.filter(r => r.status === 'fail').map((risk, idx) => (
+                      <li key={idx}>{risk.label}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <p className="text-primary text-sm font-medium mb-6">No risks detected for {data.ticker} from our risk checks.</p>
+              )}
+              <button 
+                onClick={() => setShowRiskModal(true)}
+                className="btn-interactive bg-brand hover:bg-brand/90 text-white px-4 py-2 rounded-lg text-xs font-semibold transition-colors shadow-sm"
+              >
+                See All Risk Checks
+              </button>
+            </div>
+
+            {/* Right Column: Radar Chart */}
+            <div className="w-full md:w-1/2 flex flex-col items-center justify-center bg-base rounded-xl border border-subtle p-6 relative">
+              <div className="w-full max-w-[280px] aspect-square relative">
+                <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={snowflakeData}>
+                      <PolarGrid stroke="var(--border-subtle)" />
+                      <PolarAngleAxis 
+                        dataKey="subject" 
+                        tick={(props) => {
+                          const { x, y, payload } = props;
+                          return (
+                            <text 
+                              x={x} 
+                              y={y} 
+                              dy={4} 
+                              textAnchor="middle" 
+                              fill="var(--text-secondary)" 
+                              fontSize={10} 
+                              fontWeight={600}
+                            >
+                              {payload.value}
+                            </text>
+                          );
+                        }} 
+                      />
+                      <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
+                      <Radar 
+                        name={data.ticker} 
+                        dataKey="A" 
+                        stroke={snowflakeColor} 
+                        strokeWidth={2} 
+                        fill={snowflakeColor} 
+                        fillOpacity={0.6} 
+                      />
+                    </RadarChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-secondary text-[10px] font-bold uppercase tracking-widest mb-1">SNOWFLAKE ANALYSIS</p>
+                <p className="text-primary font-bold text-base leading-tight">Undervalued with high growth potential.</p>
+              </div>
+              
+              <div className="absolute bottom-4 right-4 flex space-x-2">
+                <button 
+                  onClick={() => setShowDataModal(true)}
+                  className="w-8 h-8 flex items-center justify-center bg-card hover:bg-subtle text-secondary rounded-lg transition-colors border border-subtle shadow-sm"
+                  title="Data"
+                >
+                  <Table size={14} />
+                </button>
+                <button 
+                  onClick={() => setShowLearnModal(true)}
+                  className="w-8 h-8 flex items-center justify-center bg-card hover:bg-subtle text-secondary rounded-lg transition-colors border border-subtle shadow-sm"
+                  title="Learn"
+                >
+                  <Info size={14} />
+                </button>
+                <button className="w-8 h-8 flex items-center justify-center bg-card hover:bg-subtle text-secondary rounded-lg transition-colors border border-subtle shadow-sm">
+                  <MoreHorizontal size={14} />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

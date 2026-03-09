@@ -48,54 +48,74 @@ export const ValuationOverview = () => {
         Is MBB undervalued compared to its fair value and its price relative to the market?
       </p>
 
-      <div className="bg-card rounded-xl p-8 border border-subtle flex flex-col md:flex-row shadow-lg">
-        {/* Left Column: Checklist */}
-        <div className="w-full md:w-3/5 pr-0 md:pr-8 mb-8 md:mb-0">
-          <h3 className="text-xl font-bold text-primary mb-6">Valuation Score {mockSummary.score}</h3>
-          <div className="space-y-2">
-            {mockSummary.checks.map((check, index) => (
-              <div 
-                key={index}
-                onClick={() => scrollToSection(check.target_id)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-subtle cursor-pointer transition-colors group"
-              >
-                <div className="flex items-center">
-                  {check.status === 'pass' ? (
-                    <CheckCircle2 className="w-5 h-5 text-bullish mr-3 flex-shrink-0" />
-                  ) : (
-                    <XCircle className="w-5 h-5 text-bearish mr-3 flex-shrink-0" />
-                  )}
-                  <span className="text-secondary font-medium group-hover:text-primary transition-colors">
-                    {check.label}
-                  </span>
-                </div>
-                <ChevronRight className="w-4 h-4 text-secondary group-hover:text-secondary transition-colors" />
+      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-6">
+        <div className="p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Left Column: Checklist */}
+            <div className="w-full md:w-3/5 bg-base rounded-xl p-4 border border-subtle">
+              <h3 className="text-sm font-bold text-primary mb-4 px-2">Valuation Score <span className="text-bullish">{mockSummary.score}</span></h3>
+              <div className="space-y-1">
+                {mockSummary.checks.map((check, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => scrollToSection(check.target_id)}
+                    className="flex items-center justify-between p-2.5 rounded-lg hover:bg-subtle cursor-pointer transition-colors group"
+                  >
+                    <div className="flex items-center">
+                      {check.status === 'pass' ? (
+                        <CheckCircle2 className="w-4 h-4 text-bullish mr-3 flex-shrink-0" />
+                      ) : (
+                        <XCircle className="w-4 h-4 text-bearish mr-3 flex-shrink-0" />
+                      )}
+                      <span className="text-secondary text-sm font-medium group-hover:text-primary transition-colors">
+                        {check.label}
+                      </span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-secondary group-hover:text-secondary transition-colors" />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Right Column: Radar Chart */}
-        <div className="w-full md:w-2/5 flex items-center justify-center relative">
-          <div className="w-full max-w-[300px] aspect-square">
-            <ResponsiveContainer width="100%" height="100%">
-              <RadarChart cx="50%" cy="50%" outerRadius="70%" data={snowflakeData}>
-                <PolarGrid stroke="#e5e7eb" />
-                <PolarAngleAxis 
-                  dataKey="subject" 
-                  tick={{ fill: '#6b7280', fontSize: 10, fontWeight: 600 }} 
-                />
-                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
-                <Radar
-                  name="MBB"
-                  dataKey="A"
-                  stroke="#84cc16"
-                  strokeWidth={2}
-                  fill="#84cc16"
-                  fillOpacity={0.6}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
+            {/* Right Column: Radar Chart */}
+            <div className="w-full md:w-2/5 flex items-center justify-center bg-base rounded-xl border border-subtle p-4">
+              <div className="w-full max-w-[250px] aspect-square">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart cx="50%" cy="50%" outerRadius="70%" data={snowflakeData}>
+                    <PolarGrid stroke="var(--border-subtle)" />
+                    <PolarAngleAxis 
+                      dataKey="subject" 
+                      tick={(props) => {
+                        const { x, y, payload } = props;
+                        const isValue = payload.value === 'VALUE';
+                        return (
+                          <text 
+                            x={x} 
+                            y={y} 
+                            dy={4} 
+                            textAnchor="middle" 
+                            fill={isValue ? '#84cc16' : 'var(--text-secondary)'} 
+                            fontSize={10} 
+                            fontWeight={isValue ? 700 : 600}
+                          >
+                            {payload.value}
+                          </text>
+                        );
+                      }} 
+                    />
+                    <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} axisLine={false} />
+                    <Radar
+                      name="MBB"
+                      dataKey="A"
+                      stroke="#84cc16"
+                      strokeWidth={2}
+                      fill="#84cc16"
+                      fillOpacity={0.6}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@
 ### 0.0 Overview Supplementary Frames
 **Technical Documentation Note:**
 - **TradingView Widget:** Biểu đồ giá được nhúng trực tiếp thông qua script của TradingView (`embed-widget-advanced-chart.js`).
+- **Snowflake Chart:** Sử dụng màu Bullish Green (`#84cc16`) cho các điểm số đạt yêu cầu để đồng bộ với phong cách thiết kế của FinSang.
 - **Data Synchronization:** Các chỉ số định giá trong "Chỉ số chính" (P/E, P/B, ROE, v.v.) và "Định giá theo P/E" cần được đồng bộ hoàn toàn với dữ liệu từ mục **1.0 Valuation**.
 - **Banking Operation Info:** Khung này hiện đang được thiết kế riêng cho ngành Ngân hàng (MBB). Hệ thống cần có logic để hiển thị các chỉ số chuyên biệt khác nhau tùy thuộc vào ngành nghề của mã cổ phiếu đang được chọn.
 

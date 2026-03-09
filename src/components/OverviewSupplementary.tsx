@@ -1,50 +1,68 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export function OverviewSupplementary() {
   const container = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    // TradingView Widget injection
-    if (container.current && !container.current.querySelector('script')) {
-      const script = document.createElement("script");
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.innerHTML = `
-        {
-          "autosize": true,
-          "symbol": "HOSE:MBB",
-          "interval": "D",
-          "timezone": "Asia/Ho_Chi_Minh",
-          "theme": "dark",
-          "style": "1",
-          "locale": "en",
-          "enable_publishing": false,
-          "backgroundColor": "#111111",
-          "gridColor": "rgba(255, 255, 255, 0.1)",
-          "hide_top_toolbar": false,
-          "hide_legend": false,
-          "save_image": false,
-          "container_id": "tradingview_mbb",
-          "support_host": "https://www.tradingview.com"
-        }
-      `;
-      container.current.appendChild(script);
-    }
-  }, []);
+    const currentContainer = container.current;
+    if (!currentContainer) return;
+
+    // Clear container to re-inject script when theme changes
+    currentContainer.innerHTML = '';
+    
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    
+    const bgColor = theme === 'dark' ? '#111111' : '#FFFFFF';
+    const gridColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)';
+    
+    // Use a theme-specific ID to avoid conflicts during re-injection
+    const containerId = `tradingview_mbb_${theme}`;
+    currentContainer.id = containerId;
+
+    script.innerHTML = JSON.stringify({
+      "autosize": true,
+      "symbol": "HOSE:MBB",
+      "interval": "D",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "theme": theme,
+      "style": "1",
+      "locale": "en",
+      "enable_publishing": false,
+      "backgroundColor": bgColor,
+      "gridColor": gridColor,
+      "hide_top_toolbar": false,
+      "hide_legend": false,
+      "save_image": false,
+      "container_id": containerId,
+      "support_host": "https://www.tradingview.com"
+    });
+    
+    currentContainer.appendChild(script);
+
+    return () => {
+      if (currentContainer) {
+        currentContainer.innerHTML = '';
+      }
+    };
+  }, [theme]);
 
   return (
     <div className="space-y-6 mt-8 font-sans">
       {/* Frame 4: Price Chart (TradingView) */}
-      <div className="surface-card overflow-hidden flex flex-col" style={{ height: '500px' }}>
+      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden flex flex-col" style={{ height: '500px' }}>
         <div className="p-4 border-b border-subtle bg-base">
           <h3 className="text-lg font-bold text-primary">Price Chart</h3>
         </div>
-        <div className="flex-1 w-full" id="tradingview_mbb" ref={container}></div>
+        <div className="flex-1 w-full" ref={container}></div>
       </div>
 
       {/* Frame 1: Key Metrics */}
-      <div className="surface-card p-6">
+      <div className="bg-card rounded-xl border border-subtle shadow-lg p-6">
         <h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-4">Key Metrics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-base rounded-xl p-4 border border-subtle shadow-sm">
@@ -83,7 +101,7 @@ export function OverviewSupplementary() {
       </div>
 
       {/* Frame 2: P/E Valuation */}
-      <div className="surface-card p-6">
+      <div className="bg-card rounded-xl border border-subtle shadow-lg p-6">
         <h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-24">P/E Valuation</h3>
         
         <div className="relative w-full mb-16">
@@ -122,7 +140,7 @@ export function OverviewSupplementary() {
       </div>
 
       {/* Frame 3: Banking Operations */}
-      <div className="surface-card p-6">
+      <div className="bg-card rounded-xl border border-subtle shadow-lg p-6">
         <h3 className="text-sm font-bold text-secondary uppercase tracking-wider mb-6">Banking Operations</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
           <div className="flex justify-between items-center border-b border-subtle pb-3">

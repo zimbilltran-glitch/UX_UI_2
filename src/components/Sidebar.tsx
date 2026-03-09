@@ -1,5 +1,4 @@
 import React from 'react';
-import { FinSangLogo } from '../theme';
 import { useTranslation } from 'react-i18next';
 import { 
   Home, 
@@ -23,18 +22,6 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setAct
 
   return (
     <aside className="w-64 bg-[var(--bg-card)] border-r border-[var(--border-subtle)] flex flex-col h-screen sticky top-0 font-sans">
-      <div className="p-4 flex items-center space-x-3 border-b border-[var(--border-subtle)]">
-        <FinSangLogo className="w-10 h-10" />
-        <div className="flex flex-col">
-          <div className="flex items-baseline">
-            <span className="text-bullish font-bold text-lg tracking-tight">Fin</span>
-            <span className="text-primary font-bold text-lg tracking-tight">Sang</span>
-            <span className="text-secondary font-bold text-lg tracking-tight ml-1">Terminal</span>
-          </div>
-          <span className="text-secondary text-[10px] uppercase tracking-wider font-bold">V3.0 • INSTITUTIONAL</span>
-        </div>
-      </div>
-      
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="space-y-1 px-3">
           <NavItem icon={<Home size={20} />} label="Dashboard" />
@@ -56,6 +43,7 @@ export function Sidebar({ activeTab, setActiveTab }: { activeTab: string, setAct
           <NavItem icon={<DollarSign size={20} />} label={t('nav.dividend')} active={activeTab === 'Dividend'} onClick={() => setActiveTab('Dividend')} />
           <NavItem icon={<Users size={20} />} label="Management" active={activeTab === 'Management'} onClick={() => setActiveTab('Management')} />
           <NavItem icon={<Briefcase size={20} />} label="Ownership" active={activeTab === 'Ownership'} onClick={() => setActiveTab('Ownership')} />
+          <NavItem icon={<BarChart2 size={20} />} label="Financial Statements" active={activeTab === 'Financial Statements'} onClick={() => setActiveTab('Financial Statements')} />
           <NavItem icon={<Newspaper size={20} />} label="Other information" active={activeTab === 'Other information'} onClick={() => setActiveTab('Other information')} />
           
           <div className="pt-6 pb-3 px-3 border-t border-[var(--border-subtle)] mt-4">

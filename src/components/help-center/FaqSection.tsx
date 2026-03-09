@@ -54,7 +54,7 @@ export const FaqSection = () => {
               The Snowflake is colour-coded on a scale. The greater the number of successful checks a company has, the greener the Snowflake will appear. On the opposite end, the lower the number of successful checks a company has, the redder the Snowflake will appear.
             </p>
             <p>
-              As the number of successful checks a company has increased, the Snowflake will transition from red to orange to yellow and finally to green.
+              As the number of successful checks a company has increased, the Snowflake will transition from red to orange and finally to green.
             </p>
           </div>
 

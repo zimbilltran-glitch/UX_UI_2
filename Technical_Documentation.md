@@ -46,7 +46,7 @@ This application follows a modular, component-based architecture using React (Vi
 ### 1.3 `CompanyOverview.tsx` (Dashboard Landing)
 - **Role:** The 360° summary view.
 - **Sub-components & Features:**
-  - **Snowflake Chart:** Built using Recharts `<RadarChart>`. It uses a custom `<PolarAngleAxis>` with a `tick` render function to position the labels (Value, Future, Past, Health, Dividend) correctly around the hexagon.
+  - **Snowflake Chart:** Built using Recharts `<RadarChart>`. It uses a custom `<PolarAngleAxis>` with a `tick` render function to position the labels (Value, Future, Past, Health, Dividend) correctly around the hexagon. The chart uses a Bullish Green color (`#84cc16`) for successful scores.
   - **Rewards & Risk Checks:** Lists of pros and cons. They utilize the `onNavigate` prop to trigger cross-tab navigation.
   - **Modals:** Uses local state (`isRiskModalOpen`) to conditionally render a full-screen overlay showing all risk checks.
 

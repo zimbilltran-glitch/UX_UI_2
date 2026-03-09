@@ -30,9 +30,8 @@ export default function Header() {
 
         <div className="flex flex-col hidden sm:flex">
           <h1 className="text-2xl font-bold tracking-tight text-primary">
-            <span className="text-bullish">Fin</span>Sang <span className="text-secondary font-normal ml-1">Terminal</span>
+            <span className="text-bullish">Fin</span>Sang
           </h1>
-          <span className="text-[11px] font-semibold text-secondary tracking-widest uppercase mt-0">v3.0 • Institutional</span>
         </div>
 
         {/* Search Input */}
