@@ -1,55 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { AdvancedRealTimeChart } from 'react-ts-tradingview-widgets';
 
 export function OverviewSupplementary() {
-  const container = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
-
-  useEffect(() => {
-    const currentContainer = container.current;
-    if (!currentContainer) return;
-
-    // Clear container to re-inject script when theme changes
-    currentContainer.innerHTML = '';
-    
-    const script = document.createElement("script");
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-    script.type = "text/javascript";
-    script.async = true;
-    
-    const bgColor = theme === 'dark' ? '#111111' : '#FFFFFF';
-    const gridColor = theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)';
-    
-    // Use a theme-specific ID to avoid conflicts during re-injection
-    const containerId = `tradingview_mbb_${theme}`;
-    currentContainer.id = containerId;
-
-    script.innerHTML = JSON.stringify({
-      "autosize": true,
-      "symbol": "HOSE:MBB",
-      "interval": "D",
-      "timezone": "Asia/Ho_Chi_Minh",
-      "theme": theme,
-      "style": "1",
-      "locale": "en",
-      "enable_publishing": false,
-      "backgroundColor": bgColor,
-      "gridColor": gridColor,
-      "hide_top_toolbar": false,
-      "hide_legend": false,
-      "save_image": false,
-      "container_id": containerId,
-      "support_host": "https://www.tradingview.com"
-    });
-    
-    currentContainer.appendChild(script);
-
-    return () => {
-      if (currentContainer) {
-        currentContainer.innerHTML = '';
-      }
-    };
-  }, [theme]);
 
   return (
     <div className="space-y-6 mt-8 font-sans">
@@ -58,7 +12,21 @@ export function OverviewSupplementary() {
         <div className="p-4 border-b border-subtle bg-base">
           <h3 className="text-lg font-bold text-primary">Price Chart</h3>
         </div>
-        <div className="flex-1 w-full" ref={container}></div>
+        <div className="flex-1 w-full relative">
+          <AdvancedRealTimeChart 
+            symbol="HOSE:MBB"
+            theme={theme === 'dark' ? 'dark' : 'light'}
+            interval="D"
+            timezone="Asia/Ho_Chi_Minh"
+            style="1"
+            locale="en"
+            enable_publishing={false}
+            hide_top_toolbar={false}
+            hide_legend={false}
+            save_image={false}
+            autosize
+          />
+        </div>
       </div>
 
       {/* Frame 1: Key Metrics */}

@@ -5,6 +5,7 @@ import { Valuation } from './components/Valuation';
 import { FutureGrowth } from './components/FutureGrowth';
 import { PastEarnings } from './components/PastEarnings';
 import { FinancialStatements } from './components/FinancialStatements';
+import { FinancialHealth } from './components/FinancialHealth';
 import { HelpCenter } from './components/HelpCenter';
 import Header from './components/Header';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -43,9 +44,9 @@ export default function App() {
       case 'Valuation': return <Valuation />;
       case 'Future Growth': return <FutureGrowth />;
       case 'Past Performance': return <PastEarnings />;
+      case 'Financial Health': return <FinancialHealth />;
       case 'Financial Statements': return <FinancialStatements />;
       case 'Help Center': return <HelpCenter />;
-      case 'Financial Health': 
       case 'Dividend':
       case 'Management':
       case 'Ownership':

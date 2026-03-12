@@ -301,6 +301,13 @@ Used by the AI Studio environment to define the applet's metadata.
 - Updated `Sidebar` branding: "Fin" (Bullish Green), "Sang" (Primary Black), "Terminal" (Secondary Gray).
 - Updated all technical documentation (`TECH_DOC.md`, `Technical_Documentation.md`) to reflect the new design system as the single source of truth.
 
+### Phase 14: Past Performance Deep Dive (Sections 3.3 - 3.7)
+- Built the **"3.3 Free Cash Flow vs Earnings Analysis"** component using a custom Waterfall chart to visualize additions and deductions from earnings.
+- Built the **"3.4 Past Earnings Growth Analysis"** component using grouped bar charts to compare company, industry, and market growth over 1-year and 5-year periods.
+- Built the **"3.5 Return on Equity"**, **"3.6 Return on Assets"**, and **"3.7 Return on Capital Employed"** components.
+- Created a reusable `GaugeChart` component to visualize ROE, ROA, and ROCE metrics against industry benchmarks using SVG arcs and needles.
+- Integrated all these components into the main `PastEarnings` tab, replacing the previous placeholders.
+
 ---
 
 ## 6. Pending Tasks / Under Construction
