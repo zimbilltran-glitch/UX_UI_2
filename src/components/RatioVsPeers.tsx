@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Pencil, Star, ChevronDown, Info, Database, MoreHorizontal, X, Search, CheckCircle2 } from 'lucide-react';
+
+const metricNameMap = {
+  PE: 'Price to Earnings',
+  PS: 'Price to Sales',
+  PB: 'Price to Book'
+} as const;
 
 const mockData = {
   PE: {
@@ -74,18 +80,12 @@ export function RatioVsPeers() {
 
   const currentData = mockData[metric][isForward && metric !== 'PB' ? 'forward' : 'trailing'];
   
-  const metricNameMap = {
-    PE: 'Price to Earnings',
-    PS: 'Price to Sales',
-    PB: 'Price to Book'
-  };
-
   const metricLabel = metricNameMap[metric];
-  const targetPeer = currentData.peers.find(p => p.is_target);
+  const targetPeer = useMemo(() => currentData.peers.find(p => p.is_target), [currentData]);
   const targetValue = targetPeer ? targetPeer.value : 0;
   
   // Calculate max value for chart scaling
-  const maxValue = Math.max(...currentData.peers.map(p => p.value), currentData.peer_avg) * 1.2;
+  const maxValue = useMemo(() => Math.max(...currentData.peers.map(p => p.value), currentData.peer_avg) * 1.2, [currentData]);
 
   return (
     <div className="mb-12 font-sans">
