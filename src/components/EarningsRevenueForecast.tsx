@@ -52,7 +52,7 @@ const CustomTooltip = ({ active, payload, activeMetrics }: any) => {
     const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
     return (
-      <div className="bg-card border border-subtle rounded-xl p-3 shadow-lg text-sm min-w-[320px]">
+      <div className="bg-card border border-subtle rounded-xl p-3 shadow-lg text-sm w-full max-w-[320px] sm:min-w-[320px]">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-subtle text-xs text-secondary">

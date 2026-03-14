@@ -53,7 +53,7 @@ const CustomTooltip = ({ active, payload, activeMetrics }: any) => {
     const profitMargin = revenue && earnings ? ((earnings / revenue) * 100).toFixed(1) : null;
 
     return (
-      <div className="bg-card border border-subtle rounded-xl p-3 shadow-lg text-sm min-w-[280px]">
+      <div className="bg-card border border-subtle rounded-xl p-3 shadow-lg text-sm w-full max-w-[280px] sm:min-w-[280px]">
         <div className="border-b border-subtle pb-2 mb-2">
           <div className="font-bold text-primary text-sm">{formattedDate}</div>
         </div>

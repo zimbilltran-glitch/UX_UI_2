@@ -95,7 +95,7 @@ const mockData = {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-card border border-subtle p-3 rounded-xl shadow-lg min-w-[250px]">
+      <div className="bg-card border border-subtle p-3 rounded-xl shadow-lg w-full max-w-[250px] sm:min-w-[250px]">
         <p className="text-primary font-bold text-sm mb-1">{payload[0].payload.date}</p>
         <div className="flex justify-between items-center">
           <p className="text-secondary text-sm">{mockData.companyName}</p>

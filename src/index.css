@@ -13,4 +13,10 @@
   --color-bullish: var(--color-bullish);
   --color-bearish: var(--color-bearish);
   --color-brand: var(--brand-primary);
+  --animate-marquee: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }

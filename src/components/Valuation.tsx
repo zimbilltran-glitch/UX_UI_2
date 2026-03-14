@@ -36,9 +36,9 @@ export function Valuation() {
           What is the Fair Price of MBB when looking at its future cash flows? For this estimate we use a Discounted Cash Flow model.
         </p>
 
-        <div className="surface-card p-8 relative overflow-hidden">
+        <div className="surface-card p-4 sm:p-8 relative overflow-hidden">
           
-          <div className="relative pt-24 pb-24 w-full flex flex-col justify-center">
+          <div className="relative pt-16 pb-20 sm:pt-24 sm:pb-24 w-full flex flex-col justify-center">
             
             {/* The Bar */}
             <div className="relative h-3 w-full rounded-full bg-gradient-to-r from-bullish via-yellow-400 to-bearish shadow-inner">
@@ -51,47 +51,47 @@ export function Valuation() {
 
               {/* Badge above the gap */}
               <div 
-                className="absolute bottom-full mb-8 flex flex-col items-center"
+                className="absolute bottom-full mb-6 sm:mb-8 flex flex-col items-center"
                 style={{ left: '55%', transform: 'translateX(-50%)' }}
               >
-                <div className="flex items-center space-x-1 bg-bullish/10 border border-bullish/30 px-3 py-1.5 rounded-full shadow-sm">
-                  <TrendingUp size={14} className="text-bullish" />
-                  <span className="text-bullish font-bold text-xs tracking-wider">46.2% UNDERVALUED</span>
+                <div className="flex items-center space-x-1 bg-bullish/10 border border-bullish/30 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-sm">
+                  <TrendingUp size={12} className="text-bullish sm:w-[14px] sm:h-[14px]" />
+                  <span className="text-bullish font-bold text-[10px] sm:text-xs tracking-wider">46.2% UNDERVALUED</span>
                 </div>
                 {/* Connecting line for badge */}
-                <div className="h-6 w-px bg-emerald-200 mt-1"></div>
+                <div className="h-4 sm:h-6 w-px bg-emerald-200 mt-1"></div>
               </div>
 
               {/* Current Price Marker */}
               <div className="absolute top-1/2 -translate-y-1/2" style={{ left: '35%' }}>
                 {/* Dot */}
                 <div className="relative flex items-center justify-center">
-                  <div className="w-4 h-4 bg-card border-4 border-subtle rounded-full shadow-md z-10"></div>
+                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-card border-2 sm:border-4 border-subtle rounded-full shadow-md z-10"></div>
                 </div>
                 
                 {/* Label (Above) */}
-                <div className="absolute bottom-full mb-5 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                  <div className="bg-card border border-subtle px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
-                    <div className="text-secondary text-[10px] uppercase tracking-wider font-semibold mb-0.5 text-center">Current Price</div>
-                    <div className="text-primary font-bold text-lg tracking-tight font-tabular">₫26,700.00</div>
+                <div className="absolute bottom-full mb-3 sm:mb-5 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                  <div className="bg-card border border-subtle px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow-lg whitespace-nowrap">
+                    <div className="text-secondary text-[8px] sm:text-[10px] uppercase tracking-wider font-semibold mb-0.5 text-center">Current Price</div>
+                    <div className="text-primary font-bold text-sm sm:text-lg tracking-tight font-tabular">₫26,700.00</div>
                   </div>
                   {/* Pointer */}
-                  <div className="w-px h-5 bg-subtle mt-1"></div>
+                  <div className="w-px h-3 sm:h-5 bg-subtle mt-1"></div>
                 </div>
               </div>
 
               {/* Fair Value Marker */}
               <div className="absolute top-1/2 -translate-y-1/2" style={{ left: '75%' }}>
                 {/* Line */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-12 bg-bullish"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-8 sm:h-12 bg-bullish"></div>
                 
                 {/* Label (Below) */}
-                <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <div className="absolute top-full mt-4 sm:mt-6 left-1/2 -translate-x-1/2 flex flex-col items-center">
                   {/* Pointer */}
-                  <div className="w-px h-5 bg-emerald-200 mb-1"></div>
+                  <div className="w-px h-3 sm:h-5 bg-emerald-200 mb-1"></div>
                   <div className="whitespace-nowrap text-center">
-                    <div className="text-secondary text-[10px] uppercase tracking-wider font-semibold mb-0.5">Fair Value</div>
-                    <div className="text-bullish font-bold text-lg tracking-tight font-tabular">₫49,615.29</div>
+                    <div className="text-secondary text-[8px] sm:text-[10px] uppercase tracking-wider font-semibold mb-0.5">Fair Value</div>
+                    <div className="text-bullish font-bold text-sm sm:text-lg tracking-tight font-tabular">₫49,615.29</div>
                   </div>
                 </div>
               </div>
@@ -99,35 +99,35 @@ export function Valuation() {
             </div>
           </div>
 
-          <div className="bg-base rounded-xl p-4 border border-subtle mt-8">
-            <div className="flex justify-between items-start mb-4">
+          <div className="bg-base rounded-xl p-4 border border-subtle mt-4 sm:mt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2">
               <h3 className="text-primary font-bold">Future Cash Flow Value History</h3>
               <button className="px-3 py-1.5 bg-card hover:bg-subtle text-secondary text-xs font-semibold rounded-lg border border-subtle transition-colors shadow-sm">
                 Set Fair Value
               </button>
             </div>
 
-            <div className="flex justify-between items-end mb-4">
-              <div className="flex space-x-8">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-4 gap-4">
+              <div className="flex flex-wrap gap-4 sm:gap-8">
                 <div>
                   <div className="flex items-center text-xs text-secondary mb-1 font-medium">
                     <div className="w-2 h-2 rounded-full bg-bullish mr-2"></div>
                     07 Mar
                   </div>
-                  <div className="text-primary font-bold text-lg border-b border-dotted border-subtle inline-block">₫26,700.00</div>
+                  <div className="text-primary font-bold text-base sm:text-lg border-b border-dotted border-subtle inline-block">₫26,700.00</div>
                 </div>
                 <div>
                   <div className="flex items-center text-xs text-secondary mb-1 font-medium">
                     <div className="w-2 h-2 rounded-full bg-pink-500 mr-2"></div>
                     Future Cash Flow Value
                   </div>
-                  <div className="flex items-baseline space-x-2">
-                    <div className="text-primary font-bold text-lg border-b border-dotted border-subtle inline-block">₫49,614.69</div>
+                  <div className="flex flex-wrap items-baseline gap-2">
+                    <div className="text-primary font-bold text-base sm:text-lg border-b border-dotted border-subtle inline-block">₫49,614.69</div>
                     <span className="text-bullish text-xs font-bold">46.2% undervalued</span>
                   </div>
                 </div>
               </div>
-              <div className="flex space-x-4 text-right">
+              <div className="flex space-x-4 text-right w-full lg:w-auto justify-end sm:justify-start">
                 <div>
                   <div className="text-xs text-secondary mb-1 font-medium">1Y</div>
                   <div className="text-bullish text-sm font-bold">43.9%</div>

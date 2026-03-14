@@ -6,15 +6,33 @@ import { FutureGrowth } from './components/FutureGrowth';
 import { PastEarnings } from './components/PastEarnings';
 import { FinancialStatements } from './components/FinancialStatements';
 import { FinancialHealth } from './components/FinancialHealth';
+import { Dividend } from './components/Dividend';
+import { Management } from './components/Management';
+import { Ownership } from './components/Ownership';
+import { Portfolios } from './components/Portfolios';
 import { HelpCenter } from './components/HelpCenter';
+import { Watchlist } from './components/Watchlist';
+import { MarketDashboard } from './components/MarketDashboard';
 import Header from './components/Header';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { PortfolioProvider } from './contexts/PortfolioContext';
 import { colors } from './theme/colors';
 import { useFinancialData } from './hooks/useFinancialData';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('Overview');
+  const [activeTab, setActiveTab] = useState('Dashboard');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 1024);
   const { data, loading, error } = useFinancialData('MBB');
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   console.log('App test - Data:', data);
   console.log('App test - Loading:', loading);
@@ -22,6 +40,9 @@ export default function App() {
 
   const navigateTo = (tab: string, sectionId?: string) => {
     setActiveTab(tab);
+    if (window.innerWidth < 1024) {
+      setIsSidebarOpen(false);
+    }
     if (sectionId) {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
@@ -40,16 +61,19 @@ export default function App() {
 
   const renderContent = () => {
     switch (activeTab) {
+      case 'Dashboard': return <MarketDashboard />;
       case 'Overview': return <CompanyOverview onNavigate={navigateTo} />;
       case 'Valuation': return <Valuation />;
       case 'Future Growth': return <FutureGrowth />;
       case 'Past Performance': return <PastEarnings />;
       case 'Financial Health': return <FinancialHealth />;
+      case 'Dividend': return <Dividend />;
+      case 'Management': return <Management />;
+      case 'Ownership': return <Ownership />;
+      case 'Portfolios': return <Portfolios />;
+      case 'Watchlist': return <Watchlist />;
       case 'Financial Statements': return <FinancialStatements />;
       case 'Help Center': return <HelpCenter />;
-      case 'Dividend':
-      case 'Management':
-      case 'Ownership':
       case 'Other information':
         return (
           <div className="flex items-center justify-center h-full">
@@ -65,15 +89,31 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)] transition-colors duration-300">
-        <Header />
-        <div className="flex flex-1 overflow-hidden">
-          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-          <main className="flex-1 overflow-y-auto">
-            {renderContent()}
-          </main>
+      <PortfolioProvider>
+        <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)] transition-colors duration-300">
+          <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+          <div className="flex flex-1 overflow-hidden relative">
+            <Sidebar 
+              activeTab={activeTab} 
+              setActiveTab={setActiveTab} 
+              isOpen={isSidebarOpen} 
+              setIsOpen={setIsSidebarOpen} 
+            />
+            
+            {/* Overlay for mobile when sidebar is open */}
+            {isSidebarOpen && (
+              <div 
+                className="fixed inset-0 bg-black/50 z-30 lg:hidden" 
+                onClick={() => setIsSidebarOpen(false)}
+              />
+            )}
+
+            <main className={`flex-1 overflow-y-auto transition-all duration-300 ${isSidebarOpen ? 'lg:ml-0' : 'ml-0'}`}>
+              {renderContent()}
+            </main>
+          </div>
         </div>
-      </div>
+      </PortfolioProvider>
     </ThemeProvider>
   );
 }

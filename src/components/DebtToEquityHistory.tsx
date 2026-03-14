@@ -51,7 +51,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     const ratio = ((debt / equity) * 100).toFixed(1);
 
     return (
-      <div className="bg-card border border-subtle p-4 rounded-lg shadow-lg min-w-[200px]">
+      <div className="bg-card border border-subtle p-4 rounded-lg shadow-lg w-full max-w-[200px] sm:min-w-[200px]">
         <p className="font-bold text-primary mb-3">{label}</p>
         
         <div className="flex justify-between items-center mb-2">

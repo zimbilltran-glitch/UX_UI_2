@@ -178,12 +178,12 @@ export const FutureGrowthOverview = () => {
         <div className="bg-card rounded-xl p-6 border border-subtle shadow-lg">
           <h3 className="text-lg font-bold text-primary mb-6">Key information</h3>
           
-          <div className="flex space-x-8 mb-8">
+          <div className="flex flex-col sm:flex-row sm:space-x-8 mb-8 gap-6 sm:gap-0">
             <div>
               <div className="text-2xl font-bold text-primary mb-1 font-tabular">{data.key_metrics.earnings_growth}</div>
               <div className="text-xs text-secondary border-b border-dashed border-subtle pb-1 inline-block">Earnings growth rate</div>
             </div>
-            <div className="w-px bg-subtle"></div>
+            <div className="hidden sm:block w-px bg-subtle"></div>
             <div>
               <div className="text-2xl font-bold text-primary mb-1 font-tabular">{data.key_metrics.eps_growth}</div>
               <div className="text-xs text-secondary border-b border-dashed border-subtle pb-1 inline-block">EPS growth rate</div>

@@ -1,12 +1,44 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Moon, Sun, Sparkles } from 'lucide-react';
+import { Search, Moon, Sun, Sparkles, Plus, Check, Menu } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { usePortfolio } from '../contexts/PortfolioContext';
 
-export default function Header() {
+export default function Header({ 
+  isSidebarOpen, 
+  setIsSidebarOpen 
+}: { 
+  isSidebarOpen: boolean, 
+  setIsSidebarOpen: (isOpen: boolean) => void 
+}) {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const { holdings, addHolding } = usePortfolio();
+  
+  const isAdded = holdings.some(h => h.symbol === 'MBB');
+
+  const handleAddToPortfolio = () => {
+    if (!isAdded) {
+      addHolding({
+        symbol: 'MBB',
+        name: 'Military Commercial Joint Stock Bank',
+        lastPrice: '₫24,500',
+        fairValue: '₫35,000',
+        fairValueStatus: '30.0% undervalued',
+        return7D: '2.5%',
+        return7DValue: '+₫612.5',
+        totalReturn: '15.0%',
+        totalReturnValue: '+₫3,675',
+        value: '₫24,500,000',
+        cost: '₫20,825,000',
+        weight: '5.0%',
+        shares: 1000,
+        avgPrice: '₫20,825',
+        isAdded: true
+      });
+    }
+  };
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'vi' : 'en';
@@ -15,27 +47,49 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex flex-col sm:flex-row justify-between items-center py-4 px-4 md:px-6 lg:px-8 border-b border-subtle gap-4 bg-base/80 backdrop-blur-md transition-colors duration-300">
-      <div className="flex items-center gap-4 w-full sm:w-auto">
-        {/* Logo */}
-        <div className="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-card border border-subtle flex-shrink-0">
-          <svg width="28" height="28" viewBox="0 0 100 100">
-            <polygon points="50,5 93,30 93,70 50,95 7,70 7,30" fill="none" stroke="var(--color-bullish)" strokeWidth="5" strokeLinejoin="round" />
-            <polyline points="7,30 50,50 93,30" fill="none" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinejoin="round" className="polyhedron-path" />
-            <polyline points="7,70 50,50 93,70" fill="none" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinejoin="round" className="polyhedron-path" />
-            <line x1="50" y1="50" x2="50" y2="95" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinecap="round" />
-            <circle cx="50" cy="50" r="6" fill="currentColor" className="text-primary" />
-          </svg>
+    <header className="sticky top-0 z-50 flex flex-col lg:flex-row justify-between items-center py-2 sm:py-3 px-3 sm:px-4 md:px-6 lg:px-8 border-b border-subtle gap-2 sm:gap-4 bg-base/80 backdrop-blur-md transition-colors duration-300">
+      <div className="flex items-center justify-between w-full lg:w-auto gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Sidebar Toggle Button */}
+          {!isSidebarOpen && (
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="p-1.5 sm:p-2 hover:bg-card border border-subtle rounded-xl text-secondary flex items-center justify-center transition-colors"
+              aria-label="Open Sidebar"
+            >
+              <Menu size={18} className="sm:w-[20px] sm:h-[20px]" />
+            </button>
+          )}
+
+          {/* Logo */}
+          <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-card border border-subtle flex-shrink-0">
+            <svg width="24" height="24" viewBox="0 0 100 100">
+              <polygon points="50,5 93,30 93,70 50,95 7,70 7,30" fill="none" stroke="var(--color-bullish)" strokeWidth="5" strokeLinejoin="round" />
+              <polyline points="7,30 50,50 93,30" fill="none" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinejoin="round" className="polyhedron-path" />
+              <polyline points="7,70 50,50 93,70" fill="none" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinejoin="round" className="polyhedron-path" />
+              <line x1="50" y1="50" x2="50" y2="95" stroke="var(--color-bullish)" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="50" cy="50" r="6" fill="currentColor" className="text-primary" />
+            </svg>
+          </div>
+
+          <div className="flex flex-col">
+            <h1 className="text-lg sm:text-xl font-bold tracking-tight text-primary">
+              <span className="text-bullish">Fin</span>Sang
+            </h1>
+          </div>
         </div>
 
-        <div className="flex flex-col hidden sm:flex">
-          <h1 className="text-2xl font-bold tracking-tight text-primary">
-            <span className="text-bullish">Fin</span>Sang
-          </h1>
+        {/* Mobile Search Icon or simple search */}
+        <div className="lg:hidden">
+          <button className="p-2 hover:bg-card border border-subtle rounded-xl text-secondary">
+            <Search size={20} />
+          </button>
         </div>
+      </div>
 
-        {/* Search Input */}
-        <div className="relative flex-grow sm:flex-grow-0 sm:ml-4">
+      <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+        {/* Search Input - Desktop */}
+        <div className="relative hidden lg:block">
           <div 
             className={`flex items-center bg-card border rounded-full px-4 py-2 transition-all duration-300 ease-in-out ${
               isSearchFocused 
@@ -50,15 +104,14 @@ export default function Header() {
             <input
               type="text"
               placeholder={t('header.searchPlaceholder')}
-              className="bg-transparent border-none outline-none text-primary placeholder-secondary ml-2 w-full sm:w-48 lg:w-64 font-sans text-sm"
+              className="bg-transparent border-none outline-none text-primary placeholder-secondary ml-2 w-48 lg:w-64 font-sans text-sm"
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
             />
           </div>
         </div>
-      </div>
 
-      <nav className="flex gap-3 items-center w-full sm:w-auto justify-end">
+        <nav className="flex gap-2 items-center w-full sm:w-auto justify-center sm:justify-end">
         {/* Language Switcher */}
         <button 
           onClick={toggleLanguage}
@@ -90,12 +143,27 @@ export default function Header() {
           <span className="hidden sm:inline">{t('header.aiAnalysis')}</span>
         </button>
 
+        {/* Add to Portfolio Button */}
+        <button 
+          onClick={handleAddToPortfolio}
+          disabled={isAdded}
+          className={`btn-interactive px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2 transition-colors duration-300 shadow-sm ${
+            isAdded 
+              ? 'bg-subtle text-secondary cursor-not-allowed border border-subtle' 
+              : 'bg-brand text-white hover:bg-brand/90 shadow-brand/30'
+          }`}
+        >
+          {isAdded ? <Check size={16} /> : <Plus size={16} />}
+          <span className="hidden sm:inline">{isAdded ? 'Added to Portfolio' : 'Add to Portfolio'}</span>
+        </button>
+
         {/* New Data Button */}
-        <button className="btn-interactive px-4 py-2 bg-brand text-white rounded-xl text-sm font-semibold shadow-sm shadow-brand/30 hover:bg-brand/90 transition-colors duration-300">
+        <button className="btn-interactive px-4 py-2 bg-card border border-subtle text-primary rounded-xl text-sm font-semibold shadow-sm hover:border-brand transition-colors duration-300">
           <span className="hidden sm:inline">{t('header.newData')}</span>
           <span className="sm:hidden">+</span>
         </button>
       </nav>
+      </div>
     </header>
   );
 }

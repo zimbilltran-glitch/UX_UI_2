@@ -1,15 +1,14 @@
 import React from 'react';
-import { FinancialHealthOverview } from './FinancialHealthOverview';
-import { FinancialPositionAnalysis } from './FinancialPositionAnalysis';
-import { DebtToEquityHistory } from './DebtToEquityHistory';
-import { BalanceSheet } from './BalanceSheet';
-import { FinancialInstitutionsAnalysis } from './FinancialInstitutionsAnalysis';
+import { ManagementOverview } from './ManagementOverview';
+import { CEO } from './CEO';
+import { LeadershipTeam } from './LeadershipTeam';
+import { BoardMembers } from './BoardMembers';
 import { HelpCircle } from 'lucide-react';
 
 const HelpCentreLink = () => (
   <div className="mt-6 pt-6 border-t border-subtle">
     <p className="text-secondary text-sm">
-      For a more detailed breakdown of how we evaluate financial health, please check out our <a href="#" className="text-brand hover:text-brand transition-colors font-medium">Help Centre</a>.
+      For a more detailed breakdown of how we evaluate management, please check out our <a href="#" className="text-brand hover:text-brand transition-colors font-medium">Help Centre</a>.
     </p>
   </div>
 );
@@ -27,21 +26,15 @@ const SectionHeader = ({ id, title, description }: { id: string, title: string, 
   </div>
 );
 
-export const FinancialHealth = () => {
+export const Management = () => {
   return (
     <div className="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 font-sans">
-      <FinancialHealthOverview />
+      <ManagementOverview />
 
-      <FinancialPositionAnalysis />
-      <DebtToEquityHistory />
-      
-      <div className="w-full h-px bg-subtle my-12"></div>
-      
-      <BalanceSheet />
-      
-      <div className="w-full h-px bg-subtle my-12"></div>
-      
-      <FinancialInstitutionsAnalysis />
+      <CEO />
+      <LeadershipTeam />
+      <BoardMembers />
+
     </div>
   );
 };

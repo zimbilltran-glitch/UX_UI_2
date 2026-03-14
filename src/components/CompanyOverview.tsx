@@ -73,48 +73,48 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
   return (
     <div className="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 font-sans" id="section_0_0">
       {/* Hero Section */}
-      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-8 p-6 flex flex-col md:flex-row justify-between items-start">
-        <div className="flex items-start space-x-4">
-          <div className="w-16 h-16 bg-white border border-subtle rounded-xl flex items-center justify-center p-2 shadow-sm">
+      <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-8 p-4 sm:p-6 flex flex-col lg:flex-row justify-between items-start gap-6">
+        <div className="flex flex-col sm:flex-row items-start gap-4 w-full lg:w-auto">
+          <div className="w-16 h-16 bg-white border border-subtle rounded-xl flex items-center justify-center p-2 shadow-sm flex-shrink-0">
              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Logo_MB_new.png/600px-Logo_MB_new.png" alt="MBB Logo" className="object-contain" referrerPolicy="no-referrer" />
           </div>
-          <div>
-            <h1 className="text-2xl font-bold text-primary">{data.name}</h1>
-            <p className="text-secondary font-medium">HOSE:{data.ticker} Stock Report</p>
-            <p className="text-secondary mt-1">Market Cap <span className="text-primary font-bold font-tabular">₫217.9t</span></p>
+          <div className="flex-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-primary">{data.name}</h1>
+            <p className="text-secondary font-medium text-sm sm:text-base">HOSE:{data.ticker} Stock Report</p>
+            <p className="text-secondary mt-1 text-sm">Market Cap <span className="text-primary font-bold font-tabular">₫217.9t</span></p>
             
-            <div className="flex space-x-3 mt-4">
-              <button className="btn-interactive flex items-center space-x-2 bg-brand hover:bg-brand/90 text-white px-4 py-2 rounded-lg font-semibold transition-colors shadow-sm">
-                <Plus size={18} />
+            <div className="flex flex-wrap gap-2 sm:gap-3 mt-4">
+              <button className="btn-interactive flex items-center space-x-2 bg-brand hover:bg-brand/90 text-white px-3 sm:px-4 py-2 rounded-lg font-semibold transition-colors shadow-sm text-xs sm:text-sm">
+                <Plus size={16} className="sm:w-[18px] sm:h-[18px]" />
                 <span>Add to Portfolio</span>
               </button>
-              <button className="btn-interactive flex items-center space-x-2 bg-card hover:bg-subtle text-secondary px-4 py-2 rounded-lg font-semibold transition-colors border border-subtle shadow-sm">
-                <Star size={18} />
+              <button className="btn-interactive flex items-center space-x-2 bg-card hover:bg-subtle text-secondary px-3 sm:px-4 py-2 rounded-lg font-semibold transition-colors border border-subtle shadow-sm text-xs sm:text-sm">
+                <Star size={16} className="sm:w-[18px] sm:h-[18px]" />
                 <span>Watching</span>
               </button>
-              <button className="btn-interactive flex items-center justify-center bg-card hover:bg-subtle text-secondary w-10 h-10 rounded-lg transition-colors border border-subtle shadow-sm">
-                <MoreHorizontal size={18} />
+              <button className="btn-interactive flex items-center justify-center bg-card hover:bg-subtle text-secondary w-9 h-9 sm:w-10 sm:h-10 rounded-lg transition-colors border border-subtle shadow-sm">
+                <MoreHorizontal size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </div>
           </div>
         </div>
         
-        <div className="mt-6 md:mt-0 w-full md:w-64">
-           <div className="text-sm text-secondary mb-2 flex justify-between font-medium">
-             <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-bullish mr-2"></div>Mar 07 2026</span>
-             <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-purple-500 mr-2"></div>AnalystPriceTarget</span>
+        <div className="w-full lg:w-64">
+           <div className="text-[10px] sm:text-sm text-secondary mb-2 flex justify-between font-medium">
+             <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-bullish mr-1.5 sm:mr-2"></div>Mar 07 2026</span>
+             <span className="flex items-center"><div className="w-2 h-2 rounded-full bg-purple-500 mr-1.5 sm:mr-2"></div>AnalystPriceTarget</span>
            </div>
            <div className="flex justify-between items-end mb-4">
-             <div className="text-xl font-bold text-primary">₫26.70k</div>
-             <div className="text-sm text-secondary font-medium">₫32.71k <span className="text-bullish font-bold">18.4% undervalued</span></div>
+             <div className="text-lg sm:text-xl font-bold text-primary">₫26.70k</div>
+             <div className="text-[10px] sm:text-sm text-secondary font-medium">₫32.71k <span className="text-bullish font-bold">18.4% undervalued</span></div>
            </div>
-           <div className="h-16 w-full bg-base rounded-lg flex items-end overflow-hidden relative border border-subtle">
+           <div className="h-12 sm:h-16 w-full bg-base rounded-lg flex items-end overflow-hidden relative border border-subtle">
              <svg viewBox="0 0 100 30" className="w-full h-full preserve-aspect-ratio-none absolute bottom-0">
                <path d="M0,25 L10,24 L20,23 L30,22 L40,20 L50,15 L60,10 L70,12 L80,11 L90,10 L100,8" fill="none" stroke="#10b981" strokeWidth="1.5" />
                <path d="M0,20 L10,19 L20,18 L30,17 L40,15 L50,10 L60,5 L70,7 L80,6 L90,5 L100,3" fill="none" stroke="#a855f7" strokeWidth="1.5" strokeDasharray="2 2" />
              </svg>
            </div>
-           <div className="flex justify-between text-xs text-secondary mt-2 font-medium">
+           <div className="flex justify-between text-[10px] sm:text-xs text-secondary mt-2 font-medium">
              <span>1Y <span className="text-bullish font-bold">43.9%</span></span>
              <span>7D <span className="text-bearish font-bold">-6.3%</span></span>
            </div>

@@ -26,7 +26,7 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-card border border-subtle p-4 rounded-lg shadow-2xl min-w-[250px]">
+      <div className="bg-card border border-subtle p-4 rounded-lg shadow-2xl w-full max-w-[250px] sm:min-w-[250px]">
         <p className="text-primary font-bold mb-3">{data.displayDate}</p>
         <div className="flex justify-between items-center mb-1">
           <span className="text-secondary text-sm mr-8">EPS</span>

@@ -93,7 +93,7 @@ export const GaugeChart = ({
         {ticks.map((tick) => {
           const angle = valueToAngle(tick);
           const pos = polarToCartesian(cx, cy, radius + 15, angle);
-          let textAnchor = "middle";
+          let textAnchor: "start" | "end" | "middle" = "middle";
           if (tick === 0) textAnchor = "start";
           if (tick === maxValue) textAnchor = "end";
           

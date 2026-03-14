@@ -217,7 +217,7 @@ export const RatioVsIndustry = () => {
                 contentStyle={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                 formatter={(value: number) => [value, 'Companies']}
               />
-              <Bar dataKey="count" fill="#10b981" onClick={(data) => setSelectedRange(data.label)} cursor="pointer">
+              <Bar dataKey="count" fill="#10b981" onClick={(data: any) => setSelectedRange(data.label)} cursor="pointer">
                 {currentData.ranges.map((entry, index) => (
                   <Cell 
                     key={`cell-${index}`} 
