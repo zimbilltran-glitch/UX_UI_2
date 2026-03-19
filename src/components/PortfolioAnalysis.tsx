@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceLine, PieChart, Pie, Treemap } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, Treemap } from 'recharts';
 import { Info, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GaugeChart = ({ title, value, secondaryValue, min, max, ranges, primaryLabel, primaryValue, secondaryLabel, secondaryValueLabel }: any) => {
