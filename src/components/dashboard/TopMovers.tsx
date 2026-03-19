@@ -37,8 +37,8 @@ export function TopMovers() {
           Top Losers
         </button>
       </div>
-      <div className="flex-1 overflow-y-auto p-2">
-        <table className="w-full text-sm">
+      <div className="flex-1 overflow-auto p-2">
+        <table className="w-full text-sm min-w-[200px]">
           <thead>
             <tr className="text-[var(--text-secondary)] text-xs text-left">
               <th className="pb-2 font-normal">Symbol</th>

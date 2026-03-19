@@ -79,9 +79,9 @@ export const FutureGrowthOverview = () => {
       <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden mb-6">
         <div className="p-6">
           <div className="flex justify-between items-start mb-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <h2 className="text-xl font-bold text-primary">Future criteria checks {data.score}</h2>
-              <div className="flex space-x-1 ml-2">
+              <div className="flex flex-wrap gap-1">
                 {data.criteria.map((c, i) => (
                   c.status === 'pass' 
                     ? <CheckCircle2 key={i} className="w-5 h-5 text-bullish" />
@@ -91,7 +91,7 @@ export const FutureGrowthOverview = () => {
             </div>
             <button 
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-8 h-8 rounded-full bg-base flex items-center justify-center hover:bg-subtle transition-colors border border-subtle"
+              className="w-8 h-8 rounded-full bg-base flex items-center justify-center hover:bg-subtle transition-colors border border-subtle flex-shrink-0 ml-4"
             >
               {isExpanded ? <ChevronUp className="w-5 h-5 text-secondary" /> : <ChevronDown className="w-5 h-5 text-secondary" />}
             </button>

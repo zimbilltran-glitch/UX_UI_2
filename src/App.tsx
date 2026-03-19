@@ -90,7 +90,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <PortfolioProvider>
-        <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)] transition-colors duration-300">
+        <div className="flex flex-col h-full w-full bg-[var(--bg-base)] overflow-hidden font-sans text-[var(--text-primary)] transition-colors duration-300">
           <Header isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
           <div className="flex flex-1 overflow-hidden relative">
             <Sidebar 

@@ -123,13 +123,13 @@ export function FutureReturnOnEquity() {
 
   return (
     <div className="mb-16" id="section_2_4">
-      <div className="mb-6 flex justify-between items-start">
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
         <div>
           <h2 className="text-2xl font-bold text-primary mb-2">2.4 Future Return on Equity</h2>
         </div>
         <button 
           onClick={() => setShowLearnModal(true)}
-          className="btn-interactive flex items-center space-x-2 bg-brand hover:bg-brand/90 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium shadow-sm"
+          className="btn-interactive flex items-center space-x-2 bg-brand hover:bg-brand/90 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium shadow-sm w-full sm:w-auto justify-center sm:justify-start"
         >
           <Info className="w-4 h-4" />
           <span>Learn</span>

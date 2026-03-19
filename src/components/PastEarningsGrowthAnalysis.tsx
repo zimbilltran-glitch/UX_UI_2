@@ -140,24 +140,26 @@ export function PastEarningsGrowthAnalysis() {
             </div>
             
             <div className="p-6 overflow-y-auto flex-1">
-              <table className="w-full text-left border-collapse mb-8">
-                <thead>
-                  <tr className="border-b-2 border-subtle">
-                    <th className="py-3 px-4 font-bold text-sm text-secondary w-1/3">Data Point</th>
-                    <th className="py-3 px-4 font-bold text-sm text-secondary w-1/2">Source</th>
-                    <th className="py-3 px-4 font-bold text-sm text-secondary text-right">Value (per year)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataSource.map((row, idx) => (
-                    <tr key={idx} className="border-b border-subtle hover:bg-subtle">
-                      <td className="py-4 px-4 text-sm text-primary">{row.point}</td>
-                      <td className="py-4 px-4 text-sm text-secondary">{row.source}</td>
-                      <td className="py-4 px-4 text-sm font-medium text-primary text-right">{row.value}</td>
+              <div className="overflow-x-auto mb-8">
+                <table className="w-full text-left border-collapse min-w-[600px]">
+                  <thead>
+                    <tr className="border-b-2 border-subtle">
+                      <th className="py-3 px-4 font-bold text-sm text-secondary w-1/3 whitespace-nowrap">Data Point</th>
+                      <th className="py-3 px-4 font-bold text-sm text-secondary w-1/2 whitespace-nowrap">Source</th>
+                      <th className="py-3 px-4 font-bold text-sm text-secondary text-right whitespace-nowrap">Value (per year)</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {dataSource.map((row, idx) => (
+                      <tr key={idx} className="border-b border-subtle hover:bg-subtle">
+                        <td className="py-4 px-4 text-sm text-primary">{row.point}</td>
+                        <td className="py-4 px-4 text-sm text-secondary">{row.source}</td>
+                        <td className="py-4 px-4 text-sm font-medium text-primary text-right whitespace-nowrap">{row.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
               <div className="text-right text-xs text-secondary mb-6">
                 HOSE:MBB Past Growth Rates Data Sources

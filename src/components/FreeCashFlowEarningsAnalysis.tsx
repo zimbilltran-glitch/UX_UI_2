@@ -209,7 +209,7 @@ export function FreeCashFlowEarningsAnalysis() {
           </>
         ) : (
           <div className="overflow-x-auto rounded-lg border border-subtle">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
                 <tr className="bg-subtle/30 text-sm text-primary">
                   <th className="py-4 px-4 font-semibold w-12 text-center"><ChevronLeft className="w-4 h-4 inline-block text-secondary cursor-pointer hover:text-primary transition-colors" /></th>

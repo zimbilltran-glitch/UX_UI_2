@@ -33,6 +33,11 @@ Frontend được xây dựng dựa trên triết lý **"Data-First, Performance
 *   **Yêu cầu:** Tìm kiếm theo mã (Ticker) hoặc tên công ty.
 *   **Cấu trúc API:** Endpoint tìm kiếm cần hỗ trợ `fuzzy search` (tìm kiếm mờ) và trả về danh sách gợi ý nhanh (Autocomplete).
 
+### 2.4. Market Dashboard (Grid Layout)
+*   **Yêu cầu:** Dashboard cho phép người dùng kéo thả, thay đổi kích thước các widget (biểu đồ, bảng giá). Sử dụng thư viện `react-grid-layout`.
+*   **Cấu trúc API:** Mỗi widget (ví dụ: Top Movers, Heatmap) cần một endpoint riêng biệt, nhẹ và phản hồi nhanh để có thể tải song song (parallel loading).
+*   **Lưu ý:** Dữ liệu cho Index Ticker (chạy ngang màn hình) cần được stream qua WebSocket hoặc polling với tần suất cao để đảm bảo tính real-time.
+
 ---
 
 ## ⚡ 3. Yêu cầu về Luồng Tương tác & Trạng thái (State)
@@ -42,6 +47,7 @@ Frontend được xây dựng dựa trên triết lý **"Data-First, Performance
 1.  **Trạng thái Loading:** Khi dữ liệu chưa về, UI hiển thị Skeleton. API cần phản hồi nhanh nhất có thể (dưới 200ms).
 2.  **Xử lý dữ liệu trống (Empty State):** Nếu một mã chứng khoán không có dữ liệu cho một quý cụ thể, API **không được trả về lỗi 404**, mà phải trả về một mảng rỗng hoặc giá trị `null` để UI hiển thị thông báo "Chưa có dữ liệu".
 3.  **Định dạng số:** Frontend sẽ format số (ví dụ: `1.234,56`). Backend chỉ cần trả về kiểu `number` (integer/float), không trả về kiểu `string` đã format sẵn (trừ khi là dữ liệu hiển thị đặc biệt).
+4.  **Device Simulator:** Frontend có tích hợp Simulator (dùng iframe) để test responsive. API không cần quan tâm đến kích thước màn hình, Frontend sẽ tự động điều chỉnh layout (Grid) dựa trên `useContainerWidth`.
 
 ---
 

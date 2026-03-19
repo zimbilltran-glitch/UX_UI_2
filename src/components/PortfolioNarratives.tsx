@@ -75,117 +75,119 @@ export const PortfolioNarratives = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {/* Header Row */}
-          <div className="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-secondary border-b border-subtle">
-            <div className="col-span-2">Company</div>
-            <div className="col-span-3">Price & Valuation</div>
-            <div className="col-span-4 flex items-center space-x-1">
-              <span>My FV & Narrative</span>
-              <Info className="w-3 h-3" />
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="min-w-[800px] space-y-4">
+            {/* Header Row */}
+            <div className="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-secondary border-b border-subtle">
+              <div className="col-span-2">Company</div>
+              <div className="col-span-3">Price & Valuation</div>
+              <div className="col-span-4 flex items-center space-x-1">
+                <span>My FV & Narrative</span>
+                <Info className="w-3 h-3" />
+              </div>
+              <div className="col-span-1 flex items-center space-x-1">
+                <span>Valuation</span>
+                <Info className="w-3 h-3" />
+              </div>
+              <div className="col-span-1 flex items-center space-x-1">
+                <span>Growth</span>
+                <Info className="w-3 h-3" />
+              </div>
+              <div className="col-span-1 flex items-center space-x-1">
+                <span>Analyst Target</span>
+                <Info className="w-3 h-3" />
+              </div>
             </div>
-            <div className="col-span-1 flex items-center space-x-1">
-              <span>Valuation</span>
-              <Info className="w-3 h-3" />
-            </div>
-            <div className="col-span-1 flex items-center space-x-1">
-              <span>Growth</span>
-              <Info className="w-3 h-3" />
-            </div>
-            <div className="col-span-1 flex items-center space-x-1">
-              <span>Analyst Target</span>
-              <Info className="w-3 h-3" />
-            </div>
+
+            {/* Holdings List */}
+            {narrativeData.map((item, index) => (
+              <div 
+                key={index} 
+                className={`grid grid-cols-12 gap-4 p-4 bg-card rounded-xl border transition-colors cursor-pointer ${
+                  selectedHolding?.symbol === item.symbol ? 'border-brand' : 'border-subtle hover:border-brand/50'
+                }`}
+                onClick={() => setSelectedHoldingSymbol(item.symbol)}
+              >
+                {/* Company */}
+                <div className="col-span-2 flex flex-col justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center text-brand font-bold text-xs flex-shrink-0">
+                      {item.symbol.substring(0, 1)}
+                    </div>
+                    <div className="overflow-hidden">
+                      <div className="font-bold text-primary truncate">{item.symbol}</div>
+                      <div className="text-xs text-secondary truncate">{item.name}</div>
+                    </div>
+                  </div>
+                  <div className="flex space-x-4 mt-2">
+                    <div>
+                      <div className={`text-xs font-bold ${item.return7D.startsWith('-') ? 'text-bearish' : 'text-bullish'}`}>{item.return7D}</div>
+                      <div className="text-[10px] text-secondary">7D</div>
+                    </div>
+                    <div>
+                      <div className={`text-xs font-bold ${item.return1Y.startsWith('-') ? 'text-bearish' : 'text-bullish'}`}>{item.return1Y}</div>
+                      <div className="text-[10px] text-secondary">1Y</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Price & Valuation */}
+                <div className="col-span-3 flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <div className="font-bold text-primary">{item.price}</div>
+                    <div className={`text-xs ${item.valuationStatus.includes('undervalued') ? 'text-bullish' : 'text-bearish'}`}>
+                      {item.valuationStatus}
+                    </div>
+                  </div>
+                  <div className="h-10 w-full mt-2">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={item.chartData}>
+                        <Line 
+                          type="monotone" 
+                          dataKey="value" 
+                          stroke={item.valuationStatus.includes('undervalued') ? "#22c55e" : "#ef4444"} 
+                          strokeWidth={1.5} 
+                          dot={false} 
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+
+                {/* My FV & Narrative */}
+                <div className="col-span-4 flex flex-col">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-4 h-4 rounded-full bg-brand/20 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-brand"></div>
+                    </div>
+                    <span className="font-bold text-primary text-sm">{item.fv}</span>
+                    <Edit2 className="w-3 h-3 text-secondary" />
+                    <span className="text-xs text-secondary">{item.fvDate}</span>
+                  </div>
+                  <p className="text-sm text-primary line-clamp-2 leading-snug">{item.narrative}</p>
+                </div>
+
+                {/* Valuation */}
+                <div className="col-span-1 flex items-center">
+                  <div className="text-sm font-bold text-primary border-b border-dashed border-subtle pb-0.5">
+                    {item.symbol === 'TSLA' ? 'PS ' : 'PE '}{item.pe}
+                  </div>
+                </div>
+
+                {/* Growth */}
+                <div className="col-span-1 flex items-center">
+                  <div className="text-sm font-bold text-primary border-b border-dashed border-subtle pb-0.5">
+                    E {item.growth}
+                  </div>
+                </div>
+
+                {/* Analyst Target */}
+                <div className="col-span-1 flex items-center">
+                  <div className="text-sm font-bold text-primary">{item.target}</div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Holdings List */}
-          {narrativeData.map((item, index) => (
-            <div 
-              key={index} 
-              className={`grid grid-cols-12 gap-4 p-4 bg-card rounded-xl border transition-colors cursor-pointer ${
-                selectedHolding?.symbol === item.symbol ? 'border-brand' : 'border-subtle hover:border-brand/50'
-              }`}
-              onClick={() => setSelectedHoldingSymbol(item.symbol)}
-            >
-              {/* Company */}
-              <div className="col-span-2 flex flex-col justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center text-brand font-bold text-xs flex-shrink-0">
-                    {item.symbol.substring(0, 1)}
-                  </div>
-                  <div className="overflow-hidden">
-                    <div className="font-bold text-primary truncate">{item.symbol}</div>
-                    <div className="text-xs text-secondary truncate">{item.name}</div>
-                  </div>
-                </div>
-                <div className="flex space-x-4 mt-2">
-                  <div>
-                    <div className={`text-xs font-bold ${item.return7D.startsWith('-') ? 'text-bearish' : 'text-bullish'}`}>{item.return7D}</div>
-                    <div className="text-[10px] text-secondary">7D</div>
-                  </div>
-                  <div>
-                    <div className={`text-xs font-bold ${item.return1Y.startsWith('-') ? 'text-bearish' : 'text-bullish'}`}>{item.return1Y}</div>
-                    <div className="text-[10px] text-secondary">1Y</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Price & Valuation */}
-              <div className="col-span-3 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <div className="font-bold text-primary">{item.price}</div>
-                  <div className={`text-xs ${item.valuationStatus.includes('undervalued') ? 'text-bullish' : 'text-bearish'}`}>
-                    {item.valuationStatus}
-                  </div>
-                </div>
-                <div className="h-10 w-full mt-2">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={item.chartData}>
-                      <Line 
-                        type="monotone" 
-                        dataKey="value" 
-                        stroke={item.valuationStatus.includes('undervalued') ? "#22c55e" : "#ef4444"} 
-                        strokeWidth={1.5} 
-                        dot={false} 
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-
-              {/* My FV & Narrative */}
-              <div className="col-span-4 flex flex-col">
-                <div className="flex items-center space-x-2 mb-2">
-                  <div className="w-4 h-4 rounded-full bg-brand/20 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-brand"></div>
-                  </div>
-                  <span className="font-bold text-primary text-sm">{item.fv}</span>
-                  <Edit2 className="w-3 h-3 text-secondary" />
-                  <span className="text-xs text-secondary">{item.fvDate}</span>
-                </div>
-                <p className="text-sm text-primary line-clamp-2 leading-snug">{item.narrative}</p>
-              </div>
-
-              {/* Valuation */}
-              <div className="col-span-1 flex items-center">
-                <div className="text-sm font-bold text-primary border-b border-dashed border-subtle pb-0.5">
-                  {item.symbol === 'TSLA' ? 'PS ' : 'PE '}{item.pe}
-                </div>
-              </div>
-
-              {/* Growth */}
-              <div className="col-span-1 flex items-center">
-                <div className="text-sm font-bold text-primary border-b border-dashed border-subtle pb-0.5">
-                  E {item.growth}
-                </div>
-              </div>
-
-              {/* Analyst Target */}
-              <div className="col-span-1 flex items-center">
-                <div className="text-sm font-bold text-primary">{item.target}</div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

@@ -420,7 +420,7 @@ export const PortfolioAnalysis = () => {
 
         <div className="relative">
           {/* Left Arrow */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 w-8 h-8 bg-card border border-subtle rounded-full flex items-center justify-center text-primary hover:bg-subtle z-10 shadow-lg">
+          <button className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-4 w-8 h-8 bg-card border border-subtle rounded-full items-center justify-center text-primary hover:bg-subtle z-10 shadow-lg">
             <ChevronLeft className="w-5 h-5" />
           </button>
 
@@ -851,7 +851,7 @@ export const PortfolioAnalysis = () => {
           </div>
 
           {/* Right Arrow */}
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 w-8 h-8 bg-card border border-subtle rounded-full flex items-center justify-center text-primary hover:bg-subtle z-10 shadow-lg">
+          <button className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-4 w-8 h-8 bg-card border border-subtle rounded-full items-center justify-center text-primary hover:bg-subtle z-10 shadow-lg">
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>

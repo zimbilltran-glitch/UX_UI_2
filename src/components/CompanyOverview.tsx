@@ -309,9 +309,9 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
             </div>
             <div className="overflow-y-auto flex-1 p-0 bg-card">
               {data.risk_checks.map((check, idx) => (
-                <div key={idx} className="flex items-start justify-between p-4 border-b border-subtle hover:bg-subtle transition-colors group">
+                <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-subtle hover:bg-subtle transition-colors group gap-4 sm:gap-0">
                   <div className="flex items-start space-x-4">
-                    <div className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mt-0.5 ${
+                    <div className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider mt-0.5 whitespace-nowrap ${
                       check.status === 'pass' ? 'bg-bullish/20 text-bullish border border-bullish/30' : 
                       check.status === 'fail' ? 'bg-bearish/20 text-bearish border border-bearish/30' : 
                       'bg-base text-secondary border border-subtle'
@@ -328,7 +328,7 @@ export function CompanyOverview({ onNavigate }: { onNavigate?: (tab: string, sec
                       setShowRiskModal(false);
                       scrollToSection(check.tab, check.link);
                     }}
-                    className="flex items-center space-x-1 text-secondary hover:text-primary bg-card hover:bg-subtle px-3 py-1.5 rounded border border-subtle transition-colors text-sm opacity-0 group-hover:opacity-100 shadow-sm"
+                    className="flex items-center space-x-1 text-secondary hover:text-primary bg-card hover:bg-subtle px-3 py-1.5 rounded border border-subtle transition-colors text-sm sm:opacity-0 sm:group-hover:opacity-100 shadow-sm w-full sm:w-auto justify-center sm:justify-start"
                   >
                     <span>{check.section}</span>
                     <ChevronRight size={14} />

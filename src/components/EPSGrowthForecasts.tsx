@@ -62,95 +62,101 @@ const DataModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }
         </div>
         
         <div className="p-6">
-          <table className="w-full text-sm text-left mb-8 border border-subtle">
-            <thead className="bg-base text-secondary">
-              <tr>
-                <th className="px-4 py-3 font-medium border-b border-subtle">Data Point</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle">Source</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">Value</th>
-              </tr>
-            </thead>
-            <tbody className="text-primary">
-              <tr className="border-b border-subtle">
-                <td className="px-4 py-3">Past Financials</td>
-                <td className="px-4 py-3">Company Filings (12/31/2025)</td>
-                <td className="px-4 py-3 text-right">See Below</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3">Future Estimates</td>
-                <td className="px-4 py-3">Up to 7 Analyst Estimates on Average (S&P Global)</td>
-                <td className="px-4 py-3 text-right">See Below</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full text-sm text-left border border-subtle">
+              <thead className="bg-base text-secondary">
+                <tr>
+                  <th className="px-4 py-3 font-medium border-b border-subtle whitespace-nowrap">Data Point</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle whitespace-nowrap">Source</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">Value</th>
+                </tr>
+              </thead>
+              <tbody className="text-primary">
+                <tr className="border-b border-subtle">
+                  <td className="px-4 py-3 whitespace-nowrap">Past Financials</td>
+                  <td className="px-4 py-3 whitespace-nowrap">Company Filings (12/31/2025)</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">See Below</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 whitespace-nowrap">Future Estimates</td>
+                  <td className="px-4 py-3 whitespace-nowrap">Up to 7 Analyst Estimates on Average (S&P Global)</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">See Below</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           
           <div className="text-right text-xs text-secondary mb-2 uppercase tracking-wider">HOSE:MBB Past and Future Earnings per Share</div>
           <p className="text-primary mb-6 font-medium">
             All data from Military Commercial Bank Company Filings, last reported 12/31/2025, and in <a href="#" className="text-yellow-600 underline decoration-yellow-600/30 underline-offset-4 hover:text-yellow-700">trailing twelve months (TTM)</a> annual period rather than quarterly.
           </p>
           
-          <table className="w-full text-sm text-left mb-8 border border-subtle">
-            <thead className="bg-base text-secondary">
-              <tr>
-                <th className="px-4 py-3 font-medium border-b border-subtle">Date</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS *</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS High Estimate</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS Low Estimate</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">Avg. No. Analysts</th>
-              </tr>
-            </thead>
-            <tbody className="text-primary">
-              <tr className="border-b border-subtle">
-                <td className="px-4 py-3">12/31/2026</td>
-                <td className="px-4 py-3 text-right">3,767.98</td>
-                <td className="px-4 py-3 text-right">3,948.89</td>
-                <td className="px-4 py-3 text-right">3,564</td>
-                <td className="px-4 py-3 text-right">5</td>
-              </tr>
-              <tr className="border-b border-subtle">
-                <td className="px-4 py-3">12/31/2027</td>
-                <td className="px-4 py-3 text-right">4,525.46</td>
-                <td className="px-4 py-3 text-right">4,985.31</td>
-                <td className="px-4 py-3 text-right">3,788</td>
-                <td className="px-4 py-3 text-right">5</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3">12/31/2028</td>
-                <td className="px-4 py-3 text-right">5,148.29</td>
-                <td className="px-4 py-3 text-right">6,348.57</td>
-                <td className="px-4 py-3 text-right">3,948</td>
-                <td className="px-4 py-3 text-right">2</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full text-sm text-left border border-subtle">
+              <thead className="bg-base text-secondary">
+                <tr>
+                  <th className="px-4 py-3 font-medium border-b border-subtle whitespace-nowrap">Date</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">EPS *</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">EPS High Estimate</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">EPS Low Estimate</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">Avg. No. Analysts</th>
+                </tr>
+              </thead>
+              <tbody className="text-primary">
+                <tr className="border-b border-subtle">
+                  <td className="px-4 py-3 whitespace-nowrap">12/31/2026</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">3,767.98</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">3,948.89</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">3,564</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">5</td>
+                </tr>
+                <tr className="border-b border-subtle">
+                  <td className="px-4 py-3 whitespace-nowrap">12/31/2027</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">4,525.46</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">4,985.31</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">3,788</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">5</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3 whitespace-nowrap">12/31/2028</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">5,148.29</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">6,348.57</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">3,948</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           
           <div className="text-right text-xs text-secondary mb-8 uppercase tracking-wider">HOSE:MBB Future Estimates Data (VND)</div>
           
-          <table className="w-full text-sm text-left mb-4 border border-subtle">
-            <thead className="bg-base text-secondary">
-              <tr>
-                <th className="px-4 py-3 font-medium border-b border-subtle">Date</th>
-                <th className="px-4 py-3 font-medium border-b border-subtle text-right">EPS *</th>
-              </tr>
-            </thead>
-            <tbody className="text-primary">
-              {[
-                { date: '12/31/2025', eps: '3,324.51' },
-                { date: '9/30/2025', eps: '3,234.98' },
-                { date: '6/30/2025', eps: '3,269.07' },
-                { date: '3/31/2025', eps: '3,291.51' },
-                { date: '12/31/2024', eps: '2,821.18' },
-                { date: '9/30/2024', eps: '2,439.90' },
-                { date: '6/30/2024', eps: '2,443.24' },
-                { date: '3/31/2024', eps: '2,102.42' },
-              ].map((row, i) => (
-                <tr key={i} className="border-b border-subtle last:border-0">
-                  <td className="px-4 py-3">{row.date}</td>
-                  <td className="px-4 py-3 text-right">{row.eps}</td>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm text-left border border-subtle">
+              <thead className="bg-base text-secondary">
+                <tr>
+                  <th className="px-4 py-3 font-medium border-b border-subtle whitespace-nowrap">Date</th>
+                  <th className="px-4 py-3 font-medium border-b border-subtle text-right whitespace-nowrap">EPS *</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-primary">
+                {[
+                  { date: '12/31/2025', eps: '3,324.51' },
+                  { date: '9/30/2025', eps: '3,234.98' },
+                  { date: '6/30/2025', eps: '3,269.07' },
+                  { date: '3/31/2025', eps: '3,291.51' },
+                  { date: '12/31/2024', eps: '2,821.18' },
+                  { date: '9/30/2024', eps: '2,439.90' },
+                  { date: '6/30/2024', eps: '2,443.24' },
+                  { date: '3/31/2024', eps: '2,102.42' },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-subtle last:border-0">
+                    <td className="px-4 py-3 whitespace-nowrap">{row.date}</td>
+                    <td className="px-4 py-3 text-right whitespace-nowrap">{row.eps}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <div className="text-right text-xs text-secondary mb-6 uppercase tracking-wider">HOSE:MBB Past Financials Data (VND)</div>
           
           <p className="text-sm text-primary font-medium">*GAAP earnings excluding extraordinary items.</p>

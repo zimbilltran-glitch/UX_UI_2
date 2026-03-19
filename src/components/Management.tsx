@@ -14,12 +14,12 @@ const HelpCentreLink = () => (
 );
 
 const SectionHeader = ({ id, title, description }: { id: string, title: string, description: string }) => (
-  <div className="mb-6 flex items-center justify-between">
+  <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
     <div>
       <h2 className="text-2xl font-bold text-primary mb-2">{title}</h2>
       <p className="text-secondary">{description}</p>
     </div>
-    <button className="btn-interactive flex items-center space-x-2 px-4 py-2 bg-card hover:bg-subtle border border-subtle rounded-lg transition-colors text-sm font-semibold text-secondary shadow-sm">
+    <button className="btn-interactive flex items-center space-x-2 px-4 py-2 bg-card hover:bg-subtle border border-subtle rounded-lg transition-colors text-sm font-semibold text-secondary shadow-sm flex-shrink-0">
       <HelpCircle className="w-4 h-4" />
       <span>Learn</span>
     </button>

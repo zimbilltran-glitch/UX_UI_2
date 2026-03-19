@@ -7,12 +7,12 @@ import { FutureReturnOnEquity } from './FutureReturnOnEquity';
 import { Info, ExternalLink } from 'lucide-react';
 
 const SectionHeader = ({ title, description, id }: { title: string, description: string, id: string }) => (
-  <div className="mb-6 flex justify-between items-start" id={id}>
+  <div className="mb-6 flex flex-col sm:flex-row justify-between items-start gap-4" id={id}>
     <div>
       <h2 className="text-2xl font-bold text-primary mb-2">{title}</h2>
       <p className="text-secondary text-sm">{description}</p>
     </div>
-    <button className="btn-interactive flex items-center space-x-2 bg-card hover:bg-subtle border border-subtle text-secondary px-4 py-2 rounded-lg transition-colors text-sm font-semibold shadow-sm">
+    <button className="btn-interactive flex items-center space-x-2 bg-card hover:bg-subtle border border-subtle text-secondary px-4 py-2 rounded-lg transition-colors text-sm font-semibold shadow-sm flex-shrink-0">
       <Info className="w-4 h-4" />
       <span>Learn</span>
     </button>

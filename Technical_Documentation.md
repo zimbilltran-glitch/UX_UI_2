@@ -308,6 +308,14 @@ Used by the AI Studio environment to define the applet's metadata.
 - Created a reusable `GaugeChart` component to visualize ROE, ROA, and ROCE metrics against industry benchmarks using SVG arcs and needles.
 - Integrated all these components into the main `PastEarnings` tab, replacing the previous placeholders.
 
+### Phase 15: Market Dashboard & Responsive Simulator
+- Built the **"MarketDashboard"** component, a fully customizable, drag-and-drop grid layout using `react-grid-layout`.
+- Implemented `useContainerWidth` hook to ensure the grid and its widgets (Index Ticker, Technical Charts, Heatmaps) resize correctly based on the container width.
+- Refactored the **"DeviceSimulator"** component to use an `iframe`. This ensures that CSS media queries (like Tailwind's `sm:`, `md:`) are applied accurately based on the simulated device dimensions, not the actual browser window.
+- Added logic to automatically bypass the simulator and render full-screen on actual mobile devices.
+- Fixed the **"IndexTicker"** marquee animation to prevent layout shifts on smaller screens.
+- Created `ARCHITECTURE.md` as the central architectural guide for AI agents.
+
 ---
 
 ## 6. Pending Tasks / Under Construction

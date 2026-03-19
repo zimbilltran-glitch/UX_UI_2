@@ -217,7 +217,7 @@ export function EarningsRevenueForecast() {
           </>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
                 <tr className="border-b border-subtle text-sm text-secondary">
                   <th className="py-3 px-4 font-semibold">Date</th>

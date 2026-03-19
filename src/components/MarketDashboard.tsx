@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Responsive, useContainerWidth, Layout } from 'react-grid-layout';
+import { Responsive, useContainerWidth } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
@@ -69,7 +69,6 @@ export function MarketDashboard() {
   const [layouts, setLayouts] = useState<any>(defaultLayouts);
   const [isMounted, setIsMounted] = useState(false);
   const { width, containerRef, mounted } = useContainerWidth();
-  const ResponsiveGridLayout = Responsive as any;
 
   useEffect(() => {
     setIsMounted(true);
@@ -106,7 +105,7 @@ export function MarketDashboard() {
       </div>
 
       {mounted && (
-        <ResponsiveGridLayout
+        <Responsive
           className="layout w-full"
           layouts={layouts}
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
@@ -149,7 +148,7 @@ export function MarketDashboard() {
           <div className="drag-handle p-2 bg-[var(--bg-base)] border-b border-[var(--border-subtle)] cursor-move text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider">Market Heatmap</div>
           <div className="flex-1 overflow-hidden p-2"><MarketHeatmap /></div>
         </div>
-      </ResponsiveGridLayout>
+      </Responsive>
       )}
     </div>
   );

@@ -603,7 +603,7 @@ export function Watchlist() {
 
               <div className="space-y-4">
                 {/* Narrative Card 1 */}
-                <div className="bg-[var(--bg-base)] border border-[var(--border-subtle)] rounded-xl p-4 flex gap-4">
+                <div className="bg-[var(--bg-base)] border border-[var(--border-subtle)] rounded-xl p-4 flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
                     <h3 className="font-bold mb-2">TCB (₫30,000) is trading below our estimate of fair value (₫49,195).</h3>
                     <div className="flex items-center space-x-4 text-xs text-secondary mt-auto pt-4">
@@ -611,7 +611,7 @@ export function Watchlist() {
                       <div>over 1 year ago</div>
                     </div>
                   </div>
-                  <div className="w-[280px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-3 flex flex-col">
+                  <div className="w-full sm:w-[280px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-3 flex flex-col">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center space-x-2">
                         <div className="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center text-amber-500">
@@ -637,7 +637,7 @@ export function Watchlist() {
                 </div>
 
                 {/* Narrative Card 2 */}
-                <div className="bg-[var(--bg-base)] border border-[var(--border-subtle)] rounded-xl p-4 flex gap-4">
+                <div className="bg-[var(--bg-base)] border border-[var(--border-subtle)] rounded-xl p-4 flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
                     <h3 className="font-bold mb-2">Branch Expansion And Cash Dividend Will Support Banking Diversification Ahead</h3>
                     <p className="text-xs text-secondary line-clamp-2 mb-3">
@@ -653,7 +653,7 @@ export function Watchlist() {
                       <span className="bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded text-[10px] font-bold">Updated</span>
                     </div>
                   </div>
-                  <div className="w-[280px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-3 flex flex-col">
+                  <div className="w-full sm:w-[280px] bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-3 flex flex-col">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center space-x-2">
                         <div className="w-8 h-8 rounded-full bg-yellow-900/30 flex items-center justify-center text-yellow-500">

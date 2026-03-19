@@ -42,7 +42,7 @@ export const TopShareholders = () => {
 
       <div className="bg-card rounded-xl border border-subtle shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
               <tr className="border-b border-subtle">
                 <th className="p-4 text-sm font-bold text-primary">Ownership</th>

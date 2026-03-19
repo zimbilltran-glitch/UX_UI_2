@@ -10,20 +10,22 @@ const indices = [
 
 export function IndexTicker() {
   return (
-    <div className="flex w-full overflow-hidden whitespace-nowrap py-2 px-4 space-x-8 bg-[var(--bg-card)] animate-marquee">
-      {indices.map((idx, i) => {
-        const isUp = idx.change > 0;
-        const colorClass = isUp ? 'text-[var(--color-bullish)]' : 'text-[var(--color-bearish)]';
-        return (
-          <div key={i} className="flex items-center space-x-2">
-            <span className="font-bold text-[var(--text-primary)] opacity-80">{idx.name}</span>
-            <span className={`font-mono font-bold ${colorClass}`}>{idx.value.toFixed(2)}</span>
-            <span className={`font-mono text-xs ${colorClass}`}>
-              {isUp ? '+' : ''}{idx.change.toFixed(2)} ({isUp ? '+' : ''}{idx.percent.toFixed(2)}%)
-            </span>
-          </div>
-        );
-      })}
+    <div className="w-full overflow-hidden bg-[var(--bg-card)] py-2">
+      <div className="flex whitespace-nowrap px-4 space-x-8 animate-marquee w-max">
+        {indices.map((idx, i) => {
+          const isUp = idx.change > 0;
+          const colorClass = isUp ? 'text-[var(--color-bullish)]' : 'text-[var(--color-bearish)]';
+          return (
+            <div key={i} className="flex items-center space-x-2">
+              <span className="font-bold text-[var(--text-primary)] opacity-80">{idx.name}</span>
+              <span className={`font-mono font-bold ${colorClass}`}>{idx.value.toFixed(2)}</span>
+              <span className={`font-mono text-xs ${colorClass}`}>
+                {isUp ? '+' : ''}{idx.change.toFixed(2)} ({isUp ? '+' : ''}{idx.percent.toFixed(2)}%)
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

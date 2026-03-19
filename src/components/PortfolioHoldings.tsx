@@ -33,28 +33,28 @@ export const PortfolioHoldings = () => {
         <div className="lg:col-span-2 bg-card rounded-xl border border-subtle p-6">
           <h3 className="text-lg font-bold text-primary mb-6">Performance vs market</h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary flex items-center">
+              <div className="text-lg sm:text-2xl font-bold text-primary flex items-center">
                 US$328,445 <span className="w-2 h-2 rounded-full bg-secondary ml-2"></span>
               </div>
               <div className="text-xs text-secondary">Total Value • {holdings.length} holdings</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">US$235,429</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary">US$235,429</div>
               <div className="text-xs text-secondary">Total Returns <span className="text-bullish">106.8%</span></div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">-US$367</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary">-US$367</div>
               <div className="text-xs text-secondary">1D Returns <span className="text-bearish">-0.1%</span></div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-primary">22.4%</div>
+              <div className="text-lg sm:text-2xl font-bold text-primary">22.4%</div>
               <div className="text-xs text-secondary border-b border-dashed border-subtle inline-block pb-0.5">Annualised (IRR)</div>
             </div>
           </div>
 
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div className="flex space-x-6">
               <div>
                 <div className="flex items-center text-sm text-secondary mb-1">
@@ -69,9 +69,9 @@ export const PortfolioHoldings = () => {
                 <div className="text-primary font-bold">-2.2%</div>
               </div>
             </div>
-            <div className="flex space-x-2 bg-base p-1 rounded-lg border border-subtle">
+            <div className="flex flex-wrap gap-1 bg-base p-1 rounded-lg border border-subtle w-full sm:w-auto">
               {['7D', '1M', '3M', 'YTD', '1Y'].map(period => (
-                <button key={period} className={`px-3 py-1 text-xs font-medium rounded-md ${period === '7D' ? 'bg-card text-primary shadow-sm' : 'text-secondary hover:text-primary'}`}>
+                <button key={period} className={`flex-1 sm:flex-none px-3 py-1 text-xs font-medium rounded-md ${period === '7D' ? 'bg-card text-primary shadow-sm' : 'text-secondary hover:text-primary'}`}>
                   {period}
                 </button>
               ))}
@@ -126,7 +126,7 @@ export const PortfolioHoldings = () => {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <div className="bg-card rounded-xl border border-subtle p-4">
           <div className="flex justify-between items-start mb-2">
             <span className="text-sm text-secondary">Unrealized Returns</span>
@@ -171,12 +171,12 @@ export const PortfolioHoldings = () => {
 
       {/* Holdings Table */}
       <div>
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
           <div className="flex items-center space-x-2">
             <h2 className="text-xl font-bold text-primary">Holdings</h2>
             <span className="px-2 py-0.5 bg-subtle text-secondary text-xs rounded-full">{holdings.length}</span>
           </div>
-          <button className="flex items-center space-x-2 px-3 py-1.5 bg-card border border-subtle rounded-lg text-sm text-secondary hover:text-primary transition-colors shadow-sm">
+          <button className="flex items-center space-x-2 px-3 py-1.5 bg-card border border-subtle rounded-lg text-sm text-secondary hover:text-primary transition-colors shadow-sm w-full sm:w-auto justify-center sm:justify-start">
             <List className="w-4 h-4" />
             <span>Holding View</span>
           </button>

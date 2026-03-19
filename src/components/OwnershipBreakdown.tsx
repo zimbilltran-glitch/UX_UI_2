@@ -19,7 +19,7 @@ export const OwnershipBreakdown = () => {
       <div className="bg-card rounded-xl border border-subtle shadow-lg p-6">
         {showData ? (
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse min-w-[500px]">
               <thead>
                 <tr className="border-b border-subtle">
                   <th className="py-3 px-4 text-sm font-semibold text-secondary">Owner Type</th>

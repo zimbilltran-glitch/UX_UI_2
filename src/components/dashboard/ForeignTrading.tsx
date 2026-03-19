@@ -59,11 +59,11 @@ export function ForeignTrading() {
 
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="flex justify-between items-center mb-2 px-2">
-        <div className="flex space-x-1 bg-[var(--bg-base)] p-1 rounded-lg border border-[var(--border-subtle)]">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2 px-2">
+        <div className="flex space-x-1 bg-[var(--bg-base)] p-1 rounded-lg border border-[var(--border-subtle)] w-full sm:w-auto">
           <button
             onClick={() => setView('market')}
-            className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+            className={`flex-1 sm:flex-none px-3 py-1 text-xs font-medium rounded-md transition-colors ${
               view === 'market' 
                 ? 'bg-[var(--bg-card)] text-[var(--text-primary)] shadow-sm' 
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -73,7 +73,7 @@ export function ForeignTrading() {
           </button>
           <button
             onClick={() => setView('prop')}
-            className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+            className={`flex-1 sm:flex-none px-3 py-1 text-xs font-medium rounded-md transition-colors ${
               view === 'prop' 
                 ? 'bg-[var(--bg-card)] text-[var(--text-primary)] shadow-sm' 
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'

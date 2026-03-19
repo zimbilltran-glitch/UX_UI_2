@@ -35,3 +35,5 @@ This document provides supplementary technical notes and design system guideline
 - **Snowflake Chart:** Uses Bullish Green (`#84cc16`) for successful scores.
 - **Help Center:** Supports anchor link navigation via URL Hash.
 - **Data Synchronization:** All financial metrics must be synchronized with the backend data structure.
+- **Device Simulator:** Uses an `iframe` to accurately simulate CSS media queries for mobile/tablet views.
+- **Grid Layout:** Uses `react-grid-layout` with the `useContainerWidth` hook for responsive, draggable widgets on the Market Dashboard.

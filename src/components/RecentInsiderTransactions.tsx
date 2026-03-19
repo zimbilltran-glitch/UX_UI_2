@@ -12,7 +12,7 @@ export const RecentInsiderTransactions = () => {
         <h3 className="text-lg font-bold text-primary mb-6">Insider Trading Volume</h3>
         
         <div className="w-full overflow-x-auto mb-8">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse min-w-[400px]">
             <thead>
               <tr>
                 <th className="w-24"></th>

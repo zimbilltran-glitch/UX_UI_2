@@ -45,7 +45,7 @@ export const DividendYieldVsMarket = () => {
         {showData ? (
           <div className="overflow-x-auto">
             <p className="text-sm font-semibold text-secondary mb-4">Military Commercial Bank Dividend Yield vs Market</p>
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse min-w-[500px]">
               <thead>
                 <tr className="border-b border-subtle">
                   <th className="py-3 px-4 text-sm font-semibold text-secondary">Segment</th>

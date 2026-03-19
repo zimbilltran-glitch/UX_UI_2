@@ -43,7 +43,7 @@ export const PortfolioDividends = () => {
             2.6% higher vs last 12m
           </div>
         </div>
-        <div className="flex flex-wrap gap-8">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4 sm:gap-8 w-full sm:w-auto">
           <div>
             <div className="text-sm text-secondary mb-1">Monthly Income</div>
             <div className="text-2xl font-bold text-primary">US$409</div>
@@ -135,25 +135,34 @@ export const PortfolioDividends = () => {
                       <div className="text-xs text-secondary truncate">{holding.name}</div>
                     </div>
                   </div>
-                  <div className="col-span-1 sm:col-span-3 text-right">
-                    <div className="font-bold text-primary">US${holding.payment.toLocaleString(undefined, { minimumFractionDigits: holding.payment < 100 ? 2 : 0, maximumFractionDigits: 2 })}<span className="text-xs font-normal text-secondary">/ year</span></div>
-                    <div className="text-xs text-secondary">{holding.contribution.toFixed(1)}%</div>
-                  </div>
-                  <div className="col-span-1 sm:col-span-2 text-right">
-                    <div className="font-bold text-primary">{holding.yield.toFixed(1)}%</div>
-                    <div className="text-xs text-secondary">{holding.yieldOnCost.toFixed(1)}%</div>
-                  </div>
-                  <div className="col-span-1 sm:col-span-2 text-right flex flex-col items-end">
-                    <div className={`flex items-center space-x-1 font-bold ${
-                      holding.status === 'high' ? 'text-green-500' : 
-                      holding.status === 'medium' ? 'text-orange-500' : 'text-red-500'
-                    }`}>
-                      {holding.status === 'high' && <CheckCircle className="w-4 h-4" />}
-                      {holding.status === 'medium' && <AlertCircle className="w-4 h-4" />}
-                      {holding.status === 'low' && <XCircle className="w-4 h-4" />}
-                      <span>{holding.score}/6</span>
+                  <div className="col-span-1 sm:col-span-3 flex justify-between sm:block sm:text-right">
+                    <div className="text-xs text-secondary sm:hidden">Payment</div>
+                    <div className="text-right">
+                      <div className="font-bold text-primary">US${holding.payment.toLocaleString(undefined, { minimumFractionDigits: holding.payment < 100 ? 2 : 0, maximumFractionDigits: 2 })}<span className="text-xs font-normal text-secondary">/ year</span></div>
+                      <div className="text-xs text-secondary">{holding.contribution.toFixed(1)}%</div>
                     </div>
-                    <div className="text-xs text-secondary">{holding.growth.toFixed(1)}%</div>
+                  </div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right">
+                    <div className="text-xs text-secondary sm:hidden">Yield</div>
+                    <div className="text-right">
+                      <div className="font-bold text-primary">{holding.yield.toFixed(1)}%</div>
+                      <div className="text-xs text-secondary">{holding.yieldOnCost.toFixed(1)}%</div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right">
+                    <div className="text-xs text-secondary sm:hidden">Score</div>
+                    <div className="flex flex-col items-end">
+                      <div className={`flex items-center space-x-1 font-bold ${
+                        holding.status === 'high' ? 'text-green-500' : 
+                        holding.status === 'medium' ? 'text-orange-500' : 'text-red-500'
+                      }`}>
+                        {holding.status === 'high' && <CheckCircle className="w-4 h-4" />}
+                        {holding.status === 'medium' && <AlertCircle className="w-4 h-4" />}
+                        {holding.status === 'low' && <XCircle className="w-4 h-4" />}
+                        <span>{holding.score}/6</span>
+                      </div>
+                      <div className="text-xs text-secondary">{holding.growth.toFixed(1)}%</div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -228,24 +237,42 @@ export const PortfolioDividends = () => {
               </div>
               
               <div className="p-2 space-y-1">
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center p-2 hover:bg-subtle/50 rounded transition-colors">
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-center p-2 hover:bg-subtle/50 rounded transition-colors">
                   <div className="col-span-1 sm:col-span-5 flex items-center space-x-2">
                     <div className="font-bold text-yellow-500">NVDA</div>
                     <div className="text-xs text-secondary truncate">NVIDIA</div>
                   </div>
-                  <div className="col-span-1 sm:col-span-2 text-right text-sm text-secondary">Jun 11</div>
-                  <div className="col-span-1 sm:col-span-2 text-right text-sm text-secondary">Jul 03</div>
-                  <div className="col-span-1 sm:col-span-3 text-right text-sm font-medium text-primary">US$0.50</div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right text-sm text-secondary">
+                    <span className="sm:hidden">Ex-date:</span>
+                    <span>Jun 11</span>
+                  </div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right text-sm text-secondary">
+                    <span className="sm:hidden">Pay date:</span>
+                    <span>Jul 03</span>
+                  </div>
+                  <div className="col-span-1 sm:col-span-3 flex justify-between sm:block sm:text-right text-sm font-medium text-primary">
+                    <span className="sm:hidden text-secondary font-normal">Est Amount:</span>
+                    <span>US$0.50</span>
+                  </div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center p-2 hover:bg-subtle/50 rounded transition-colors">
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-center p-2 hover:bg-subtle/50 rounded transition-colors">
                   <div className="col-span-1 sm:col-span-5 flex items-center space-x-2">
                     <div className="font-bold text-yellow-500">JPM</div>
                     <div className="text-xs text-secondary truncate">JPMorgan Chase</div>
                   </div>
-                  <div className="col-span-1 sm:col-span-2 text-right text-sm text-secondary">Jul 03</div>
-                  <div className="col-span-1 sm:col-span-2 text-right text-sm text-secondary">Jul 31</div>
-                  <div className="col-span-1 sm:col-span-3 text-right text-sm font-medium text-primary">US$97.91</div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right text-sm text-secondary">
+                    <span className="sm:hidden">Ex-date:</span>
+                    <span>Jul 03</span>
+                  </div>
+                  <div className="col-span-1 sm:col-span-2 flex justify-between sm:block sm:text-right text-sm text-secondary">
+                    <span className="sm:hidden">Pay date:</span>
+                    <span>Jul 31</span>
+                  </div>
+                  <div className="col-span-1 sm:col-span-3 flex justify-between sm:block sm:text-right text-sm font-medium text-primary">
+                    <span className="sm:hidden text-secondary font-normal">Est Amount:</span>
+                    <span>US$97.91</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -78,9 +78,9 @@ export const PortfolioUpdates = () => {
   const [activeCategory, setActiveCategory] = useState('earnings');
 
   return (
-    <div className="flex gap-8">
+    <div className="flex flex-col md:flex-row gap-8">
       {/* Sidebar */}
-      <div className="w-64 flex-shrink-0">
+      <div className="w-full md:w-64 flex-shrink-0">
         <div className="space-y-1">
           {categories.map(category => (
             <button

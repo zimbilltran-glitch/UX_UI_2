@@ -23,7 +23,7 @@ export const HelpCenter = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F6F8] text-primary font-sans">
+    <div className="min-h-full bg-[#F4F6F8] text-primary font-sans">
       {/* Header / Hero Section */}
       <div className="bg-card border-b border-subtle pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

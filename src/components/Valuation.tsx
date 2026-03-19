@@ -175,8 +175,8 @@ export function Valuation() {
             </button>
           </div>
 
-          <div className="bg-brand/10 rounded-xl p-4 mb-6 flex items-start border border-blue-100">
-            <div className="w-40 h-24 bg-blue-200 rounded-lg mr-4 flex-shrink-0 relative overflow-hidden">
+          <div className="bg-brand/10 rounded-xl p-4 mb-6 flex flex-col sm:flex-row items-start border border-blue-100">
+            <div className="w-full sm:w-40 h-32 sm:h-24 bg-blue-200 rounded-lg mb-4 sm:mb-0 sm:mr-4 flex-shrink-0 relative overflow-hidden">
               <img src="https://picsum.photos/seed/investing/160/96" alt="Investing Super Power" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             </div>
             <div className="flex-1">

@@ -13,8 +13,8 @@ const watchlist = [
 
 export function WatchlistWidget() {
   return (
-    <div className="flex flex-col h-full bg-[var(--bg-card)] overflow-y-auto p-2">
-      <table className="w-full text-sm">
+    <div className="flex flex-col h-full bg-[var(--bg-card)] overflow-auto p-2">
+      <table className="w-full text-sm min-w-[200px]">
         <thead>
           <tr className="text-[var(--text-secondary)] text-xs text-left">
             <th className="pb-2 font-normal">Symbol</th>

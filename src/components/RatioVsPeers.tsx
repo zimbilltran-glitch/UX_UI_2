@@ -139,87 +139,89 @@ export function RatioVsPeers() {
         </div>
 
         {/* Chart Area */}
-        <div className="relative mb-8">
-          {/* Background Zones */}
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex z-0 pr-[6rem]">
-            {/* Left zone (undervalued) */}
-            <div 
-              className="h-full" 
-              style={{ width: `${(currentData.peer_avg / maxValue) * 100}%` }}
-            ></div>
-            {/* Right zone (overvalued) - red stripes */}
-            <div 
-              className="h-full relative overflow-hidden" 
-              style={{ width: `${(1 - currentData.peer_avg / maxValue) * 100}%` }}
-            >
-              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ef4444, #ef4444 2px, transparent 2px, transparent 8px)' }}></div>
-            </div>
-          </div>
-
-          {/* Peer Avg Line */}
-          <div 
-            className="absolute top-0 bottom-0 w-px bg-yellow-500 z-10"
-            style={{ left: `calc(${(currentData.peer_avg / maxValue) * 100}% - ${(currentData.peer_avg / maxValue) * 6}rem)` }}
-          >
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-yellow-500 text-primary text-xs font-bold px-2 py-1 rounded whitespace-nowrap">
-              Peer Avg {currentData.peer_avg.toFixed(1)}x
-              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-yellow-500"></div>
-            </div>
-          </div>
-
-          {/* Bars Container */}
-          <div className="relative z-20 flex">
-            <div className="flex-grow flex flex-col space-y-2 pr-4">
-              {currentData.peers.map((peer, idx) => (
-                <div key={idx} className="relative h-14 flex items-center">
-                  {/* Bar */}
-                  <div 
-                    className={`absolute left-0 top-0 bottom-0 rounded-r-sm ${peer.is_target ? 'bg-card border border-subtle' : 'bg-[#2ecc71]'}`}
-                    style={{ width: `${(peer.value / maxValue) * 100}%` }}
-                  ></div>
-                  
-                  {/* Label inside bar */}
-                  <div className="relative z-30 px-3 flex flex-col justify-center h-full">
-                    <span className={`font-bold text-sm ${peer.is_target ? 'text-primary' : 'text-white'}`}>{peer.value}x</span>
-                    {peer.is_target ? (
-                      <span className="bg-[#fcd34d] text-primary text-xs font-semibold px-1.5 py-0.5 rounded inline-block w-fit mt-0.5">
-                        {peer.name}
-                      </span>
-                    ) : (
-                      <span className="text-white text-xs truncate max-w-[300px] mt-0.5">
-                        {peer.name}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Growth Column */}
-            <div className="w-24 flex-shrink-0 flex flex-col space-y-2 border-l border-subtle pl-4 relative z-20">
-              {/* Header for Growth */}
-              <div className="absolute -top-8 left-4 text-secondary text-xs border-b border-dashed border-subtle pb-0.5">
-                {currentData.growth_label.split(' ').map((word, i) => <div key={i}>{word}</div>)}
+        <div className="overflow-x-auto">
+          <div className="relative mb-8 min-w-[600px]">
+            {/* Background Zones */}
+            <div className="absolute top-0 bottom-0 left-0 right-0 flex z-0 pr-[6rem]">
+              {/* Left zone (undervalued) */}
+              <div 
+                className="h-full" 
+                style={{ width: `${(currentData.peer_avg / maxValue) * 100}%` }}
+              ></div>
+              {/* Right zone (overvalued) - red stripes */}
+              <div 
+                className="h-full relative overflow-hidden" 
+                style={{ width: `${(1 - currentData.peer_avg / maxValue) * 100}%` }}
+              >
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ef4444, #ef4444 2px, transparent 2px, transparent 8px)' }}></div>
               </div>
-              
-              {currentData.peers.map((peer, idx) => (
-                <div key={idx} className="h-14 flex items-center text-primary text-sm font-medium">
-                  {peer.growth}
+            </div>
+
+            {/* Peer Avg Line */}
+            <div 
+              className="absolute top-0 bottom-0 w-px bg-yellow-500 z-10"
+              style={{ left: `calc(${(currentData.peer_avg / maxValue) * 100}% - ${(currentData.peer_avg / maxValue) * 6}rem)` }}
+            >
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-yellow-500 text-primary text-xs font-bold px-2 py-1 rounded whitespace-nowrap">
+                Peer Avg {currentData.peer_avg.toFixed(1)}x
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-yellow-500"></div>
+              </div>
+            </div>
+
+            {/* Bars Container */}
+            <div className="relative z-20 flex">
+              <div className="flex-grow flex flex-col space-y-2 pr-4">
+                {currentData.peers.map((peer, idx) => (
+                  <div key={idx} className="relative h-14 flex items-center">
+                    {/* Bar */}
+                    <div 
+                      className={`absolute left-0 top-0 bottom-0 rounded-r-sm ${peer.is_target ? 'bg-card border border-subtle' : 'bg-[#2ecc71]'}`}
+                      style={{ width: `${(peer.value / maxValue) * 100}%` }}
+                    ></div>
+                    
+                    {/* Label inside bar */}
+                    <div className="relative z-30 px-3 flex flex-col justify-center h-full">
+                      <span className={`font-bold text-sm ${peer.is_target ? 'text-primary' : 'text-white'}`}>{peer.value}x</span>
+                      {peer.is_target ? (
+                        <span className="bg-[#fcd34d] text-primary text-xs font-semibold px-1.5 py-0.5 rounded inline-block w-fit mt-0.5">
+                          {peer.name}
+                        </span>
+                      ) : (
+                        <span className="text-white text-xs truncate max-w-[300px] mt-0.5">
+                          {peer.name}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Growth Column */}
+              <div className="w-24 flex-shrink-0 flex flex-col space-y-2 border-l border-subtle pl-4 relative z-20">
+                {/* Header for Growth */}
+                <div className="absolute -top-8 left-4 text-secondary text-xs border-b border-dashed border-subtle pb-0.5">
+                  {currentData.growth_label.split(' ').map((word, i) => <div key={i}>{word}</div>)}
                 </div>
-              ))}
+                
+                {currentData.peers.map((peer, idx) => (
+                  <div key={idx} className="h-14 flex items-center text-primary text-sm font-medium">
+                    {peer.growth}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          
-          {/* X-axis labels */}
-          <div className="flex mt-2 relative z-20">
-            <div className="flex-grow flex justify-between text-secondary text-xs font-bold pr-4">
-              <span>{metric}</span>
-              <span>{Math.round(maxValue * 0.25)}</span>
-              <span>{Math.round(maxValue * 0.5)}</span>
-              <span>{Math.round(maxValue * 0.75)}</span>
-              <span>{Math.round(maxValue)}</span>
+            
+            {/* X-axis labels */}
+            <div className="flex mt-2 relative z-20">
+              <div className="flex-grow flex justify-between text-secondary text-xs font-bold pr-4">
+                <span>{metric}</span>
+                <span>{Math.round(maxValue * 0.25)}</span>
+                <span>{Math.round(maxValue * 0.5)}</span>
+                <span>{Math.round(maxValue * 0.75)}</span>
+                <span>{Math.round(maxValue)}</span>
+              </div>
+              <div className="w-24 flex-shrink-0 pl-4"></div>
             </div>
-            <div className="w-24 flex-shrink-0 pl-4"></div>
           </div>
         </div>
 

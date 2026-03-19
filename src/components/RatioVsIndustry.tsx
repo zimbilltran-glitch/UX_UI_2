@@ -274,7 +274,7 @@ export const RatioVsIndustry = () => {
         <div className="overflow-x-auto">
           {currentCompanies.length > 0 ? (
             <>
-              <table className="w-full text-sm text-left text-secondary">
+              <table className="w-full text-sm text-left text-secondary min-w-[600px]">
                 <thead className="text-xs text-secondary uppercase border-b border-subtle">
                   <tr>
                     <th className="px-4 py-3 font-medium">{currentCompanies.length} {currentCompanies.length === 1 ? 'Company' : 'Companies'}</th>

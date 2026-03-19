@@ -111,7 +111,7 @@ export default function Header({
           </div>
         </div>
 
-        <nav className="flex gap-2 items-center w-full sm:w-auto justify-center sm:justify-end">
+        <nav className="flex flex-wrap gap-2 items-center w-full sm:w-auto justify-center sm:justify-end">
         {/* Language Switcher */}
         <button 
           onClick={toggleLanguage}

@@ -40,17 +40,17 @@ export const PortfolioReturns = () => {
   return (
     <div className="space-y-8">
       {/* Date Filter & Info */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <button className="flex items-center space-x-2 px-4 py-2 bg-card border border-subtle rounded-lg text-sm font-medium text-primary hover:bg-subtle transition-colors">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:space-x-4 w-full sm:w-auto">
+          <button className="flex items-center justify-between sm:justify-start space-x-2 px-4 py-2 bg-card border border-subtle rounded-lg text-sm font-medium text-primary hover:bg-subtle transition-colors w-full sm:w-auto">
             <span>Since inception</span>
             <ChevronDown className="w-4 h-4 text-secondary" />
           </button>
-          <span className="text-sm text-secondary">29/01/2015 → 13/03/2026</span>
+          <span className="text-sm text-secondary text-center sm:text-left">29/01/2015 → 13/03/2026</span>
         </div>
         <button 
           onClick={() => setShowModal(true)}
-          className="flex items-center space-x-2 text-sm text-secondary hover:text-primary transition-colors"
+          className="flex items-center justify-center sm:justify-start space-x-2 text-sm text-secondary hover:text-primary transition-colors w-full sm:w-auto"
         >
           <Info className="w-4 h-4" />
           <span>How returns are calculated?</span>
@@ -94,24 +94,24 @@ export const PortfolioReturns = () => {
             <Info className="w-4 h-4 text-secondary" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Highest */}
             <div>
               <h4 className="text-sm font-semibold text-primary mb-4">Highest contributors</h4>
               <div className="space-y-4">
                 {highestContributors.map((item, i) => (
-                  <div key={i} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3 w-1/2">
-                      <div>
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
+                    <div className="flex items-center space-x-3 w-full sm:w-1/2">
+                      <div className="w-24 flex-shrink-0">
                         <div className="text-sm font-bold text-primary">{item.name}</div>
-                        <div className="text-xs text-secondary truncate w-16">{item.desc}</div>
+                        <div className="text-xs text-secondary truncate w-full">{item.desc}</div>
                       </div>
-                      <div className="h-2 w-16 bg-subtle rounded-full overflow-hidden">
+                      <div className="h-2 flex-1 bg-subtle rounded-full overflow-hidden">
                         <div className="h-full bg-bullish" style={{ width: item.width }}></div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-primary">{item.value}</div>
+                    <div className="flex justify-between sm:block sm:text-right text-sm sm:text-base">
+                      <div className="font-bold text-primary">{item.value}</div>
                       <div className="text-xs text-bullish">{item.percent}</div>
                     </div>
                   </div>
@@ -124,18 +124,18 @@ export const PortfolioReturns = () => {
               <h4 className="text-sm font-semibold text-primary mb-4">Lowest contributors</h4>
               <div className="space-y-4">
                 {lowestContributors.map((item, i) => (
-                  <div key={i} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3 w-1/2">
-                      <div>
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
+                    <div className="flex items-center space-x-3 w-full sm:w-1/2">
+                      <div className="w-24 flex-shrink-0">
                         <div className="text-sm font-bold text-primary">{item.name}</div>
-                        <div className="text-xs text-secondary truncate w-16">{item.desc}</div>
+                        <div className="text-xs text-secondary truncate w-full">{item.desc}</div>
                       </div>
-                      <div className="h-2 w-16 bg-subtle rounded-full overflow-hidden flex justify-end">
+                      <div className="h-2 flex-1 bg-subtle rounded-full overflow-hidden flex justify-end">
                         <div className={`h-full ${item.value.startsWith('-') ? 'bg-bearish' : 'bg-bullish'}`} style={{ width: item.width }}></div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm font-bold text-primary">{item.value}</div>
+                    <div className="flex justify-between sm:block sm:text-right text-sm sm:text-base">
+                      <div className="font-bold text-primary">{item.value}</div>
                       <div className={`text-xs ${item.percent.startsWith('-') ? 'text-bearish' : 'text-bullish'}`}>{item.percent}</div>
                     </div>
                   </div>
@@ -148,12 +148,12 @@ export const PortfolioReturns = () => {
 
       {/* Detailed Returns Report */}
       <div>
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
           <div className="flex items-center space-x-2">
             <h2 className="text-xl font-bold text-primary">Detailed Returns Report</h2>
             <Info className="w-4 h-4 text-secondary" />
           </div>
-          <button className="flex items-center space-x-2 px-3 py-1.5 bg-card border border-subtle rounded-lg text-sm text-secondary hover:text-primary transition-colors shadow-sm">
+          <button className="flex items-center space-x-2 px-3 py-1.5 bg-card border border-subtle rounded-lg text-sm text-secondary hover:text-primary transition-colors shadow-sm w-full sm:w-auto justify-center sm:justify-start">
             <Download className="w-4 h-4" />
             <span>Download as CSV</span>
           </button>
