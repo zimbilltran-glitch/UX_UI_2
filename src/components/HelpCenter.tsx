@@ -1,154 +1,195 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ChevronRight, BookOpen, HelpCircle, Database, Shield } from 'lucide-react';
-import { SnowflakeDiagram } from './HelpCenterDiagrams';
-import { Accordion } from './help-center/HelpCenterShared';
-import { ValuationGuide } from './help-center/ValuationGuide';
-import { FutureGrowthGuide } from './help-center/FutureGrowthGuide';
-import { PastPerformanceGuide } from './help-center/PastPerformanceGuide';
-import { FinancialHealthGuide } from './help-center/FinancialHealthGuide';
-import { DividendGuide } from './help-center/DividendGuide';
-import { ManagementOwnershipGuide } from './help-center/ManagementOwnershipGuide';
-import { FaqSection } from './help-center/FaqSection';
+import { Search, ChevronRight, BookOpen, HelpCircle } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { swsHelpData, HelpSection, QAPair } from '../data/swsHelpData';
+
+const Accordion = ({ qa, isOpen, onToggle }: { qa: QAPair, isOpen: boolean, onToggle: () => void }) => {
+  return (
+    <div className="border border-[var(--border-subtle)] rounded-xl mb-3 overflow-hidden bg-[var(--bg-card)]">
+      <button
+        onClick={onToggle}
+        className="w-full flex justify-between items-center p-4 text-left hover:bg-[var(--bg-base)] transition-colors focus:outline-none"
+      >
+        <span className="font-semibold text-[var(--text-primary)]">{qa.question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 90 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronRight className="w-5 h-5 text-[var(--text-secondary)]" />
+        </motion.div>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="p-4 pt-0 text-[var(--text-secondary)] leading-relaxed border-t border-[var(--border-subtle)]">
+              {qa.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export const HelpCenter = () => {
-  const [activeCategory, setActiveCategory] = useState('guide');
+  const [activeSection, setActiveSection] = useState<string>(swsHelpData[0].id);
   const [searchQuery, setSearchQuery] = useState('');
+  const [openAccordions, setOpenAccordions] = useState<Record<string, boolean>>({});
+
+  const toggleAccordion = (sectionId: string, index: number) => {
+    const key = `${sectionId}-${index}`;
+    setOpenAccordions(prev => ({ ...prev, [key]: !prev[key] }));
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const y = element.getBoundingClientRect().top + window.scrollY - 100; // Offset for header
+      const y = element.getBoundingClientRect().top + window.scrollY - 100; // Offset for sticky header
       window.scrollTo({ top: y, behavior: 'smooth' });
+      setActiveSection(id);
     }
   };
 
+  // Scroll spy to update active section in sidebar
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = swsHelpData.map(s => document.getElementById(s.id));
+      const scrollPosition = window.scrollY + 150; // Offset
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const filteredData = swsHelpData.map(section => {
+    const matchesSection = section.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                           section.overviewText.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchingQAs = section.qaPairs.filter(qa => 
+      qa.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      qa.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (matchesSection || matchingQAs.length > 0) {
+      return {
+        ...section,
+        qaPairs: searchQuery ? matchingQAs : section.qaPairs
+      };
+    }
+    return null;
+  }).filter(Boolean) as HelpSection[];
+
   return (
-    <div className="min-h-full bg-[#F4F6F8] text-primary font-sans">
+    <div className="min-h-full bg-[var(--bg-base)] text-[var(--text-primary)] font-sans pb-24">
       {/* Header / Hero Section */}
-      <div className="bg-card border-b border-subtle pt-24 pb-12">
+      <div className="bg-[var(--bg-card)] border-b border-[var(--border-subtle)] pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold text-primary mb-6 tracking-tight">How can we help you?</h1>
+            <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">How can we help you?</h1>
             <div className="relative">
               <input 
                 type="text" 
                 placeholder="Search for articles, guides, and FAQs..." 
-                className="w-full bg-card border border-subtle rounded-xl py-4 pl-12 pr-4 text-primary placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-all"
+                className="w-full bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-xl py-4 pl-12 pr-4 text-[var(--text-primary)] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-transparent shadow-sm transition-all"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)] w-5 h-5" />
             </div>
-            <div className="flex justify-center mt-4 space-x-4 text-sm text-secondary">
+            <div className="flex justify-center mt-4 space-x-4 text-sm text-[var(--text-secondary)]">
               <span>Popular:</span>
-              <button onClick={() => scrollToSection('understanding-valuation')} className="hover:text-brand transition-colors">Valuation</button>
-              <button onClick={() => scrollToSection('how-snowflake-works')} className="hover:text-brand transition-colors">Snowflake</button>
-              <button onClick={() => scrollToSection('data-sources')} className="hover:text-brand transition-colors">Data Sources</button>
+              <button onClick={() => scrollToSection('value')} className="hover:text-[var(--brand-primary)] transition-colors">Valuation</button>
+              <button onClick={() => scrollToSection('snowflake-overview')} className="hover:text-[var(--brand-primary)] transition-colors">Snowflake</button>
+              <button onClick={() => scrollToSection('dividends')} className="hover:text-[var(--brand-primary)] transition-colors">Dividends</button>
             </div>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
           {/* Sidebar Navigation */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-1 hidden md:block">
             <div className="sticky top-24 space-y-8">
-              {/* Categories */}
               <div>
-                <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4 px-2">Categories</h3>
-                <nav className="space-y-1">
-                  <button 
-                    onClick={() => setActiveCategory('guide')}
-                    className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${activeCategory === 'guide' ? 'bg-brand/10 text-brand' : 'text-secondary hover:bg-subtle hover:text-primary'}`}
-                  >
-                    <BookOpen className="w-4 h-4 mr-3" />
-                    Analysis Model Guide
-                  </button>
-                  <button 
-                    onClick={() => setActiveCategory('faqs')}
-                    className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${activeCategory === 'faqs' ? 'bg-brand/10 text-brand' : 'text-secondary hover:bg-subtle hover:text-primary'}`}
-                  >
-                    <HelpCircle className="w-4 h-4 mr-3" />
-                    FAQs & Data
-                  </button>
-                </nav>
-              </div>
-
-              {/* Table of Contents (Dynamic based on active category) */}
-              <div>
-                <h3 className="text-xs font-bold text-secondary uppercase tracking-wider mb-4 px-2">On this page</h3>
-                <nav className="space-y-1 border-l-2 border-subtle ml-2">
-                  {activeCategory === 'guide' ? (
-                    <>
-                      <button onClick={() => scrollToSection('guide-core-model')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Core Model (Snowflake)</button>
-                      <button onClick={() => scrollToSection('understanding-valuation')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Valuation</button>
-                      <button onClick={() => scrollToSection('future-growth')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Future Growth</button>
-                      <button onClick={() => scrollToSection('past-performance')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Past Performance</button>
-                      <button onClick={() => scrollToSection('financial-health')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Financial Health</button>
-                      <button onClick={() => scrollToSection('dividend')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Dividend</button>
-                      <button onClick={() => scrollToSection('management')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Management</button>
-                      <button onClick={() => scrollToSection('ownership')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Ownership</button>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={() => scrollToSection('how-snowflake-works')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">How Snowflake Works</button>
-                      <button onClick={() => scrollToSection('data-updates')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Data Updates</button>
-                      <button onClick={() => scrollToSection('markets-and-assets')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Markets & Assets</button>
-                      <button onClick={() => scrollToSection('data-sources')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Data Sources</button>
-                      <button onClick={() => scrollToSection('data-differences')} className="block w-full text-left pl-4 py-1 text-sm text-secondary hover:text-brand hover:border-l-2 hover:border-blue-500 -ml-[2px] transition-all">Data Differences</button>
-                    </>
-                  )}
+                <h3 className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-4 px-2">On this page</h3>
+                <nav className="space-y-1 border-l-2 border-[var(--border-subtle)] ml-2">
+                  {swsHelpData.map((section) => (
+                    <button 
+                      key={section.id}
+                      onClick={() => scrollToSection(section.id)} 
+                      className={`block w-full text-left pl-4 py-2 text-sm transition-all -ml-[2px] ${
+                        activeSection === section.id 
+                          ? 'text-[var(--brand-primary)] border-l-2 border-[var(--brand-primary)] font-medium' 
+                          : 'text-[var(--text-secondary)] hover:text-[var(--brand-primary)] hover:border-l-2 hover:border-[var(--brand-primary)]'
+                      }`}
+                    >
+                      {section.title}
+                    </button>
+                  ))}
                 </nav>
               </div>
             </div>
           </div>
 
           {/* Main Content */}
-          <div className="lg:col-span-3 space-y-12">
-            
-            {/* Guide Section */}
-            <section id="guide-core-model">
-              <div className="flex items-center mb-6 pb-2 border-b border-subtle">
-                <div className="bg-brand/10 p-2 rounded-lg mr-3">
-                  <BookOpen className="w-6 h-6 text-brand" />
-                </div>
-                <h2 className="text-2xl font-bold text-primary">Analysis Model Guide</h2>
+          <div className="md:col-span-3 space-y-16">
+            {filteredData.length === 0 ? (
+              <div className="text-center py-12 text-[var(--text-secondary)]">
+                No results found for "{searchQuery}". Try adjusting your search.
               </div>
-              
-              <div className="bg-card rounded-xl p-6 border border-subtle mb-8 shadow-sm">
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-primary mb-3">The Finsang Snowflake</h3>
-                    <p className="text-secondary mb-4 leading-relaxed">
-                      Our core analysis model visualizes a company's performance across 5 key areas: Valuation, Future Growth, Past Performance, Financial Health, and Dividend.
-                    </p>
-                    <p className="text-secondary leading-relaxed">
-                      Each axis represents a score out of 6, based on 6 underlying checks. The larger the area, the better the company performs in that criteria.
-                    </p>
-                  </div>
-                  <div className="w-48 h-48 flex-shrink-0 bg-base rounded-full flex items-center justify-center border border-subtle shadow-sm">
-                    <SnowflakeDiagram />
-                  </div>
-                </div>
-              </div>
+            ) : (
+              filteredData.map((section) => {
+                const IconComponent = (LucideIcons as any)[section.iconName] || HelpCircle;
+                
+                return (
+                  <section id={section.id} key={section.id} className="scroll-mt-24">
+                    <div className="flex items-center mb-6 pb-2 border-b border-[var(--border-subtle)]">
+                      <div className="bg-[var(--brand-primary)]/10 p-2 rounded-lg mr-3">
+                        <IconComponent className="w-6 h-6 text-[var(--brand-primary)]" />
+                      </div>
+                      <h2 className="text-2xl font-bold text-[var(--text-primary)]">{section.title}</h2>
+                    </div>
+                    
+                    <div className="bg-[var(--bg-card)] rounded-xl p-6 border border-[var(--border-subtle)] mb-8 shadow-sm">
+                      <p className="text-[var(--text-secondary)] leading-relaxed">
+                        {section.overviewText}
+                      </p>
+                    </div>
 
-              {/* Imported Guide Sections */}
-              <ValuationGuide />
-              <FutureGrowthGuide />
-              <PastPerformanceGuide />
-              <FinancialHealthGuide />
-              <DividendGuide />
-              <ManagementOwnershipGuide />
-            </section>
-
-            {/* FAQs Section */}
-            <FaqSection />
-
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">Frequently Asked Questions</h3>
+                      {section.qaPairs.map((qa, index) => (
+                        <Accordion 
+                          key={index}
+                          qa={qa}
+                          isOpen={!!openAccordions[`${section.id}-${index}`]}
+                          onToggle={() => toggleAccordion(section.id, index)}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
